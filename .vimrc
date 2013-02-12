@@ -42,9 +42,9 @@ map Q gq
 "vnoremap p "_dp
 
 " ADDED BY ME
-set softtabstop=2
-set shiftwidth=2
-set tabstop=2
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
 " Use spaces instead of tabs
 set expandtab
 colorscheme desert
@@ -56,10 +56,13 @@ au BufNewFile,BufRead *.thtml setfiletype xml
 " see http://lucumr.pocoo.org/articles/vim-as-development-environment
 " for more info on wildmenu
 set wildmenu
+" set wildmode=list:longest,full
+" Add mouse support in terminal
+set mouse=a
+" vim-laravel-snippets
+autocmd FileType php set ft=php.laravel
 " Load matchit (% to bound from do end, etc.)
 runtime! macros/matchit.vim
-" For Lilypond
-set runtimepath+=/usr/local/share/vim/
 " for matchit plugin
 " filetype plugin on 
 " for ragtag plugin
@@ -68,29 +71,10 @@ let g:ragtag_global_maps = 1
 " for nerdtree:
 " autocmd vimenter * NERDTree
 
-" My shortcuts
-" ab <a <a href="http://
-" ab doc <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html>
-" ab htmltag <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-" ab template <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title></title><meta name="description" content="" /><meta name="keywords" content="" /><style type="text/css">body {  }#container {  }#content {  }h1 {  }h2 {  }#footer {  }img {  }</style></head><body><div id="container"><div id="content"><h1></h1></div><!-- /#content --><div id="footer"><p>Copyright &copy; <?php echo date("Y"); ?> <a href="/"></a></p></div></div><!-- /#container --></body></html>
-ab --- --------------------
-ab === ====================
-
 " for vundle, see: https://github.com/gmarik/vundle 
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
-" for this plugin: https://github.com/teramako/jscomplete-vim 
-autocmd FileType javascript
-  \ :setl omnifunc=jscomplete#CompleteJS
-
-" for this plugin: https://github.com/myhere/vim-nodejs-complete 
-" set let g:node_usejscomplete = 1
-
-" For taglist.vim with ctags. If there is an error mentioning ctags, download
-" ctags and modify/uncomment the following line:
-" let Tlist_Ctags_Cmd = '/home/username/ctags-5.8/'
 
 " let Vundle manage Vundle
 " required! 
@@ -99,30 +83,34 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
-Bundle "kchmck/vim-coffee-script.git"
-Bundle "pangloss/vim-javascript"
-Bundle "digitaltoad/vim-jade.git"
-Bundle "wavded/vim-stylus.git"
-Bundle "rstacruz/sparkup.git"
-Bundle "garbas/vim-snipmate.git"
-Bundle "teramako/jscomplete-vim.git"
-Bundle "myhere/vim-nodejs-complete"
-Bundle "MarcWeber/vim-addon-mw-utils.git"
-Bundle "tomtom/tlib_vim.git"
-Bundle "Lokaltog/vim-easymotion.git"
-Bundle "mattn/zencoding-vim.git"
-Bundle "vim-scripts/taglist.vim.git"
-Bundle "godlygeek/tabular.git"
+" Bundle "kchmck/vim-coffee-script.git"
+" Bundle "pangloss/vim-javascript"
+" Bundle "digitaltoad/vim-jade.git"
+" Bundle "wavded/vim-stylus.git"
+" Bundle "rstacruz/sparkup.git"
+" Bundle "teramako/jscomplete-vim.git"
+" Bundle "myhere/vim-nodejs-complete"
+" Bundle "MarcWeber/vim-addon-mw-utils.git"
+" Bundle "tomtom/tlib_vim.git"
+" Bundle "Lokaltog/vim-easymotion.git"
+" Bundle "mattn/zencoding-vim.git"
+" Bundle "vim-scripts/taglist.vim.git"
+" Bundle "godlygeek/tabular.git"
 " If you enable nerdtree, it also needs the other nerdtree line uncommented.
 " Bundle "scrooloose/nerdtree.git"
+" Bundle "SirVer/ultisnips.git"
 Bundle "fholgado/minibufexpl.vim.git"
+Bundle "johnhamelink/blade.vim.git"
+Bundle "/garbas/vim-snipmate.git"
+Bundle "MarcWeber/vim-addon-mw-utils.git"
+Bundle "https://github.com/tomtom/tlib_vim.git"
+Bundle "honza/snipmate-snippets"
 " non github repos
 
 " vim
 Bundle "surround.vim"
-Bundle "jQuery"
-Bundle "Markdown"
-
+" Bundle "jQuery"
+" Bundle "Markdown"
 
 "
 " Brief help
@@ -172,4 +160,3 @@ else
   set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
-
