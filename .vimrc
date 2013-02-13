@@ -110,7 +110,7 @@ Bundle "honza/snipmate-snippets"
 " vim
 Bundle "surround.vim"
 " Bundle "jQuery"
-" Bundle "Markdown"
+Bundle "Markdown"
 
 "
 " Brief help
