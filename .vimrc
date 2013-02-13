@@ -101,10 +101,11 @@ Bundle 'gmarik/vundle'
 " Bundle "SirVer/ultisnips.git"
 Bundle "fholgado/minibufexpl.vim.git"
 Bundle "johnhamelink/blade.vim.git"
-Bundle "/garbas/vim-snipmate.git"
+Bundle "garbas/vim-snipmate.git"
 Bundle "MarcWeber/vim-addon-mw-utils.git"
 Bundle "https://github.com/tomtom/tlib_vim.git"
 Bundle "honza/snipmate-snippets"
+Bundle "mklabs/vim-backbone.git"
 " non github repos
 
 " vim
