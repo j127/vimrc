@@ -42,10 +42,10 @@ map Q gq
 "vnoremap p "_dp
 
 " ADDED BY ME
-set softtabstop=2
-set shiftwidth=2
-set tabstop=2
-autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " Use spaces instead of tabs
 set expandtab
 colorscheme desert
@@ -61,7 +61,7 @@ set wildmenu
 " Add mouse support in terminal
 set mouse=a
 " vim-laravel-snippets
-autocmd FileType php set ft=php.laravel
+" autocmd FileType php set ft=php.laravel
 " Load matchit (% to bound from do end, etc.)
 runtime! macros/matchit.vim
 " for matchit plugin
@@ -101,12 +101,12 @@ Bundle 'gmarik/vundle'
 " Bundle "scrooloose/nerdtree.git"
 " Bundle "SirVer/ultisnips.git"
 Bundle "fholgado/minibufexpl.vim.git"
-Bundle "johnhamelink/blade.vim.git"
-Bundle "garbas/vim-snipmate.git"
-Bundle "MarcWeber/vim-addon-mw-utils.git"
-Bundle "https://github.com/tomtom/tlib_vim.git"
-Bundle "honza/snipmate-snippets"
-Bundle "nono/vim-handlebars"
+" Bundle "johnhamelink/blade.vim.git"
+" Bundle "garbas/vim-snipmate.git"
+" Bundle "MarcWeber/vim-addon-mw-utils.git"
+" Bundle "https://github.com/tomtom/tlib_vim.git"
+" Bundle "honza/snipmate-snippets"
+" Bundle "nono/vim-handlebars"
 " non github repos
 
 " vim
