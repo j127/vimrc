@@ -42,9 +42,10 @@ map Q gq
 "vnoremap p "_dp
 
 " ADDED BY ME
-set softtabstop=4
-set shiftwidth=4
-set tabstop=4
+set softtabstop=2
+set shiftwidth=2
+set tabstop=2
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 " Use spaces instead of tabs
 set expandtab
 colorscheme desert
@@ -83,17 +84,17 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
-" Bundle "kchmck/vim-coffee-script.git"
-" Bundle "pangloss/vim-javascript"
-" Bundle "digitaltoad/vim-jade.git"
+Bundle "kchmck/vim-coffee-script.git"
+Bundle "pangloss/vim-javascript"
+Bundle "digitaltoad/vim-jade.git"
 " Bundle "wavded/vim-stylus.git"
 " Bundle "rstacruz/sparkup.git"
-" Bundle "teramako/jscomplete-vim.git"
-" Bundle "myhere/vim-nodejs-complete"
+Bundle "teramako/jscomplete-vim.git"
+Bundle "myhere/vim-nodejs-complete"
 " Bundle "MarcWeber/vim-addon-mw-utils.git"
 " Bundle "tomtom/tlib_vim.git"
 " Bundle "Lokaltog/vim-easymotion.git"
-" Bundle "mattn/zencoding-vim.git"
+Bundle "mattn/zencoding-vim.git"
 " Bundle "vim-scripts/taglist.vim.git"
 " Bundle "godlygeek/tabular.git"
 " If you enable nerdtree, it also needs the other nerdtree line uncommented.
@@ -105,12 +106,16 @@ Bundle "/garbas/vim-snipmate.git"
 Bundle "MarcWeber/vim-addon-mw-utils.git"
 Bundle "https://github.com/tomtom/tlib_vim.git"
 Bundle "honza/snipmate-snippets"
+Bundle "nono/vim-handlebars"
 " non github repos
 
 " vim
 Bundle "surround.vim"
 " Bundle "jQuery"
-" Bundle "Markdown"
+Bundle "Markdown"
+
+" For Pathogen and syntastic
+execute pathogen#infect()
 
 "
 " Brief help
@@ -143,7 +148,7 @@ if has("autocmd")
   au!
 
   " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  " autocmd FileType text setlocal textwidth=78
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
