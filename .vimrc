@@ -26,7 +26,7 @@ if has("vms")
 else
   set backup		" keep a backup file
 endif
-set history=50		" keep 50 lines of command line history
+set history=200		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -46,6 +46,8 @@ set softtabstop=4
 set shiftwidth=4
 set tabstop=4
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType haskell setlocal shiftwidth=8 tabstop=8 softtabstop=8
 " Use spaces instead of tabs
 set expandtab
 colorscheme desert
@@ -75,7 +77,7 @@ let g:ragtag_global_maps = 1
 " set ofu=syntaxcomplete#Complete
 
 " for nerdtree:
-" autocmd vimenter * NERDTree
+autocmd vimenter * NERDTree
 
 " for vundle, see: https://github.com/gmarik/vundle 
 filetype off
@@ -103,7 +105,7 @@ Bundle 'gmarik/vundle'
 " Bundle "vim-scripts/taglist.vim.git"
 " Bundle "godlygeek/tabular.git"
 " If you enable nerdtree, it also needs the other nerdtree line uncommented.
-" Bundle "scrooloose/nerdtree.git"
+Bundle "scrooloose/nerdtree.git"
 " Bundle "SirVer/ultisnips.git"
 Bundle "fholgado/minibufexpl.vim.git"
 " Bundle "johnhamelink/blade.vim.git"
@@ -112,6 +114,7 @@ Bundle "fholgado/minibufexpl.vim.git"
 " Bundle "https://github.com/tomtom/tlib_vim.git"
 " Bundle "honza/snipmate-snippets"
 " Bundle "nono/vim-handlebars"
+Bundle "mileszs/ack.vim"
 " non github repos
 
 " vim
@@ -121,6 +124,15 @@ Bundle "Markdown"
 
 " For Pathogen and syntastic
 execute pathogen#infect()
+
+" For pylint
+" autocmd FileType python compiler pylint
+
+" For Django omnicompletion
+" autocmd FileType python set omnifunc=pythoncomplete#Complete
+" autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "
 " Brief help
