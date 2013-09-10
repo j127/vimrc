@@ -69,6 +69,11 @@ runtime! macros/matchit.vim
 " for ragtag plugin
 let g:ragtag_global_maps = 1 
 
+" Completion: http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
+" I'm not sure about the correct use of these. Look them up.
+" set completeopt=longest,menuone
+" set ofu=syntaxcomplete#Complete
+
 " for nerdtree:
 " autocmd vimenter * NERDTree
 
