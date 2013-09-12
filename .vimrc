@@ -45,6 +45,8 @@ runtime! macros/matchit.vim " Load matchit (% to bounce from do end etc.)
 " for matchit plugin
 " filetype plugin on 
 
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS " code completion for JS: ctrl-x-o
+
 let g:ragtag_global_maps = 1  " for ragtag plugin
 
 " Completion: http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
@@ -54,6 +56,7 @@ let g:ragtag_global_maps = 1  " for ragtag plugin
 
 " for nerdtree:
 autocmd vimenter * NERDTree
+map <silent> <F2> :NERDTreeToggle<CR> " F2 toggles NERDTree
 
 " for vundle, see: https://github.com/gmarik/vundle 
 filetype off
