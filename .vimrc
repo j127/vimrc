@@ -1,31 +1,17 @@
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2002 Sep 19
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
 endif
 
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+set nocompatible " Vim settings rather than Vi. Must appear first
+set backspace=indent,eol,start " allow backspacing in insert mode
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
   set backup		" keep a backup file
 endif
+
 set history=200		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
@@ -37,39 +23,29 @@ set incsearch		" do incremental searching
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-" This is an alternative that also works in block mode, but the deleted
-" text is lost and it only works for putting the current register.
-"vnoremap p "_dp
-
-" ADDED BY ME
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType haskell setlocal shiftwidth=8 tabstop=8 softtabstop=8
-" Use spaces instead of tabs
-set expandtab
+set expandtab " Spaces instead of tabs
 colorscheme desert
 set guifont=monospace\ 13
 set number
 set ignorecase
 set vb " turns off visual bell
 au BufNewFile,BufRead *.thtml setfiletype xml
-" see http://lucumr.pocoo.org/articles/vim-as-development-environment
-" for more info on wildmenu
 set wildmenu
 " set wildmode=list:longest,full
+set wildmode=longest:full,full
 " Add mouse support in terminal
 set mouse=a
-" vim-laravel-snippets
-" autocmd FileType php set ft=php.laravel
-" Load matchit (% to bound from do end, etc.)
-runtime! macros/matchit.vim
+runtime! macros/matchit.vim " Load matchit (% to bounce from do end etc.)
 " for matchit plugin
 " filetype plugin on 
-" for ragtag plugin
-let g:ragtag_global_maps = 1 
+
+let g:ragtag_global_maps = 1  " for ragtag plugin
 
 " Completion: http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
 " I'm not sure about the correct use of these. Look them up.
@@ -91,33 +67,40 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
-" Bundle "kchmck/vim-coffee-script.git"
-" Bundle "pangloss/vim-javascript"
+
+" See https://github.com/tpope/vim-ragtag/blob/master/doc/ragtag.txt
+Bundle "tpope/vim-ragtag.git" 
+
 Bundle "digitaltoad/vim-jade.git"
+Bundle "myhere/vim-nodejs-complete"
+Bundle "Lokaltog/vim-easymotion.git"
+Bundle "mattn/emmet-vim"
+
+" If you enable nerdtree, it also needs the other nerdtree line uncommented.
+Bundle "scrooloose/nerdtree.git" 
+
+" See snippets here: https://github.com/SirVer/ultisnips/blob/master/UltiSnips/javascript.snippets
+Bundle "SirVer/ultisnips.git" 
+
+Bundle "fholgado/minibufexpl.vim.git"
+Bundle "mileszs/ack.vim"
+Bundle "nathanaelkane/vim-indent-guides.git"
+" Bundle "mattn/zencoding-vim.git"
+" Bundle "MarcWeber/vim-addon-mw-utils.git"
+" Bundle "tomtom/tlib_vim.git"
 " Bundle "wavded/vim-stylus.git"
 " Bundle "rstacruz/sparkup.git"
 " Bundle "teramako/jscomplete-vim.git"
-Bundle "myhere/vim-nodejs-complete"
-" Bundle "MarcWeber/vim-addon-mw-utils.git"
-" Bundle "tomtom/tlib_vim.git"
-Bundle "Lokaltog/vim-easymotion.git"
-" Bundle "mattn/zencoding-vim.git"
-Bundle "mattn/emmet-vim"
 " Bundle "vim-scripts/taglist.vim.git"
 " Bundle "godlygeek/tabular.git"
-" If you enable nerdtree, it also needs the other nerdtree line uncommented.
-Bundle "scrooloose/nerdtree.git"
-" See snippets here: https://github.com/SirVer/ultisnips/blob/master/UltiSnips/javascript.snippets
-Bundle "SirVer/ultisnips.git"
-Bundle "fholgado/minibufexpl.vim.git"
 " Bundle "johnhamelink/blade.vim.git"
 " Bundle "garbas/vim-snipmate.git"
 " Bundle "MarcWeber/vim-addon-mw-utils.git"
 " Bundle "https://github.com/tomtom/tlib_vim.git"
 " Bundle "honza/snipmate-snippets"
 " Bundle "nono/vim-handlebars"
-Bundle "mileszs/ack.vim"
-Bundle "nathanaelkane/vim-indent-guides.git"
+" Bundle "kchmck/vim-coffee-script.git"
+" Bundle "pangloss/vim-javascript"
 " non github repos
 
 " vim
