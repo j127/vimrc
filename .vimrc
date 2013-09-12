@@ -82,6 +82,9 @@ Bundle "myhere/vim-nodejs-complete"
 Bundle "Lokaltog/vim-easymotion.git"
 Bundle "mattn/emmet-vim"
 
+" Also be sure to do: $ git config --global github.user Username
+" Bundle "mattn/gist-vim"
+
 " If you enable nerdtree, it also needs the other nerdtree line uncommented.
 Bundle "scrooloose/nerdtree.git" 
 
@@ -104,6 +107,10 @@ Bundle "nathanaelkane/vim-indent-guides.git"
 Bundle "surround.vim"
 " Bundle "jQuery"
 Bundle "Markdown"
+
+" To experiment with later:
+" http://blogs.atlassian.com/2013/05/git-tig/
+" https://github.com/airblade/vim-gitgutter
 
 " For Pathogen and syntastic
 execute pathogen#infect()
