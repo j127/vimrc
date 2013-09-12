@@ -101,12 +101,14 @@ Bundle "myhere/vim-nodejs-complete"
 " Bundle "MarcWeber/vim-addon-mw-utils.git"
 " Bundle "tomtom/tlib_vim.git"
 Bundle "Lokaltog/vim-easymotion.git"
-Bundle "mattn/zencoding-vim.git"
+" Bundle "mattn/zencoding-vim.git"
+Bundle "mattn/emmet-vim"
 " Bundle "vim-scripts/taglist.vim.git"
 " Bundle "godlygeek/tabular.git"
 " If you enable nerdtree, it also needs the other nerdtree line uncommented.
 Bundle "scrooloose/nerdtree.git"
-" Bundle "SirVer/ultisnips.git"
+" See snippets here: https://github.com/SirVer/ultisnips/blob/master/UltiSnips/javascript.snippets
+Bundle "SirVer/ultisnips.git"
 Bundle "fholgado/minibufexpl.vim.git"
 " Bundle "johnhamelink/blade.vim.git"
 " Bundle "garbas/vim-snipmate.git"
@@ -115,6 +117,7 @@ Bundle "fholgado/minibufexpl.vim.git"
 " Bundle "honza/snipmate-snippets"
 " Bundle "nono/vim-handlebars"
 Bundle "mileszs/ack.vim"
+Bundle "nathanaelkane/vim-indent-guides.git"
 " non github repos
 
 " vim
