@@ -94,6 +94,13 @@ Bundle "SirVer/ultisnips.git"
 Bundle "fholgado/minibufexpl.vim.git"
 Bundle "mileszs/ack.vim"
 Bundle "nathanaelkane/vim-indent-guides.git"
+
+" use [count]<leader>cc to comment line or selected text
+" or [count]<leader>cn to force nesting
+" and [count]<leader>cu to uncomment
+" See the docs: https://github.com/scrooloose/nerdcommenter
+Bundle "scrooloose/nerdcommenter.git"
+
 " Bundle "wavded/vim-stylus.git"
 " Bundle "rstacruz/sparkup.git"
 " Bundle "teramako/jscomplete-vim.git"
