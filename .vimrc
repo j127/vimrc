@@ -45,14 +45,17 @@ runtime! macros/matchit.vim " Load matchit (% to bounce from do end etc.)
 " for matchit plugin
 " filetype plugin on 
 
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS " code completion for JS: ctrl-x-o
-
 let g:ragtag_global_maps = 1  " for ragtag plugin
 
 " Completion: http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
 " I'm not sure about the correct use of these. Look them up.
-" set completeopt=longest,menuone
-" set ofu=syntaxcomplete#Complete
+set completeopt=longest,menuone
+set ofu=syntaxcomplete#Complete
+:inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 " for nerdtree:
 autocmd vimenter * NERDTree
@@ -108,11 +111,15 @@ execute pathogen#infect()
 " For pylint
 " autocmd FileType python compiler pylint
 
-" For Django omnicompletion
-" autocmd FileType python set omnifunc=pythoncomplete#Complete
-" autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+" For omnicompletion -- press <ctrl>-x-o
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+
 " Use <c-w>f to vsplit the JS file under the cursor
 autocmd User Node
   \ if &filetype == "javascript" |
