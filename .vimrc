@@ -133,6 +133,12 @@ execute pathogen#infect()
 " autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 " autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+" Use <c-w>f to vsplit the JS file under the cursor
+autocmd User Node
+  \ if &filetype == "javascript" |
+  \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile |
+  \   nmap <buffer> <C-w><C-f> <Plug>NodeVSplitGotoFile |
+  \ endif
 
 "
 " Brief help
