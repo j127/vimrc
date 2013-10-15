@@ -34,6 +34,7 @@ colorscheme desert
 set guifont=monospace\ 13
 set number
 set ignorecase
+set cursorline
 set vb " turns off visual bell
 au BufNewFile,BufRead *.thtml setfiletype xml
 set wildmenu
@@ -44,6 +45,11 @@ set mouse=a
 runtime! macros/matchit.vim " Load matchit (% to bounce from do end etc.)
 " for matchit plugin
 " filetype plugin on 
+
+" Insert date time stamp with F5 in either mode
+" http://vim.wikia.com/wiki/Insert_current_date_or_time
+:nnoremap <F5> "=strftime("%c")<CR>P
+:inoremap <F5> <C-R>=strftime("%c")<CR>
 
 let g:ragtag_global_maps = 1  " for ragtag plugin
 
@@ -81,6 +87,11 @@ Bundle "digitaltoad/vim-jade.git"
 Bundle "myhere/vim-nodejs-complete"
 Bundle "Lokaltog/vim-easymotion.git"
 Bundle "mattn/emmet-vim"
+" From http://stackoverflow.com/a/4681507
+let g:user_emmet_expandabbr_key = '<c-e>'
+let g:use_emmet_complete_tag = 1
+
+Bundle "vimwiki/vimwiki"
 
 " Also be sure to do: $ git config --global github.user Username
 " Bundle "mattn/gist-vim"
