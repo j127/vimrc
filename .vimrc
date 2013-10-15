@@ -30,7 +30,9 @@ autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType haskell setlocal shiftwidth=8 tabstop=8 softtabstop=8
 set expandtab " Spaces instead of tabs
-colorscheme desert
+" colorscheme desert
+set background=dark
+colorscheme solarized
 set guifont=monospace\ 13
 set number
 set ignorecase
@@ -88,13 +90,13 @@ Bundle "myhere/vim-nodejs-complete"
 Bundle "Lokaltog/vim-easymotion.git"
 Bundle "mattn/emmet-vim"
 " From http://stackoverflow.com/a/4681507
-let g:user_emmet_expandabbr_key = '<c-e>'
-let g:use_emmet_complete_tag = 1
 
 Bundle "vimwiki/vimwiki"
 
 " Also be sure to do: $ git config --global github.user Username
 " Bundle "mattn/gist-vim"
+
+Bundle "altercation/vim-colors-solarized"
 
 " If you enable nerdtree, it also needs the other nerdtree line uncommented.
 Bundle "scrooloose/nerdtree.git" 
@@ -119,10 +121,15 @@ Bundle "scrooloose/nerdcommenter.git"
 " Bundle "godlygeek/tabular.git"
 " Bundle "nono/vim-handlebars"
 " Bundle "pangloss/vim-javascript"
+
+Bundle "tpope/vim-surround"
+Bundle "vim-scripts/Auto-Pairs"
+
+
 " non github repos
 
 " vim
-Bundle "surround.vim"
+" Bundle "surround.vim"
 " Bundle "jQuery"
 Bundle "Markdown"
 
