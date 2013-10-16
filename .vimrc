@@ -30,13 +30,14 @@ autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType haskell setlocal shiftwidth=8 tabstop=8 softtabstop=8
 set expandtab " Spaces instead of tabs
-" colorscheme desert
-set background=dark
-colorscheme solarized
+colorscheme desert
+" set background=dark
+" colorscheme solarized
 set guifont=monospace\ 13
 set number
 set ignorecase
-set cursorline
+" Highlights cursor line
+" set cursorline
 set vb " turns off visual bell
 au BufNewFile,BufRead *.thtml setfiletype xml
 set wildmenu
@@ -96,7 +97,7 @@ Bundle "vimwiki/vimwiki"
 " Also be sure to do: $ git config --global github.user Username
 " Bundle "mattn/gist-vim"
 
-Bundle "altercation/vim-colors-solarized"
+" Bundle "altercation/vim-colors-solarized"
 
 " If you enable nerdtree, it also needs the other nerdtree line uncommented.
 Bundle "scrooloose/nerdtree.git" 
