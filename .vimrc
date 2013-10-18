@@ -93,6 +93,7 @@ Bundle "mattn/emmet-vim"
 " From http://stackoverflow.com/a/4681507
 
 Bundle "vim-scripts/taglist.vim"
+map <silent> <F3> :TlistToggle<CR> " F3 toggles Tlist
 
 Bundle "vimwiki/vimwiki"
 
@@ -182,6 +183,7 @@ autocmd User Node
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
+  map <silent> <F4> :syntax on<CR> " F4 turns on syntax
 endif
 
 " Only do this part when compiled with support for autocommands.
