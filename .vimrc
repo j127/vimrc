@@ -92,6 +92,8 @@ Bundle "Lokaltog/vim-easymotion.git"
 Bundle "mattn/emmet-vim"
 " From http://stackoverflow.com/a/4681507
 
+Bundle "vim-scripts/taglist.vim"
+
 Bundle "vimwiki/vimwiki"
 
 " Also be sure to do: $ git config --global github.user Username
@@ -123,6 +125,11 @@ Bundle "scrooloose/nerdcommenter.git"
 " Bundle "nono/vim-handlebars"
 " Bundle "pangloss/vim-javascript"
 
+" change double quotes to single: cs"'
+" remove the single quotes: cs'
+" surround word with brackets: ysiw (iw is a text object)
+" http://www.vim.org/scripts/script.php?script_id=1697
+" from visual mode use S to add
 Bundle "tpope/vim-surround"
 Bundle "vim-scripts/Auto-Pairs"
 
