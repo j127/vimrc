@@ -95,6 +95,9 @@ Bundle "mattn/emmet-vim"
 Bundle "vim-scripts/taglist.vim"
 map <silent> <F3> :TlistToggle<CR> " F3 toggles Tlist
 
+" Requires node.js or similar
+Bundle "hallettj/jslint.vim"
+
 Bundle "vimwiki/vimwiki"
 
 " Also be sure to do: $ git config --global github.user Username
