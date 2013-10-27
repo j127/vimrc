@@ -84,14 +84,14 @@ Bundle 'gmarik/vundle'
 Bundle "Lokaltog/vim-distinguished"
 Bundle "29decibel/codeschool-vim-theme"
 " Bundle "twilight.vim"
-" colorscheme distinguished
+colorscheme distinguished
 " set background=dark
 " colorscheme solarized
-if has("gui_running")
-  colorscheme distinguished
-else
-  colorscheme desert
-endif
+" if has("gui_running")
+  " colorscheme distinguished
+" else
+  " colorscheme desert
+" endif
 
 " See https://github.com/tpope/vim-ragtag/blob/master/doc/ragtag.txt
 Bundle "tpope/vim-ragtag.git" 
