@@ -30,9 +30,6 @@ autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType haskell setlocal shiftwidth=8 tabstop=8 softtabstop=8
 set expandtab " Spaces instead of tabs
-colorscheme desert
-" set background=dark
-" colorscheme solarized
 set guifont=monospace\ 13
 set number
 set ignorecase
@@ -83,6 +80,19 @@ Bundle 'gmarik/vundle'
 "
 " original repos on github
 
+" Color themes
+Bundle "Lokaltog/vim-distinguished"
+Bundle "29decibel/codeschool-vim-theme"
+" Bundle "twilight.vim"
+" colorscheme distinguished
+" set background=dark
+" colorscheme solarized
+if has("gui_running")
+  colorscheme distinguished
+else
+  colorscheme desert
+endif
+
 " See https://github.com/tpope/vim-ragtag/blob/master/doc/ragtag.txt
 Bundle "tpope/vim-ragtag.git" 
 
@@ -96,14 +106,17 @@ Bundle "vim-scripts/taglist.vim"
 map <silent> <F3> :TlistToggle<CR> " F3 toggles Tlist
 
 " Requires node.js or similar
-Bundle "hallettj/jslint.vim"
+" Bundle "hallettj/jslint.vim"
 
 Bundle "vimwiki/vimwiki"
 
 " Also be sure to do: $ git config --global github.user Username
-" Bundle "mattn/gist-vim"
+Bundle "mattn/gist-vim"
 
 " Bundle "altercation/vim-colors-solarized"
+
+Bundle "wookiehangover/jshint.vim"
+map <silent> <F6> :JSHintToggle<CR> " F6 toggles jshint
 
 " If you enable nerdtree, it also needs the other nerdtree line uncommented.
 Bundle "scrooloose/nerdtree.git" 
@@ -151,6 +164,7 @@ Bundle "Markdown"
 
 " For Pathogen and syntastic
 execute pathogen#infect()
+Bundle "scrooloose/syntastic"
 
 " For pylint
 " autocmd FileType python compiler pylint
@@ -188,6 +202,7 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
   map <silent> <F4> :syntax on<CR> " F4 turns on syntax
 endif
+
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
