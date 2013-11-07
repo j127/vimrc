@@ -12,7 +12,7 @@ else
   set backup		" keep a backup file
 endif
 
-set history=200		" keep 50 lines of command line history
+set history=200		" lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -23,25 +23,31 @@ set incsearch		" do incremental searching
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
+" Line formatting stuff
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType haskell setlocal shiftwidth=8 tabstop=8 softtabstop=8
 set expandtab " Spaces instead of tabs
 set guifont=monospace\ 13
 set number
 set ignorecase
+" Remove toolbar - 'go' is short for guioptions
+set go-=T
 " Highlights cursor line
 " set cursorline
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType haskell setlocal shiftwidth=8 tabstop=8 softtabstop=8
+
+
 set vb " turns off visual bell
+" Add mouse support in terminal
+set mouse=a
+
 au BufNewFile,BufRead *.thtml setfiletype xml
 set wildmenu
 " set wildmode=list:longest,full
 set wildmode=longest:full,full
-" Add mouse support in terminal
-set mouse=a
 runtime! macros/matchit.vim " Load matchit (% to bounce from do end etc.)
 " for matchit plugin
 " filetype plugin on 
@@ -110,8 +116,11 @@ map <silent> <F3> :TlistToggle<CR> " F3 toggles Tlist
 
 Bundle "vimwiki/vimwiki"
 
+Bundle "mattn/webapi-vim"
 " Also be sure to do: $ git config --global github.user Username
 Bundle "mattn/gist-vim"
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
 
 " Bundle "altercation/vim-colors-solarized"
 
@@ -127,6 +136,7 @@ Bundle "SirVer/ultisnips.git"
 Bundle "fholgado/minibufexpl.vim.git"
 Bundle "mileszs/ack.vim"
 Bundle "nathanaelkane/vim-indent-guides.git"
+Bundle "mustache/vim-mode"
 
 " use [count]<leader>cc to comment line or selected text
 " or [count]<leader>cn to force nesting
@@ -157,6 +167,7 @@ Bundle "vim-scripts/Auto-Pairs"
 " Bundle "surround.vim"
 " Bundle "jQuery"
 Bundle "Markdown"
+Bundle "juvenn/mustache.vim.git"
 
 " To experiment with later:
 " http://blogs.atlassian.com/2013/05/git-tig/
