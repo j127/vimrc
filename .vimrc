@@ -17,9 +17,6 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -38,7 +35,6 @@ set go-=T
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType haskell setlocal shiftwidth=8 tabstop=8 softtabstop=8
-
 
 set vb " turns off visual bell
 " Add mouse support in terminal
@@ -83,8 +79,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
-"
-" original repos on github
 
 " Color themes
 Bundle "Lokaltog/vim-distinguished"
@@ -147,14 +141,6 @@ Bundle "mustache/vim-mode"
 " See the docs: https://github.com/scrooloose/nerdcommenter
 Bundle "scrooloose/nerdcommenter.git"
 
-" Bundle "wavded/vim-stylus.git"
-" Bundle "rstacruz/sparkup.git"
-" Bundle "teramako/jscomplete-vim.git"
-" Bundle "vim-scripts/taglist.vim.git"
-" Bundle "godlygeek/tabular.git"
-" Bundle "nono/vim-handlebars"
-" Bundle "pangloss/vim-javascript"
-
 " change double quotes to single: cs"'
 " remove the single quotes: cs'
 " surround word with brackets: ysiw (iw is a text object)
@@ -165,10 +151,6 @@ Bundle "vim-scripts/Auto-Pairs"
 
 
 " non github repos
-
-" vim
-" Bundle "surround.vim"
-" Bundle "jQuery"
 Bundle "Markdown"
 Bundle "juvenn/mustache.vim.git"
 
@@ -198,16 +180,6 @@ autocmd User Node
   \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile |
   \   nmap <buffer> <C-w><C-f> <Plug>NodeVSplitGotoFile |
   \ endif
-
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
