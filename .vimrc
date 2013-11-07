@@ -99,6 +99,9 @@ colorscheme distinguished
   " colorscheme desert
 " endif
 
+" Read more at https://github.com/kien/ctrlp.vim#ctrlpvim
+Bundle "kien/ctrlp.vim"
+
 " See https://github.com/tpope/vim-ragtag/blob/master/doc/ragtag.txt
 Bundle "tpope/vim-ragtag.git" 
 
