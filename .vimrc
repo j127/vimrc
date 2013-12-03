@@ -93,6 +93,9 @@ colorscheme distinguished
   " colorscheme desert
 " endif
 
+Bundle "mbbill/undotree"
+map <silent> <F7> :UndotreeToggle<CR> " F7 toggles undotree
+
 " Read more at https://github.com/kien/ctrlp.vim#ctrlpvim
 Bundle "kien/ctrlp.vim"
 
