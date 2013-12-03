@@ -112,6 +112,8 @@ map <silent> <F3> :TlistToggle<CR> " F3 toggles Tlist
 " Bundle "hallettj/jslint.vim"
 
 Bundle "vimwiki/vimwiki"
+" Bundle "groenewege/vim-less"
+Bundle "tpope/vim-haml"
 
 Bundle "mattn/webapi-vim"
 " Also be sure to do: $ git config --global github.user Username
