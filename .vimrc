@@ -102,6 +102,9 @@ Bundle "kien/ctrlp.vim"
 " See https://github.com/tpope/vim-ragtag/blob/master/doc/ragtag.txt
 Bundle "tpope/vim-ragtag.git" 
 
+" Shows TODO items
+Bundle "vim-scripts/TaskList.vim"
+
 Bundle "digitaltoad/vim-jade.git"
 Bundle "myhere/vim-nodejs-complete"
 Bundle "Lokaltog/vim-easymotion.git"
