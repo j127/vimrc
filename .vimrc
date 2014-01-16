@@ -126,8 +126,8 @@ let g:gist_open_browser_after_post = 1
 
 " Bundle "altercation/vim-colors-solarized"
 
-Bundle "wookiehangover/jshint.vim"
-map <silent> <F6> :JSHintToggle<CR> " F6 toggles jshint
+" Bundle "wookiehangover/jshint.vim"
+" map <silent> <F6> :JSHintToggle<CR> " F6 toggles jshint
 
 " If you enable nerdtree, it also needs the other nerdtree line uncommented.
 Bundle "scrooloose/nerdtree.git" 
@@ -154,6 +154,7 @@ Bundle "scrooloose/nerdcommenter.git"
 Bundle "tpope/vim-surround"
 Bundle "vim-scripts/Auto-Pairs"
 
+" Bundle "vim-scripts/vim-stylus"
 
 " non github repos
 Bundle "Markdown"
@@ -185,6 +186,11 @@ autocmd User Node
   \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile |
   \   nmap <buffer> <C-w><C-f> <Plug>NodeVSplitGotoFile |
   \ endif
+
+
+" Turn HTML into JS and back
+" vmap <silent> ;q :s?^\(\s*\)\(.*\)\s*$? \1 + '\2'?<CR>
+" vmap <silent> ;h :s?^\(\s*\)+ '\([^']\+\)',*\s*$?\1\2?g<CR>:noh<CR>
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
