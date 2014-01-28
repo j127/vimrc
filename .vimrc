@@ -84,7 +84,8 @@ Bundle 'gmarik/vundle'
 Bundle "Lokaltog/vim-distinguished"
 Bundle "29decibel/codeschool-vim-theme"
 " Bundle "twilight.vim"
-colorscheme distinguished
+"colorscheme distinguished
+colorscheme desert
 " set background=dark
 " colorscheme solarized
 " if has("gui_running")
@@ -104,6 +105,9 @@ Bundle "tpope/vim-ragtag.git"
 
 " Shows TODO items
 Bundle "vim-scripts/TaskList.vim"
+
+" Python Jedi stuff
+Bundle "davidhalter/jedi-vim"
 
 Bundle "digitaltoad/vim-jade.git"
 Bundle "myhere/vim-nodejs-complete"
@@ -166,6 +170,9 @@ Bundle "juvenn/mustache.vim.git"
 " To experiment with later:
 " http://blogs.atlassian.com/2013/05/git-tig/
 " https://github.com/airblade/vim-gitgutter
+Bundle "johnhamelink/blade.vim.git"
+Bundle "markwu/vim-laravel4-snippets"
+autocmd FileType php set ft=php.laravel
 
 " For Pathogen and syntastic
 execute pathogen#infect()
