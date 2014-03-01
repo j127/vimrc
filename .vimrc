@@ -12,6 +12,10 @@ else
   set backup		" keep a backup file
 endif
 
+" Store swap files in fixed location, not current directory.
+" From http://stackoverflow.com/questions/4331776/change-vim-swap-backup-undo-file-name
+set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+
 set history=200		" lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
@@ -84,7 +88,7 @@ Bundle 'gmarik/vundle'
 Bundle "Lokaltog/vim-distinguished"
 Bundle "29decibel/codeschool-vim-theme"
 " Bundle "twilight.vim"
-"colorscheme distinguished
+" colorscheme distinguished
 colorscheme desert
 " set background=dark
 " colorscheme solarized
@@ -108,6 +112,13 @@ Bundle "vim-scripts/TaskList.vim"
 
 " Python Jedi stuff
 Bundle "davidhalter/jedi-vim"
+
+" Easy Align: https://github.com/junegunn/vim-easy-align#vim-easy-align
+"Bundle "junegunn/vim-easy-align"
+" Start interactive EasyAlign in visual mode
+"vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign with a Vim movement
+"nmap <Leader>a <Plug>(EasyAlign)
 
 Bundle "digitaltoad/vim-jade.git"
 Bundle "myhere/vim-nodejs-complete"
