@@ -29,7 +29,7 @@ set softtabstop=4
 set shiftwidth=4
 set tabstop=4
 set expandtab " Spaces instead of tabs
-set guifont=monospace\ 13
+set guifont=monospace\ 12
 set number
 set ignorecase
 " Remove toolbar - 'go' is short for guioptions
@@ -186,6 +186,7 @@ Bundle "markwu/vim-laravel4-snippets"
 autocmd FileType php set ft=php.laravel
 
 " For Pathogen and syntastic
+" See also this page to install language support: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
 execute pathogen#infect()
 Bundle "scrooloose/syntastic"
 
