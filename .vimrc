@@ -21,6 +21,10 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
+" Prevent Vim from adding two spaces after a period.
+" See also: http://stackoverflow.com/questions/4760428/how-can-i-make-vims-j-and-gq-commands-use-one-space-after-a-period
+set nojoinspaces
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -29,7 +33,8 @@ set softtabstop=4
 set shiftwidth=4
 set tabstop=4
 set expandtab " Spaces instead of tabs
-set guifont=monospace\ 12
+" normally 11
+set guifont=monospace\ 11
 set number
 set ignorecase
 " Remove toolbar - 'go' is short for guioptions
@@ -82,21 +87,40 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 
-" My Bundles here:
+"Bundle "bling/vim-airline"
+"let g:airline_powerline_fonts = 1
+" If the above doesn't work, double check here: https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation -- it's working on my laptop though
+
+" Bundle "edkolev/tmuxline.vim"
+" let g:airline#extensions#tmuxline#enabled = 0
+
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
+
+" Version control info in gutter:
+Bundle "mhinz/vim-signify"
 
 " Color themes
 Bundle "Lokaltog/vim-distinguished"
 Bundle "29decibel/codeschool-vim-theme"
 " Bundle "twilight.vim"
+
+" From http://vim.wikia.com/wiki/256_colors_in_vim
+set t_Co=256
 " colorscheme distinguished
-colorscheme desert
+"colorscheme desert
 " set background=dark
 " colorscheme solarized
-" if has("gui_running")
-  " colorscheme distinguished
-" else
-  " colorscheme desert
-" endif
+if has("gui_running")
+  colorscheme distinguished
+else
+  colorscheme desert
+endif
+
+" Rainbow Parentheses
+"Bundle "oblitum/rainbow"
+"let g:rainbow_active = 1
 
 Bundle "mbbill/undotree"
 map <silent> <F7> :UndotreeToggle<CR> " F7 toggles undotree
@@ -111,7 +135,7 @@ Bundle "tpope/vim-ragtag.git"
 Bundle "vim-scripts/TaskList.vim"
 
 " Python Jedi stuff
-Bundle "davidhalter/jedi-vim"
+"Bundle "davidhalter/jedi-vim"
 
 " Easy Align: https://github.com/junegunn/vim-easy-align#vim-easy-align
 "Bundle "junegunn/vim-easy-align"
@@ -120,8 +144,8 @@ Bundle "davidhalter/jedi-vim"
 " Start interactive EasyAlign with a Vim movement
 "nmap <Leader>a <Plug>(EasyAlign)
 
-Bundle "digitaltoad/vim-jade.git"
-Bundle "myhere/vim-nodejs-complete"
+"Bundle "digitaltoad/vim-jade.git"
+"Bundle "myhere/vim-nodejs-complete"
 Bundle "Lokaltog/vim-easymotion.git"
 Bundle "mattn/emmet-vim"
 " From http://stackoverflow.com/a/4681507
@@ -133,6 +157,8 @@ map <silent> <F3> :TlistToggle<CR> " F3 toggles Tlist
 " Bundle "hallettj/jslint.vim"
 
 Bundle "vimwiki/vimwiki"
+Bundle "jceb/vim-orgmode"
+
 " Bundle "groenewege/vim-less"
 Bundle "tpope/vim-haml"
 
@@ -152,6 +178,16 @@ Bundle "scrooloose/nerdtree.git"
 
 " See snippets here: https://github.com/SirVer/ultisnips/blob/master/UltiSnips/javascript.snippets
 Bundle "SirVer/ultisnips.git" 
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-8>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+Bundle "Valloric/YouCompleteMe"
 
 Bundle "fholgado/minibufexpl.vim.git"
 Bundle "mileszs/ack.vim"
@@ -181,9 +217,9 @@ Bundle "juvenn/mustache.vim.git"
 " To experiment with later:
 " http://blogs.atlassian.com/2013/05/git-tig/
 " https://github.com/airblade/vim-gitgutter
-Bundle "johnhamelink/blade.vim.git"
-Bundle "markwu/vim-laravel4-snippets"
-autocmd FileType php set ft=php.laravel
+"Bundle "johnhamelink/blade.vim.git"
+"Bundle "markwu/vim-laravel4-snippets"
+"autocmd FileType php set ft=php.laravel
 
 " For Pathogen and syntastic
 " See also this page to install language support: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
@@ -194,13 +230,13 @@ Bundle "scrooloose/syntastic"
 " autocmd FileType python compiler pylint
 
 " For omnicompletion -- press <ctrl>-x-o
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+"autocmd FileType c set omnifunc=ccomplete#Complete
 
 " Use <c-w>f to vsplit the JS file under the cursor
 autocmd User Node
