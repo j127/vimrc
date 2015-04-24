@@ -21,7 +21,7 @@ set vb " turns off visual bell
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
-set guifont=monospace\ 10
+set guifont=monospace\ 12
 set number
 set ignorecase
 set go-=T " Remove toolbar in Gvim
@@ -29,8 +29,9 @@ set mouse=a " Add mouse support in terminal
 set t_Co=256 " From http://vim.wikia.com/wiki/256_colors_in_vim
 
 if has("gui_running")
-  set background=dark
-  colorscheme distinguished
+  "set background=dark
+  "colorscheme distinguished
+  colorscheme desert
 else
   colorscheme desert
 endif
@@ -184,7 +185,8 @@ Bundle "tpope/vim-ragtag.git"
 Bundle "vim-scripts/TaskList.vim"
 
 " Python Jedi stuff
-Bundle "davidhalter/jedi-vim"
+" Bundle "davidhalter/jedi-vim"
+
 Bundle "Lokaltog/vim-easymotion.git"
 Bundle "mattn/emmet-vim"
 Bundle "vim-scripts/taglist.vim"
@@ -246,6 +248,12 @@ Bundle "markwu/vim-laravel4-snippets"
 " See also this page to install language support: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
 execute pathogen#infect()
 Bundle "scrooloose/syntastic"
+let g:syntastic_javascript_checkers = ['jshint']
+
+" For drawing ASCII tables
+Bundle "vim-scripts/DrawIt"
+
+Bundle "dhruvasagar/vim-table-mode"
 
 """""""""""""""""""""""""""
 "  Deactivated Things
