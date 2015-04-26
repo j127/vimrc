@@ -242,7 +242,7 @@ Bundle "Markdown"
 Bundle "chikamichi/mediawiki.vim"
 
 Bundle "johnhamelink/blade.vim.git"
-Bundle "markwu/vim-laravel4-snippets"
+"Bundle "markwu/vim-laravel4-snippets"
 
 " For Pathogen and syntastic
 " See also this page to install language support: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
@@ -252,12 +252,17 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 " For drawing ASCII tables
 Bundle "vim-scripts/DrawIt"
-
 Bundle "dhruvasagar/vim-table-mode"
 
 """""""""""""""""""""""""""
 "  Deactivated Things
 """""""""""""""""""""""""""
+" For React.js
+"Bundle "mxw/vim-jsx"
+"let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+" See https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015
+"let g:syntastic_javascript_checkers = ['eslint']
+
 " To experiment with later:
 " http://blogs.atlassian.com/2013/05/git-tig/
 " https://github.com/airblade/vim-gitgutter
