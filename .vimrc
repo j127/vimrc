@@ -110,6 +110,7 @@ set tabstop=4
 set expandtab " Spaces instead of tabs
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType haskell setlocal shiftwidth=8 tabstop=8 softtabstop=8
 autocmd FileType php set ft=php.laravel
 
@@ -160,6 +161,9 @@ Bundle 'gmarik/vundle'
 """""""""""""""""""""""""""
 " Bundles
 """""""""""""""""""""""""""
+
+" WakaTime
+Bundle 'wakatime/vim-wakatime'
 
 " Line things up
 Bundle 'godlygeek/tabular'
