@@ -13,6 +13,10 @@ set nocompatible " Vim settings rather than Vi. Must appear first
 set backspace=indent,eol,start " allow backspacing in insert mode
 set history=200		" lines of command line history
 set vb " turns off visual bell
+filetype off
+
+" Ignore vendor files in CtrlP
+set wildignore+=*/vendor/**
 
 """""""""""""""""""""""""""
 " Interface
@@ -152,117 +156,108 @@ autocmd vimenter * NERDTree
 " Vundle (required)
 """""""""""""""""""""""""""
 
-" See: https://github.com/gmarik/vundle 
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+" Keep Plugin commands between vundle#begin/end.
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
 """""""""""""""""""""""""""
-" Bundles
+" Plugins
 """""""""""""""""""""""""""
 
 " WakaTime
-Bundle 'wakatime/vim-wakatime'
+Plugin 'wakatime/vim-wakatime'
 
 " Line things up
-Bundle 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 
 " Version control info in gutter:
-Bundle "mhinz/vim-signify"
+Plugin 'mhinz/vim-signify'
 
 " Color theme
-Bundle "Lokaltog/vim-distinguished"
+Plugin 'Lokaltog/vim-distinguished'
 
 " Better undo
-Bundle "mbbill/undotree"
+Plugin 'mbbill/undotree'
 
 " Read more at https://github.com/kien/ctrlp.vim#ctrlpvim
-Bundle "kien/ctrlp.vim"
-" Ignore vendor files in CtrlP
-set wildignore+=*/vendor/**
+Plugin 'kien/ctrlp.vim'
 
 " See https://github.com/tpope/vim-ragtag/blob/master/doc/ragtag.txt
-Bundle "tpope/vim-ragtag.git" 
+Plugin 'tpope/vim-ragtag.git' 
 
 " Shows TODO items
-Bundle "vim-scripts/TaskList.vim"
+Plugin 'vim-scripts/TaskList.vim'
 
 " Python Jedi stuff
-" Bundle "davidhalter/jedi-vim"
+" Plugin 'davidhalter/jedi-vim'
 
-Bundle "Lokaltog/vim-easymotion.git"
-Bundle "mattn/emmet-vim"
-Bundle "vim-scripts/taglist.vim"
-Bundle "vimwiki/vimwiki"
-Bundle "jceb/vim-orgmode"
+Plugin 'Lokaltog/vim-easymotion.git'
+Plugin 'mattn/emmet-vim'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'vimwiki/vimwiki'
+Plugin 'jceb/vim-orgmode'
 
 " For Sass
-Bundle "tpope/vim-haml"
+Plugin 'tpope/vim-haml'
 
 " For Gists
-Bundle "mattn/webapi-vim"
+Plugin 'mattn/webapi-vim'
 " Also be sure to do: $ git config --global github.user Username
-Bundle "mattn/gist-vim"
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
+Plugin 'mattn/gist-vim'
 
 " If you enable nerdtree, it also needs the other nerdtree line uncommented.
-Bundle "scrooloose/nerdtree.git" 
+Plugin 'scrooloose/nerdtree.git' 
 
 " See snippets here: https://github.com/SirVer/ultisnips/blob/master/UltiSnips/javascript.snippets
-Bundle "SirVer/ultisnips.git" 
+Plugin 'SirVer/ultisnips.git' 
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+Plugin 'Valloric/YouCompleteMe'
 
-Bundle "Valloric/YouCompleteMe"
-
-Bundle "fholgado/minibufexpl.vim.git"
-Bundle "mileszs/ack.vim"
-Bundle "nathanaelkane/vim-indent-guides.git"
-Bundle "mustache/vim-mode"
+Plugin 'fholgado/minibufexpl.vim.git'
+Plugin 'mileszs/ack.vim'
+Plugin 'nathanaelkane/vim-indent-guides.git'
+Plugin 'mustache/vim-mode'
 
 " use [count]<leader>cc to comment line or selected text
 " or [count]<leader>cn to force nesting
 " and [count]<leader>cu to uncomment
 " See the docs: https://github.com/scrooloose/nerdcommenter
-Bundle "scrooloose/nerdcommenter.git"
+Plugin 'scrooloose/nerdcommenter.git'
 
 " change double quotes to single: cs"'
 " remove the single quotes: cs'
 " surround word with brackets: ysiw (iw is a text object)
 " http://www.vim.org/scripts/script.php?script_id=1697
 " from visual mode use S to add
-Bundle "tpope/vim-surround"
-Bundle "vim-scripts/Auto-Pairs"
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/Auto-Pairs'
 
 " non github repos
-Bundle "Markdown"
+Plugin 'Markdown'
 
 " Mediawiki syntax
-Bundle "chikamichi/mediawiki.vim"
+Plugin 'chikamichi/mediawiki.vim'
 
-Bundle "johnhamelink/blade.vim.git"
-"Bundle "markwu/vim-laravel4-snippets"
+Plugin 'johnhamelink/blade.vim.git'
+"Plugin 'markwu/vim-laravel4-snippets'
 
-" For Pathogen and syntastic
-" See also this page to install language support: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
-execute pathogen#infect()
-Bundle "scrooloose/syntastic"
-let g:syntastic_javascript_checkers = ['jshint']
+Plugin 'scrooloose/syntastic'
 
 " For drawing ASCII tables
-Bundle "vim-scripts/DrawIt"
-Bundle "dhruvasagar/vim-table-mode"
+Plugin 'vim-scripts/DrawIt'
+Plugin 'dhruvasagar/vim-table-mode'
 
 """""""""""""""""""""""""""
 "  Deactivated Things
 """""""""""""""""""""""""""
 " For React.js
-"Bundle "mxw/vim-jsx"
+"Plugin "mxw/vim-jsx"
 "let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " See https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015
 "let g:syntastic_javascript_checkers = ['eslint']
@@ -271,20 +266,20 @@ Bundle "dhruvasagar/vim-table-mode"
 " http://blogs.atlassian.com/2013/05/git-tig/
 " https://github.com/airblade/vim-gitgutter
 
-" Bundle "vim-scripts/vim-stylus"
+" Plugin "vim-scripts/vim-stylus"
 
-" Bundle "juvenn/mustache.vim.git"
-" Bundle "wookiehangover/jshint.vim"
+" Plugin "juvenn/mustache.vim.git"
+" Plugin "wookiehangover/jshint.vim"
 " map <silent> <F6> :JSHintToggle<CR> " F6 toggles jshint
 
 " Requires node.js or similar
-" Bundle "hallettj/jslint.vim"
+" Plugin "hallettj/jslint.vim"
 
-"Bundle "bling/vim-airline"
+"Plugin "bling/vim-airline"
 "let g:airline_powerline_fonts = 1
 " If the above doesn't work, double check here: https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation -- it's working on my laptop though
 
-" Bundle "edkolev/tmuxline.vim"
+" Plugin "edkolev/tmuxline.vim"
 " let g:airline#extensions#tmuxline#enabled = 0
 
 "python from powerline.vim import setup as powerline_setup
@@ -294,24 +289,27 @@ Bundle "dhruvasagar/vim-table-mode"
 " autocmd FileType python compiler pylint
 
 " Rainbow Parentheses
-"Bundle "oblitum/rainbow"
+"Plugin "oblitum/rainbow"
 "let g:rainbow_active = 1
 
 " Easy Align: https://github.com/junegunn/vim-easy-align#vim-easy-align
-"Bundle "junegunn/vim-easy-align"
+"Plugin "junegunn/vim-easy-align"
 " Start interactive EasyAlign in visual mode
 "vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign with a Vim movement
 "nmap <Leader>a <Plug>(EasyAlign)
 
-"Bundle "digitaltoad/vim-jade.git"
-"Bundle "myhere/vim-nodejs-complete"
+"Plugin "digitaltoad/vim-jade.git"
+"Plugin "myhere/vim-nodejs-complete"
 " For omnicompletion -- press <ctrl>-x-o
 
 " Turn HTML into JS and back
 " vmap <silent> ;q :s?^\(\s*\)\(.*\)\s*$? \1 + '\2'?<CR>
 " vmap <silent> ;h :s?^\(\s*\)+ '\([^']\+\)',*\s*$?\1\2?g<CR>:noh<CR>
 
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -341,3 +339,13 @@ else
   set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
+
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" For Pathogen and syntastic
+" See also this page to install language support: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
+execute pathogen#infect()
+let g:syntastic_javascript_checkers = ['jshint']
