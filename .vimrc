@@ -117,6 +117,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-commentary'
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'wakatime/vim-wakatime'
+Plug 'elixir-lang/vim-elixir'
+Plug 'epeli/slimux'
+
 call plug#end()
 
 """""""""""""""""""""""""""
@@ -141,4 +147,14 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+
+" Ultisnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 
