@@ -13,13 +13,21 @@ set number
 set ignorecase
 set go-=T " Remove toolbar in Gvim
 set guifont=monospace\ 12
-colorscheme desert
+
+if has('gui_running')
+  let g:seoul256_background = 233
+  colorscheme seoul256
+else
+  colorscheme desert
+endif
 set mouse=a " Add mouse support in terminal
 set t_Co=256 " From http://vim.wikia.com/wiki/256_colors_in_vim
 
 """""""""""""""""""""""""""
 " Keybindings
 """""""""""""""""""""""""""
+map <silent> <F2> :NERDTreeToggle<CR> " F2 toggles NERDTree
+
 " Change leader to space
 let g:mapleader = "\<Space>"
 nnoremap <leader>f :w<CR>
@@ -78,3 +86,13 @@ autocmd FileType php set ft=php.laravel
 set nojoinspaces
 
 
+"""""""""""""""""""""""""""
+" Plugins
+"""""""""""""""""""""""""""
+" Docs: https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/seoul256.vim'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+call plug#end()
