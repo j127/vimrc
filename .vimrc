@@ -26,7 +26,6 @@ set t_Co=256 " From http://vim.wikia.com/wiki/256_colors_in_vim
 """""""""""""""""""""""""""
 " Keybindings
 """""""""""""""""""""""""""
-map <silent> <F2> :NERDTreeToggle<CR> " F2 toggles NERDTree
 
 " Change leader to space
 let g:mapleader = "\<Space>"
@@ -38,10 +37,10 @@ nnoremap <leader>c :
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 nnoremap <leader>y "+y
-nnoremap <leader>s :so %<CR>
+nnoremap <leader>s :so ~/.vimrc<CR>
 
 " Window management
-nnoremap <leader>T :tabnew 
+nnoremap <leader>t :tabnew 
 nnoremap <leader>h :sp 
 nnoremap <leader>v :vsplit 
 nnoremap <leader>w <C-w>
@@ -90,9 +89,56 @@ set nojoinspaces
 " Plugins
 """""""""""""""""""""""""""
 " Docs: https://github.com/junegunn/vim-plug
+
+" TODO: find more plugins here: https://github.com/Olical/dotfiles/blob/9c5f008620287bb495e56452123d6bff76bb4639/vim/.vim/plugins.vim#L5
+" TODO: replace some of the plugins from the older vimrc files
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/seoul256.vim'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'easymotion/vim-easymotion'
+Plug 'Raimondi/delimitMate'
+Plug 'Valloric/YouCompleteMe'
+Plug 'junegunn/vim-easy-align' " visual mode then `ga`
+Plug 'Olical/vim-enmasse' " :EnMasse
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ternjs/tern_for_vim'
+Plug 'mhinz/vim-signify'
+Plug 'pangloss/vim-javascript'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-markdown'
+
+" NerdTree replacement
+" use `-`, `.`, `cg`, `lcd`, `~`
+Plug 'tpope/vim-vinegar' 
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
+
+"""""""""""""""""""""""""""
+" Plugin Settings
+"""""""""""""""""""""""""""
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+let g:signify_vcs_list = [ 'git', 'hg' ]
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+
