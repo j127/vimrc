@@ -101,13 +101,13 @@ Plug 'Raimondi/delimitMate'
 Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 Plug 'Olical/vim-enmasse' " :EnMasse
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ternjs/tern_for_vim', { 'for': 'javascript'}
+Plug 'ternjs/tern_for_vim', { 'for': 'javascript' }
 Plug 'mhinz/vim-signify'
-Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-markdown', { 'for': 'markdown'}
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
@@ -116,7 +116,7 @@ Plug 'SirVer/ultisnips', { 'on': [] }
 Plug 'Valloric/YouCompleteMe', { 'on': [] }
 Plug 'honza/vim-snippets'
 Plug 'wakatime/vim-wakatime'
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir'}
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'epeli/slimux'
 
 " https://github.com/junegunn/vim-plug/wiki/faq#loading-plugins-manually
