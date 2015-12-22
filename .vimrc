@@ -98,26 +98,33 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'Raimondi/delimitMate'
-Plug 'Valloric/YouCompleteMe'
 Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 Plug 'Olical/vim-enmasse' " :EnMasse
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ternjs/tern_for_vim'
+Plug 'ternjs/tern_for_vim', { 'for': 'javascript'}
 Plug 'mhinz/vim-signify'
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown', { 'for': 'markdown'}
 Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-commentary'
-Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips', { 'on': [] }
+Plug 'Valloric/YouCompleteMe', { 'on': [] }
 Plug 'honza/vim-snippets'
 Plug 'wakatime/vim-wakatime'
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir'}
 Plug 'epeli/slimux'
+
+" https://github.com/junegunn/vim-plug/wiki/faq#loading-plugins-manually
+augroup load_us_ycm
+  autocmd!
+  autocmd InsertEnter * call plug#load('ultisnips', 'YouCompleteMe')
+                     \| call youcompleteme#Enable() | autocmd! load_us_ycm
+augroup END
 
 call plug#end()
 
@@ -141,6 +148,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['jshint']
 
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 
@@ -152,4 +160,5 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
 
