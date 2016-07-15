@@ -16,6 +16,8 @@ set guifont=monospace\ 12
 colorscheme desert
 set mouse=a " Add mouse support in terminal
 set t_Co=256 " From http://vim.wikia.com/wiki/256_colors_in_vim
+set cursorline    " highlight current line
+set cursorcolumn  " highlight current column
 
 
 """""""""""""""""""""""""""
@@ -86,18 +88,17 @@ Plug 'Shougo/unite.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim'
 Plug 'Raimondi/delimitMate'
+Plug 'mhinz/vim-signify'
+Plug 'easymotion/vim-easymotion'
+Plug 'junegunn/vim-easy-align' " visual mode then `ga`
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'nathanaelkane/vim-indent-guides'
 
-" Plug 'easymotion/vim-easymotion'
-" Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 " Plug 'Olical/vim-enmasse' " :EnMasse
-" Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'ternjs/tern_for_vim', { 'for': 'javascript' }
-" Plug 'mhinz/vim-signify'
 " Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-" Plug 'rking/ag.vim'
 " Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 " Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
-" Plug 'tpope/vim-eunuch'
 " Plug 'SirVer/ultisnips', { 'on': [] }
 " Plug 'Valloric/YouCompleteMe', { 'on': [] }
 " Plug 'epeli/slimux'
@@ -172,6 +173,11 @@ let b:surround_{char2nr("i")} = "{% if \1condition: \1 %}\r{% endif %}"
 let b:surround_{char2nr("w")} = "{% with \1with: \1 %}\r{% endwith %}"
 let b:surround_{char2nr("f")} = "{% for \1for loop: \1 %}\r{% endfor %}"
 let b:surround_{char2nr("c")} = "{% comment %}\r{% endcomment %}"
+
+" Vim Table Mode
+" ReST-compatible tables
+let g:table_mode_corner_corner="+"
+let g:table_mode_header_fillchar="="
 
 " Unite
 let g:unite_source_history_yank_enable = 1  " like yankring
