@@ -12,7 +12,7 @@ set incsearch " do incremental searching
 set number
 set ignorecase
 set go-=T " Remove toolbar in Gvim
-set guifont=monospace\ 12
+set guifont=monospace\ 13
 colorscheme desert
 set mouse=a " Add mouse support in terminal
 set t_Co=256 " From http://vim.wikia.com/wiki/256_colors_in_vim
@@ -93,15 +93,15 @@ Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
+Plug 'epeli/slimux'
 
 " Plug 'Olical/vim-enmasse' " :EnMasse
 " Plug 'ternjs/tern_for_vim', { 'for': 'javascript' }
 " Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 " Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-" Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
 " Plug 'SirVer/ultisnips', { 'on': [] }
 " Plug 'Valloric/YouCompleteMe', { 'on': [] }
-" Plug 'epeli/slimux'
 
 " https://github.com/junegunn/vim-plug/wiki/faq#loading-plugins-manually
 " augroup load_us_ycm
@@ -205,3 +205,6 @@ function! s:unite_settings()
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
 
+" Slimux
+map <C-c><C-c> :SlimuxREPLSendLine<CR>
+vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
