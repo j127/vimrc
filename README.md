@@ -1,7 +1,7 @@
 vimrc
 =====
 
-Storing a vimrc starter. It has been patched together from various sources.
+Storing a vimrc starter. It has been patched together from various sources, including some code from the .vimrc file in [Haskell Vim Now](https://github.com/begriffs/haskell-vim-now). See the `license` directory for a diff.
 
 Lots of experimentation.
 
