@@ -3,7 +3,11 @@
 """""""""""""""""""""""""""
 set nocompatible " Vim settings rather than Vi. Must appear first
 set history=999
+set go-=T  " Remove the toolbar in gvim
 
+" Highlight line and column
+set cursorline
+set cursorcolumn
 
 " HVN paths {{{
 " Set XDG_CONFIG_HOME/haskell-vim-now to load user's config files
@@ -290,6 +294,15 @@ let g:airline_symbols.space = "\ua0"
 " set nobackup
 " set nowb
 " set noswapfile
+if has("vms")
+  set nobackup
+else
+  set backup
+endif
+
+" Store swap files in fixed location, not current directory.
+" From http://stackoverflow.com/questions/4331776/change-vim-swap-backup-undo-file-name
+set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 
 " Open file prompt with current path
 nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
