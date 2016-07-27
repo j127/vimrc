@@ -9,6 +9,11 @@ set go-=T  " Remove the toolbar in gvim
 set cursorline
 set cursorcolumn
 
+" Open {}, [], () when pressing enter. 
+inoremap {<cr> {<cr>}<c-o>O<tab>
+inoremap [<cr> [<cr>]<c-o>O<tab>
+inoremap (<cr> (<cr>)<c-o>O<tab>
+
 " HVN paths {{{
 " Set XDG_CONFIG_HOME/haskell-vim-now to load user's config files
 if exists($XDG_CONFIG_HOME)
