@@ -138,7 +138,7 @@ Plug 'Shougo/unite.vim'
 " Text manipulation
 Plug 'vim-scripts/Align'
 Plug 'simnalamburt/vim-mundo'
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'  " `gcc`, `gcu`
 Plug 'godlygeek/tabular'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
@@ -159,8 +159,24 @@ Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 
 Plug 'lambdatoast/elm.vim'
 
-" Colorscheme
-Plug 'vim-scripts/wombat256.vim'
+
+" Adding back some old ones, July 26, 2016
+Plug 'Shougo/neocomplete.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'Valloric/YouCompleteMe'
+Plug 'scrooloose/syntastic'
+Plug 'jmcomets/vim-pony'  " Django
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'terryma/vim-multiple-cursors'
+Plug 'mattn/emmet-vim'
+Plug 'Raimondi/delimitMate'
+Plug 'mhinz/vim-signify'
+Plug 'junegunn/vim-easy-align' " visual mode then `ga`
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'nathanaelkane/vim-indent-guides'
+
+
 
 " Custom bundles
 
@@ -713,3 +729,70 @@ endif
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme='base16'
+
+" YouCompleteMe
+let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger       = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
+let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['jshint']
+
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+
+" {{ Surround }}, for Django
+let b:surround_{char2nr("v")} = "{{ \r }}"
+let b:surround_{char2nr("%")} = "{% \r %}"
+let b:surround_{char2nr("b")} = "{% block \1block name: \1 %}\r{% endblock \1\1 %}"
+let b:surround_{char2nr("i")} = "{% if \1condition: \1 %}\r{% endif %}"
+let b:surround_{char2nr("w")} = "{% with \1with: \1 %}\r{% endwith %}"
+let b:surround_{char2nr("f")} = "{% for \1for loop: \1 %}\r{% endfor %}"
+let b:surround_{char2nr("c")} = "{% comment %}\r{% endcomment %}"
+
+" Vim Table Mode
+" ReST-compatible tables
+let g:table_mode_corner_corner="+"
+let g:table_mode_header_fillchar="="
+
+" Unite
+let g:unite_source_history_yank_enable = 1  " like yankring
+nnoremap <space>y :Unite history/yank<cr>
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <C-p> :Unite file_rec/async<cr>  " like ctrlp
+nnoremap <space>/ :Unite grep:.<cr>  " like ack.vim
+nnoremap <space>n :Unite -quick-match buffer<cr>  " switch buffers
+
+" nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+" nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+" nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+" nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+" nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+" nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
