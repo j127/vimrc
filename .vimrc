@@ -10,9 +10,13 @@ set cursorline
 set cursorcolumn
 
 " Open {}, [], () when pressing enter. 
-inoremap {<cr> {<cr>}<c-o>O<tab>
-inoremap [<cr> [<cr>]<c-o>O<tab>
-inoremap (<cr> (<cr>)<c-o>O<tab>
+" http://stackoverflow.com/questions/6066372/make-vim-curly-braces-square-braces-parens-act-like-textmate
+" This behavior can be handled by delimitMate using the setting below
+" inoremap {<cr> {<cr>}<c-o>O<tab>
+" inoremap [<cr> [<cr>]<c-o>O<tab>
+" inoremap (<cr> (<cr>)<c-o>O<tab>
+let delimitMate_expand_cr = 1
+
 
 " HVN paths {{{
 " Set XDG_CONFIG_HOME/haskell-vim-now to load user's config files
