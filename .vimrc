@@ -45,10 +45,11 @@ endif
 
 " General {{{
 " Use indentation for folds
-" set foldmethod=indent
-" set foldnestmax=5
-" set foldlevelstart=99
-" set foldcolumn=0
+" toggle: za, close all: zM, open all: zR
+set foldmethod=indent
+set foldnestmax=5
+set foldlevelstart=99
+set foldcolumn=0
 
 " augroup vimrcFold
 "   " fold vimrc itself by categories
