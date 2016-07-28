@@ -69,7 +69,7 @@ set history=999
 let g:mapleader = "\<Space>"
 
 nnoremap <leader>f :w<CR>
-nnoremap <leader>n :noh<CR>
+nnoremap <leader>noh :noh<CR>
 nnoremap <leader>b :bd<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>c :
@@ -166,7 +166,8 @@ Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 
 " Elm
 
-Plug 'lambdatoast/elm.vim'
+" Plug 'lambdatoast/elm.vim'
+Plug 'ElmCast/elm-vim'
 
 
 " Adding back some old ones, July 26, 2016
@@ -243,10 +244,12 @@ set lazyredraw
 " For regular expressions turn magic on
 set magic
 
-" Show matching brackets when text indicator is over them
+" Show matching brackets
 set showmatch
-" How many tenths of a second to blink when matching brackets
-set mat=2
+" 4/10 of a second to jump back to matching brace
+set matchtime=4
+" For more info on matching, including matchit.vim, see:
+" http://vim.wikia.com/wiki/Moving_to_matching_braces
 
 " No annoying sound on errors
 set noerrorbells
