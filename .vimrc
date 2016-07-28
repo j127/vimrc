@@ -61,6 +61,18 @@ set foldcolumn=0
 " Sets how many lines of history VIM has to remember
 set history=999
 
+"""""""""""""""""""""""""""
+" Templates
+"""""""""""""""""""""""""""
+
+" The following line would auto-insert on file creation.
+" au BufNewFile *.html 0r ~/code/vimrc/templates/html5.html
+
+function! Class()
+    r~/code/vimrc/templates/html5.html
+endfunction
+
+nmap <leader>html :call Class()<CR>
 
 """""""""""""""""""""""""""
 " Keybindings
@@ -100,8 +112,12 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Switch between % (current) and # (alternate) as listed in :buffers
+" http://stackoverflow.com/a/133895/1365699
+nmap <F2> :e#<CR>
+
 " Leader key timeout
-set tm=2000
+set tm=1000
 
 " Use par for prettier line formatting
 set formatprg=par
