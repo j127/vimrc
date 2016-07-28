@@ -186,8 +186,6 @@ Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'nathanaelkane/vim-indent-guides'
 
-
-
 " Custom bundles
 
 if filereadable(hvn_user_plugins)
@@ -821,4 +819,12 @@ let g:elm_format_autosave = 1
 
 " Turn off the default keybindings for Elm
 " See https://github.com/ElmCast/elm-vim
+" This didn't seem to do anything
 " let g:elm_setup_keybindings = 0
+" Custom keybindings for Elm commands
+nnoremap <leader>er :ElmRepl<CR>
+nnoremap <leader>et :ElmTest 
+nnoremap <leader>ef :ElmFormat<CR>
+nnoremap <leader>eed :ElmErrorDetail<CR>
+nnoremap <leader>esd :ElmShowDocs<CR>
+nnoremap <leader>ebd :ElmBrowseDocs<CR>
