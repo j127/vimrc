@@ -788,6 +788,7 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 let g:elm_syntastic_show_warnings = 1
+nmap <F3> :SyntasticToggleMode<CR>
 
 " {{ Surround }}, for Django
 let b:surround_{char2nr("v")} = "{{ \r }}"
