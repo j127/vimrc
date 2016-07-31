@@ -186,6 +186,9 @@ Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 " Plug 'lambdatoast/elm.vim'
 Plug 'ElmCast/elm-vim'
 
+" Markdown
+Plug 'tpope/vim-markdown'
+
 
 " Adding back some old ones, July 26, 2016
 Plug 'Shougo/neocomplete.vim'
