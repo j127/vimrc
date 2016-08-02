@@ -189,6 +189,8 @@ Plug 'ElmCast/elm-vim'
 " Markdown
 Plug 'tpope/vim-markdown'
 
+" Docker
+Plug 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
 
 " Adding back some old ones, July 26, 2016
 Plug 'Shougo/neocomplete.vim'
