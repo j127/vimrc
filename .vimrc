@@ -80,6 +80,7 @@ nmap <leader>html :call Class()<CR>
 
 " See Plugin Settings for additional keybindings
 let g:mapleader = "\<Space>"
+let maplocalleader = "\\"
 
 nnoremap <leader>f :w<CR>
 nnoremap <leader>noh :noh<CR>
@@ -207,6 +208,8 @@ Plug 'mhinz/vim-signify'
 Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
 
 " Custom bundles
 
