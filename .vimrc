@@ -7,7 +7,7 @@ set go-=T  " Remove the toolbar in gvim
 
 " Highlight line and column
 set cursorline
-set cursorcolumn
+" set cursorcolumn
 
 " Open {}, [], () when pressing enter. 
 " http://stackoverflow.com/questions/6066372/make-vim-curly-braces-square-braces-parens-act-like-textmate
@@ -17,33 +17,6 @@ set cursorcolumn
 " inoremap (<cr> (<cr>)<c-o>O<tab>
 let delimitMate_expand_cr = 1
 
-
-" HVN paths {{{
-" Set XDG_CONFIG_HOME/haskell-vim-now to load user's config files
-if exists($XDG_CONFIG_HOME)
-  let hvn_config_dir = $XDG_CONFIG_HOME . "/haskell-vim-now"
-else
-  let hvn_config_dir = $HOME . "/.config/haskell-vim-now"
-endif
-
-" Haskell Vim Now paths
-" pre config path
-let hvn_config_pre = expand(resolve(hvn_config_dir . "/vimrc.local.pre"))
-" post config path
-let hvn_config_post = expand(resolve(hvn_config_dir . "/vimrc.local"))
-" user plugins config path
-let hvn_user_plugins = expand(resolve(hvn_config_dir . "/plugins.vim"))
-" stack bin path symlink
-let hvn_stack_bin = expand(resolve(hvn_config_dir . "/.stack-bin"))
-" }}}
-
-" Precustomization {{{
-if filereadable(hvn_config_pre)
-  execute 'source '. hvn_config_pre
-endif
-" }}}
-
-" General {{{
 " Use indentation for folds
 " toggle: za, close all: zM, open all: zR
 set foldmethod=indent
@@ -51,14 +24,6 @@ set foldnestmax=5
 set foldlevelstart=99
 set foldcolumn=0
 
-" augroup vimrcFold
-"   " fold vimrc itself by categories
-"   autocmd!
-"   autocmd FileType vim set foldmethod=marker
-"   autocmd FileType vim set foldlevel=0
-" augroup END
-
-" Sets how many lines of history VIM has to remember
 set history=999
 
 """""""""""""""""""""""""""
@@ -73,6 +38,7 @@ function! Class()
 endfunction
 
 nmap <leader>html :call Class()<CR>
+
 
 """""""""""""""""""""""""""
 " Keybindings
@@ -124,13 +90,6 @@ set tm=1000
 set formatprg=par
 let $PARINIT = 'rTbgqR B=.,?_A_a Q=_s>|'
 
-" Use hindent instead of par for haskell buffers
-autocmd FileType haskell let &formatprg="hindent --style johan-tibell -XQuasiQuotes"
-
-" Find custom built hasktags, codex etc
-let $PATH = expand(hvn_stack_bin) . ':' . $PATH
-
-
 """""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""
@@ -161,6 +120,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
 Plug 'Shougo/unite.vim'
+
+Plug 'luochen1990/rainbow'
 
 " Text manipulation
 Plug 'vim-scripts/Align'
@@ -211,17 +172,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 
-" Custom bundles
-
-if filereadable(hvn_user_plugins)
-  execute 'source '. hvn_user_plugins
-endif
-
 call plug#end()
 
-" }}}
-
-" VIM user interface {{{
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
@@ -296,9 +248,8 @@ nnoremap <leader>mo :set mouse=<cr>
 
 " Default to mouse mode on
 set mouse=a
-" }}}
 
-" Colors and Fonts {{{
+" Colors and Fonts
 colorscheme desert
 
 " Use pleasant but very visible search hilighting
@@ -748,14 +699,7 @@ function! Pointful()
 endfunction
 vnoremap <silent> <leader>h> :call Pointful()<CR>
 
-" }}}
 
-" Customization {{{
-if filereadable(hvn_config_post)
-  execute 'source '. hvn_config_post
-endif
-
-" }}}
 """""""""""""""""""""""""""
 " Plugin Settings
 """""""""""""""""""""""""""
@@ -854,3 +798,7 @@ nnoremap <leader>ef :ElmFormat<CR>
 nnoremap <leader>eed :ElmErrorDetail<CR>
 nnoremap <leader>esd :ElmShowDocs<CR>
 nnoremap <leader>ebd :ElmBrowseDocs<CR>
+
+" Rainbow parentheses
+let g:rainbow_active = 1
+
