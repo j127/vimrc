@@ -136,12 +136,12 @@ Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Haskell
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
-Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
-Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
+" Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+" Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
+" Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
+" Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+" Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
+" Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 
 " Elm
 
@@ -279,16 +279,20 @@ set ffs=unix,dos,mac
 
 " Use large font by default in MacVim
 " set gfn=Monaco:h19
-set guifont=monospace\ 13
+set anti enc=utf-8
+" set guifont=monospace\ 13
+" set guifont=Sauce\ Code\ Powerline\ Regular\ 13
+set guifont=Inconsolata\ for\ Powerline\ 13
 
 " Use powerline fonts for airline
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-let g:airline_powerline_fonts = 1
 let g:airline_symbols.space = "\ua0"
-" }}}
+
+" Show open buffers if there is only one tab open
+" let g:airline#extensions#tabline#enabled = 1
 
 " Files, backups and undo {{{
 
@@ -707,7 +711,7 @@ vnoremap <silent> <leader>h> :call Pointful()<CR>
 " Airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
-let g:airline_theme='base16'
+let g:airline_theme='sol'
 
 " YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
