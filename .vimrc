@@ -103,37 +103,37 @@ endif
 " Support bundles
 Plug 'epeli/slimux'
 " Plug 'jgdavey/tslime.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'ervandew/supertab'
-Plug 'benekastah/neomake'
-Plug 'moll/vim-bbye'
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+" Plug 'ervandew/supertab'
+" Plug 'benekastah/neomake'
+" Plug 'moll/vim-bbye'
+" Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/gitignore'
 
 " Git
 Plug 'tpope/vim-fugitive'
-Plug 'int3/vim-extradite'
+" Plug 'int3/vim-extradite'
 
 " Bars, panels, and files
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'majutsushi/tagbar'
-Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
+" Plug 'majutsushi/tagbar'
+" Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
 Plug 'Shougo/unite.vim'
 
 Plug 'luochen1990/rainbow'
 
 " Text manipulation
-Plug 'vim-scripts/Align'
-Plug 'simnalamburt/vim-mundo'
+" Plug 'vim-scripts/Align'
+" Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-commentary'  " `gcc`, `gcu`
-Plug 'godlygeek/tabular'
-Plug 'michaeljsmith/vim-indent-object'
+" Plug 'godlygeek/tabular'
+" Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 
 " Allow pane movement to jump out of vim into tmux
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
 
 " Haskell
 " Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -146,31 +146,31 @@ Plug 'christoomey/vim-tmux-navigator'
 " Elm
 
 " Plug 'lambdatoast/elm.vim'
-Plug 'ElmCast/elm-vim'
+" Plug 'ElmCast/elm-vim'
 
 " Markdown
 Plug 'tpope/vim-markdown'
 
 " Docker
-Plug 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
+" Plug 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
 
 " Adding back some old ones, July 26, 2016
-Plug 'Shougo/neocomplete.vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'Valloric/YouCompleteMe'
-Plug 'scrooloose/syntastic'
-Plug 'jmcomets/vim-pony'  " Django
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'Shougo/neocomplete.vim'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'scrooloose/syntastic'
+" Plug 'jmcomets/vim-pony'  " Django
+" Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim'
-Plug 'Raimondi/delimitMate'
-Plug 'mhinz/vim-signify'
-Plug 'junegunn/vim-easy-align' " visual mode then `ga`
+" Plug 'Raimondi/delimitMate'
+" Plug 'mhinz/vim-signify'
+" Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jceb/vim-orgmode'
-Plug 'tpope/vim-speeddating'
+" Plug 'tpope/vim-speeddating'
 
 call plug#end()
 
@@ -282,7 +282,7 @@ set ffs=unix,dos,mac
 set anti enc=utf-8
 " set guifont=monospace\ 13
 " set guifont=Sauce\ Code\ Powerline\ Regular\ 13
-set guifont=Inconsolata\ for\ Powerline\ 13
+set guifont=Inconsolata\ for\ Powerline\ 15
 
 " Use powerline fonts for airline
 if !exists('g:airline_symbols')
@@ -734,17 +734,17 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Syntastic
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['jshint']
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ['jshint']
 
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-let g:elm_syntastic_show_warnings = 1
-nmap <F3> :SyntasticToggleMode<CR>
+" let g:elm_syntastic_show_warnings = 1
+" nmap <F3> :SyntasticToggleMode<CR>
 
 " {{ Surround }}, for Django
 let b:surround_{char2nr("v")} = "{{ \r }}"
@@ -761,6 +761,7 @@ let g:table_mode_corner_corner="+"
 let g:table_mode_header_fillchar="="
 
 " Unite
+" See: http://bling.github.io/blog/2013/06/02/unite-dot-vim-the-plugin-you-didnt-know-you-need/
 let g:unite_source_history_yank_enable = 1  " like yankring
 nnoremap <space>y :Unite history/yank<cr>
 
@@ -805,4 +806,3 @@ nnoremap <leader>ebd :ElmBrowseDocs<CR>
 
 " Rainbow parentheses
 let g:rainbow_active = 1
-
