@@ -1,4 +1,19 @@
 """""""""""""""""""""""""""
+" Notes
+"""""""""""""""""""""""""""
+
+" For Python2 support on Ubuntu 16.04 you may need to install
+" one of the vim versions with `py2` in the name.
+" Then change the default vim with this command:
+" $ sudo update-alternatives --config vim
+"
+" To fix nvim's delay when switching into insert mode, you may
+" need to put the following line in ~/.tmux-conf
+" # Prevent delay when hitting ESC in nvim
+" # http://superuser.com/a/942704
+" set -sg escape-time 10
+
+"""""""""""""""""""""""""""
 " Basic Settings
 """""""""""""""""""""""""""
 set nocompatible " Vim settings rather than Vi. Must appear first
@@ -118,14 +133,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'majutsushi/tagbar'
-" Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
+Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
 Plug 'Shougo/unite.vim'
 
 Plug 'luochen1990/rainbow'
 
 " Text manipulation
 " Plug 'vim-scripts/Align'
-" Plug 'simnalamburt/vim-mundo'
+Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-commentary'  " `gcc`, `gcu`
 " Plug 'godlygeek/tabular'
 " Plug 'michaeljsmith/vim-indent-object'
@@ -170,7 +185,7 @@ Plug 'mattn/emmet-vim'
 Plug 'dhruvasagar/vim-table-mode'
 " Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jceb/vim-orgmode'
-" Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-speeddating'
 
 call plug#end()
 
@@ -279,7 +294,7 @@ set ffs=unix,dos,mac
 
 " Use large font by default in MacVim
 " set gfn=Monaco:h19
-set anti enc=utf-8
+" set anti enc=utf-8
 " set guifont=monospace\ 13
 " set guifont=Sauce\ Code\ Powerline\ Regular\ 13
 set guifont=Inconsolata\ for\ Powerline\ 15
@@ -714,15 +729,15 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='sol'
 
 " YouCompleteMe
-let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
+" let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+" let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+" let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+" let g:ycm_complete_in_comments = 1 " Completion in comments
+" let g:ycm_complete_in_strings = 1 " Completion in string
 
-let g:ycm_semantic_triggers = {
-   \ 'elm' : ['.'],
-   \}
+" let g:ycm_semantic_triggers = {
+"    \ 'elm' : ['.'],
+"    \}
 
 " Ultisnips
 let g:UltiSnipsExpandTrigger       = "<c-j>"
