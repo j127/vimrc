@@ -122,7 +122,7 @@ Plug 'epeli/slimux'
 " Plug 'ervandew/supertab'
 " Plug 'benekastah/neomake'
 " Plug 'moll/vim-bbye'
-" Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/gitignore'
 
 " Git
@@ -171,19 +171,19 @@ Plug 'tpope/vim-markdown'
 
 " Adding back some old ones, July 26, 2016
 " Plug 'Shougo/neocomplete.vim'
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-" Plug 'Valloric/YouCompleteMe'
-" Plug 'scrooloose/syntastic'
-" Plug 'jmcomets/vim-pony'  " Django
+Plug 'SirVer/ultisnips'
+Plug 'ervandew/supertab'
+Plug 'honza/vim-snippets'
+Plug 'Valloric/YouCompleteMe'
+Plug 'scrooloose/syntastic'
+Plug 'jmcomets/vim-pony'  " Django
 " Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim'
 " Plug 'Raimondi/delimitMate'
 " Plug 'mhinz/vim-signify'
-" Plug 'junegunn/vim-easy-align' " visual mode then `ga`
+Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 Plug 'dhruvasagar/vim-table-mode'
-" Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 
@@ -414,12 +414,12 @@ nmap <leader>sk :leftabove  new<CR>
 nmap <leader>sj :rightbelow new<CR>
 
 " Manually create key mappings (to avoid rebinding C-\)
-let g:tmux_navigator_no_mappings = 1
+" let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+" nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+" nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+" nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+" nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
 " don't close buffers when you aren't displaying them
 set hidden
@@ -728,16 +728,29 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme='sol'
 
-" YouCompleteMe
-" let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-" let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-" let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-" let g:ycm_complete_in_comments = 1 " Completion in comments
-" let g:ycm_complete_in_strings = 1 " Completion in string
+"""""""""""""""""""""""""""""""""
+" See: http://chauncey.io/ultisnips-youcompleteme-now-if-i-can-just-get-you-two-to-cooperate/
+" make YCM compatible with UltiSnips (using supertab)
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" let g:SuperTabDefaultCompletionType = '<C-n>'
+ 
+" better key bindings for UltiSnipsExpandTrigger
+" let g:UltiSnipsExpandTrigger="<cr>"
+" let g:UltiSnipsJumpForwardTrigger="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"""""""""""""""""""""""""""""""""
 
-" let g:ycm_semantic_triggers = {
-"    \ 'elm' : ['.'],
-"    \}
+" YouCompleteMe
+let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
+
+let g:ycm_semantic_triggers = {
+   \ 'elm' : ['.'],
+   \}
 
 " Ultisnips
 let g:UltiSnipsExpandTrigger       = "<c-j>"
@@ -749,17 +762,17 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Syntastic
 set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['jshint']
 
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-" let g:elm_syntastic_show_warnings = 1
-" nmap <F3> :SyntasticToggleMode<CR>
+let g:elm_syntastic_show_warnings = 1
+nmap <F3> :SyntasticToggleMode<CR>
 
 " {{ Surround }}, for Django
 let b:surround_{char2nr("v")} = "{{ \r }}"
