@@ -115,6 +115,9 @@ else
   call plug#begin('~/.vim/bundle')
 endif
 
+"Themes
+Plug 'j127/desert-imp.vim'
+
 " Support bundles
 Plug 'epeli/slimux'
 " Plug 'jgdavey/tslime.vim'
@@ -265,10 +268,10 @@ nnoremap <leader>mo :set mouse=<cr>
 set mouse=a
 
 " Colors and Fonts
-colorscheme desert
+colorscheme desertimp
 
-" Use pleasant but very visible search hilighting
-" hi Search ctermfg=white ctermbg=173 cterm=none guifg=#ffffff guibg=#e5786d gui=none
+" Use pleasant but very visible search highlighting
+hi Search ctermfg=white ctermbg=173 cterm=none guifg=#ffffff guibg=#e5786d gui=none
 hi! link Visual Search
 
 " Use same color behind concealed unicode characters
