@@ -30,7 +30,7 @@ set cursorline
 " inoremap {<cr> {<cr>}<c-o>O<tab>
 " inoremap [<cr> [<cr>]<c-o>O<tab>
 " inoremap (<cr> (<cr>)<c-o>O<tab>
-let delimitMate_expand_cr = 1
+let delimitMate_expand_cr=1
 
 " Use indentation for folds
 " toggle: za, close all: zM, open all: zR
@@ -48,11 +48,11 @@ set history=999
 " The following line would auto-insert on file creation.
 " au BufNewFile *.html 0r ~/code/vimrc/templates/html5.html
 
-function! Class()
-    r~/code/vimrc/templates/html5.html
-endfunction
+" function! Class()
+"     r~/code/vimrc/templates/html5.html
+" endfunction
 
-nmap <leader>html :call Class()<CR>
+" nmap <leader>html :call Class()<CR>
 
 
 """""""""""""""""""""""""""
@@ -102,8 +102,8 @@ nmap <F2> :e#<CR>
 set tm=1000
 
 " Use par for prettier line formatting
-set formatprg=par
-let $PARINIT = 'rTbgqR B=.,?_A_a Q=_s>|'
+" set formatprg=par
+" let $PARINIT = 'rTbgqR B=.,?_A_a Q=_s>|'
 
 """""""""""""""""""""""""""
 " Plugins
@@ -116,16 +116,26 @@ else
 endif
 
 "Themes
-Plug 'j127/desert-imp.vim'
+Plug 'j127/desertimp.vim'
+Plug 'mkarmona/colorsbox'
+" Plug 'keith/parsec.vim'
+" Plug 'cseelus/vim-colors-lucid'
 
 " Support bundles
-Plug 'epeli/slimux'
+" Plug 'epeli/slimux'
 " Plug 'jgdavey/tslime.vim'
 " Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 " Plug 'ervandew/supertab'
 " Plug 'benekastah/neomake'
 " Plug 'moll/vim-bbye'
+
+" <Leader>ig to turn on indent guides
 Plug 'nathanaelkane/vim-indent-guides'
+
+" Extends the functionality of % so that it includes tags and not just
+" brackets.
+Plug 'tmhedberg/matchit'
+
 Plug 'vim-scripts/gitignore'
 
 " Git
@@ -137,7 +147,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
-Plug 'Shougo/unite.vim'
+" Plug 'Shougo/unite.vim'
+Plug 'scrooloose/nerdtree'
 
 Plug 'luochen1990/rainbow'
 
@@ -163,8 +174,8 @@ Plug 'tpope/vim-surround'
 
 " Elm
 
-" Plug 'lambdatoast/elm.vim'
-" Plug 'ElmCast/elm-vim'
+Plug 'lambdatoast/elm.vim'
+Plug 'ElmCast/elm-vim'
 
 " Markdown
 Plug 'tpope/vim-markdown'
@@ -174,16 +185,18 @@ Plug 'tpope/vim-markdown'
 
 " Adding back some old ones, July 26, 2016
 " Plug 'Shougo/neocomplete.vim'
-Plug 'SirVer/ultisnips'
-Plug 'ervandew/supertab'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+
+" Tab completion features. NOT NEEDED IF USING YOUCOMPLETEME.
+" Plug 'ervandew/supertab'
+" Plug 'honza/vim-snippets'
 Plug 'Valloric/YouCompleteMe'
-Plug 'scrooloose/syntastic'
-Plug 'jmcomets/vim-pony'  " Django
+" Plug 'scrooloose/syntastic'
+" Plug 'jmcomets/vim-pony'  " Django
 " Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim'
-" Plug 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 " Plug 'mhinz/vim-signify'
 Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 Plug 'dhruvasagar/vim-table-mode'
@@ -194,7 +207,7 @@ call plug#end()
 
 
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+" set so=7
 
 " Turn on the WiLd menu
 set wildmenu
@@ -216,8 +229,8 @@ endif
 set cmdheight=1
 
 " Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
+" set backspace=eol,start,indent
+" set whichwrap+=<,>,h,l
 
 " Ignore case when searching
 set ignorecase
@@ -235,7 +248,7 @@ set incsearch
 set lazyredraw
 
 " For regular expressions turn magic on
-set magic
+" set magic
 
 " Show matching brackets
 set showmatch
@@ -268,7 +281,8 @@ nnoremap <leader>mo :set mouse=<cr>
 set mouse=a
 
 " Colors and Fonts
-colorscheme desertimp
+" colorscheme desert
+colorscheme "colorsbox-material"
 
 " Use pleasant but very visible search highlighting
 hi Search ctermfg=white ctermbg=173 cterm=none guifg=#ffffff guibg=#e5786d gui=none
@@ -333,6 +347,9 @@ nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 
 " Show undo tree
 nmap <silent> <leader>u :MundoToggle<CR>
+" vim-mundo: Enable persistent undo across sessions
+set undofile
+set undodir=~/.vim/undo
 
 " }}}
 
@@ -734,19 +751,22 @@ let g:airline_theme='sol'
 """""""""""""""""""""""""""""""""
 " See: http://chauncey.io/ultisnips-youcompleteme-now-if-i-can-just-get-you-two-to-cooperate/
 " make YCM compatible with UltiSnips (using supertab)
-" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-" let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
  
 " better key bindings for UltiSnipsExpandTrigger
-" let g:UltiSnipsExpandTrigger="<cr>"
-" let g:UltiSnipsJumpForwardTrigger="<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger="<cr>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" Use Python 2
+let g:ycm_server_python_interpreter="/usr/bin/python"
 """""""""""""""""""""""""""""""""
 
 " YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+" let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
@@ -764,42 +784,42 @@ let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on cu
 let g:UltiSnipsEditSplit="vertical"
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['jshint']
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ['jshint']
 
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-let g:elm_syntastic_show_warnings = 1
-nmap <F3> :SyntasticToggleMode<CR>
+" let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+" let g:elm_syntastic_show_warnings = 1
+" nmap <F3> :SyntasticToggleMode<CR>
 
 " {{ Surround }}, for Django
-let b:surround_{char2nr("v")} = "{{ \r }}"
-let b:surround_{char2nr("%")} = "{% \r %}"
-let b:surround_{char2nr("b")} = "{% block \1block name: \1 %}\r{% endblock \1\1 %}"
-let b:surround_{char2nr("i")} = "{% if \1condition: \1 %}\r{% endif %}"
-let b:surround_{char2nr("w")} = "{% with \1with: \1 %}\r{% endwith %}"
-let b:surround_{char2nr("f")} = "{% for \1for loop: \1 %}\r{% endfor %}"
-let b:surround_{char2nr("c")} = "{% comment %}\r{% endcomment %}"
+" let b:surround_{char2nr("v")} = "{{ \r }}"
+" let b:surround_{char2nr("%")} = "{% \r %}"
+" let b:surround_{char2nr("b")} = "{% block \1block name: \1 %}\r{% endblock \1\1 %}"
+" let b:surround_{char2nr("i")} = "{% if \1condition: \1 %}\r{% endif %}"
+" let b:surround_{char2nr("w")} = "{% with \1with: \1 %}\r{% endwith %}"
+" let b:surround_{char2nr("f")} = "{% for \1for loop: \1 %}\r{% endfor %}"
+" let b:surround_{char2nr("c")} = "{% comment %}\r{% endcomment %}"
 
 " Vim Table Mode
 " ReST-compatible tables
-let g:table_mode_corner_corner="+"
-let g:table_mode_header_fillchar="="
+" let g:table_mode_corner_corner="+"
+" let g:table_mode_header_fillchar="="
 
 " Unite
 " See: http://bling.github.io/blog/2013/06/02/unite-dot-vim-the-plugin-you-didnt-know-you-need/
-let g:unite_source_history_yank_enable = 1  " like yankring
-nnoremap <space>y :Unite history/yank<cr>
+" let g:unite_source_history_yank_enable = 1  " like yankring
+" nnoremap <space>y :Unite history/yank<cr>
 
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <C-p> :Unite file_rec/async<cr>  " like ctrlp
-nnoremap <space>/ :Unite grep:.<cr>  " like ack.vim
-nnoremap <space>n :Unite -quick-match buffer<cr>  " switch buffers
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" nnoremap <C-p> :Unite file_rec/async<cr>  " like ctrlp
+" nnoremap <space>/ :Unite grep:.<cr>  " like ack.vim
+" nnoremap <space>n :Unite -quick-match buffer<cr>  " switch buffers
 
 " nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
 " nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
@@ -809,14 +829,14 @@ nnoremap <space>n :Unite -quick-match buffer<cr>  " switch buffers
 " nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 
 " Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
+" autocmd FileType unite call s:unite_settings()
+" function! s:unite_settings()
+"   " Play nice with supertab
+"   let b:SuperTabDisabled=1
+"   " Enable navigation with control-j and control-k in insert mode
+"   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+"   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+" endfunction
 
 " Elm-vim
 
@@ -837,3 +857,10 @@ nnoremap <leader>ebd :ElmBrowseDocs<CR>
 
 " Rainbow parentheses
 let g:rainbow_active = 1
+ 
+" Nerdtree
+map <C-n> :NERDTreeToggle<CR>
+
+" Emmet
+" TODO: is this working?
+let g:user_emmet_leader_key='<C-,>'
