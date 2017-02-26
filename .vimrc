@@ -274,6 +274,21 @@ noremap <c-k> <c-w>k
 noremap <c-j> <c-w>j
 noremap <c-l> <c-w>l
 
+"--------------------------
+" Directories
+"--------------------------
+
+" Change the current dir of all windows to the open file.
+" See also `:pwd` and `autocmd BufEnter * silent! lcd %:p:h` for
+" other ways to manage this.
+" http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
+" TODO: the items below don't seem to work
+" `%:p` gives its full path, and `%:p:h` gives its directory (the "head"
+" of the full path).
+nnoremap <leader>d :cd %:p:h<CR>
+" Only change the directory of the current file.
+nnoremap <leader>dl :lcd %:p:h<CR>
+
 " Leader key timeout
 set tm=1000
 
@@ -336,6 +351,9 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 " Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
 " Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
+
+" Vue.js
+Plug 'posva/vim-vue'
 
 " Elm
 
