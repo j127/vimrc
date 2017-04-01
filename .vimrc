@@ -1,3 +1,12 @@
+set nocompatible
+if has('python') " if dynamic py|py3, this line already activates python2.
+  let s:python_version = 2
+elseif has('python3')
+  let s:python_version = 3
+else
+  let s:python_version = 0
+endif
+echomsg 'Using python'.s:python_version
 """""""""""""""""""""""""""
 " Notes
 """""""""""""""""""""""""""
@@ -301,7 +310,7 @@ Plug 'mkarmona/colorsbox'
 " Plug 'cseelus/vim-colors-lucid'
 
 " Support bundles
-" Plug 'epeli/slimux'
+Plug 'epeli/slimux'
 " Plug 'jgdavey/tslime.vim'
 " Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 " Plug 'ervandew/supertab'
@@ -339,7 +348,7 @@ Plug 'jiangmiao/auto-pairs'
 " Plug 'godlygeek/tabular'
 " Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
-" Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Allow pane movement to jump out of vim into tmux
 " Plug 'christoomey/vim-tmux-navigator'
@@ -373,7 +382,7 @@ Plug 'posva/vim-vue'
 " Tab completion features. NOT NEEDED IF USING YOUCOMPLETEME.
 " Plug 'ervandew/supertab'
 " Plug 'honza/vim-snippets'
-" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 " Plug 'scrooloose/syntastic'
 " Plug 'jmcomets/vim-pony'  " Django
 " Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
@@ -422,9 +431,9 @@ set undodir=~/.vim/undo
 " Slimux
 "--------------------------
 " Slimux
-" map <C-c><C-s> :SlimuxREPLConfigure<CR>
-" nmap <C-c><C-s> :SlimuxREPLConfigure<CR>
-" map <C-c><C-c> :SlimuxREPLSendLine<CR>
-" vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
-" map <C-c><C-b> :SlimuxREPLSendBuffer<CR>
-" vmap <C-c><C-b> :SlimuxREPLSendBuffer<CR>
+map <C-c><C-s> :SlimuxREPLConfigure<CR>
+nmap <C-c><C-s> :SlimuxREPLConfigure<CR>
+map <C-c><C-c> :SlimuxREPLSendLine<CR>
+vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
+map <C-c><C-b> :SlimuxREPLSendBuffer<CR>
+vmap <C-c><C-b> :SlimuxREPLSendBuffer<CR>
