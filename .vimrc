@@ -1,12 +1,13 @@
-set nocompatible
-if has('python') " if dynamic py|py3, this line already activates python2.
-  let s:python_version = 2
-elseif has('python3')
-  let s:python_version = 3
-else
-  let s:python_version = 0
-endif
-echomsg 'Using python'.s:python_version
+" Python with virtualenv support
+" py << EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+"   project_base_dir = os.environ['VIRTUAL_ENV']
+"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"   execfile(activate_this, dict(__file__=activate_this))
+" EOF
+
 """""""""""""""""""""""""""
 " Notes
 """""""""""""""""""""""""""
@@ -336,9 +337,9 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'majutsushi/tagbar'
 " Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
 " Plug 'Shougo/unite.vim'
-" Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
-" Plug 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'
 
 " Text manipulation
 " Plug 'vim-scripts/Align'
@@ -437,3 +438,11 @@ map <C-c><C-c> :SlimuxREPLSendLine<CR>
 vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 map <C-c><C-b> :SlimuxREPLSendBuffer<CR>
 vmap <C-c><C-b> :SlimuxREPLSendBuffer<CR>
+
+" Activate rainbow
+let g:rainbow_active = 1
+
+" Nerdtree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <C-n> :NERDTreeToggle<CR>
