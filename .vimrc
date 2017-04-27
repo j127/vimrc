@@ -47,7 +47,7 @@ set wildmode=list:full,full
 
 " Highlight line and column
 set cursorline
-set cursorcolumn
+" set cursorcolumn
 
 " For more info on matching, including matchit.vim, see:
 " http://vim.wikia.com/wiki/Moving_to_matching_braces
@@ -340,6 +340,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 
 Plug 'luochen1990/rainbow'
+
+" For vimdeck
+" https://github.com/tybenz/vimdeck
+Plug 'vim-scripts/SyntaxRange'
+Plug 'vim-scripts/ingo-library'
 
 " Text manipulation
 " Plug 'vim-scripts/Align'
