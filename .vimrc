@@ -131,8 +131,8 @@ set shiftwidth=4
 set tabstop=4
 set expandtab " Spaces instead of tabs
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+" autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
+" autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType elixir setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 """""""""""""""""""""""""""
@@ -451,3 +451,6 @@ let g:rainbow_active = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
+
+" Indent guides
+let g:indent_guides_enable_on_vim_startup = 1
