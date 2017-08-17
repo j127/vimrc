@@ -64,6 +64,8 @@ set matchtime=4
 set so=2
 
 " Colors and Fonts
+" Enable truecolors
+set termguicolors
 if has("gui_running")
     " TODO: figure out why this dashed name isn't loading the theme.
     " colorscheme colorsbox-material
