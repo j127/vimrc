@@ -61,7 +61,7 @@ set matchtime=4
 
 " Scroll offset keeps the cursor closer to the middle of the editor.
 " so=7 will start scrolling 7 lines from the top or bottom.
-set so=11
+set so=2
 
 " Colors and Fonts
 if has("gui_running")
