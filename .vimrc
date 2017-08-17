@@ -49,6 +49,18 @@ set wildmode=list:full,full
 set cursorline
 set cursorcolumn
 
+fu! ToggleCurline ()
+    if &cursorline && &cursorcolumn
+        set nocursorline
+        set nocursorcolumn
+    else
+        set cursorline
+        set cursorcolumn
+    endif
+endfunction
+
+map <silent><leader>cl :call ToggleCurline()<CR>
+
 " Highlight 80th column
 " set colorcolumn=80
 
