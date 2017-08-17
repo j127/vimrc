@@ -21,4 +21,4 @@ This works with Neovim. Create a file called `~/.config/nvim/init.vim` and put t
 
 This is my personal .vimrc file that is a work in progress. It is intended for personal use only. These are notes to myself on how to install it.
 
-Install Haskell Vim Now. Replace the `~/.vimrc` file with the one from this repo. Run `:PlugClean` and then `PlugInstall` to remove/install the plugins.
+~~Install Haskell Vim Now. Replace the `~/.vimrc` file with the one from this repo.~~ Run `:PlugClean` and then `PlugInstall` to remove/install the plugins.
