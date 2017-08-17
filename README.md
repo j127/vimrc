@@ -9,6 +9,14 @@ The `master` branch is the main one. Desktop is now `old-master`. The `laptop` b
 
 ![Vim Screenshot](./vim-screenshot.png)
 
+## Neovim
+
+This works with Neovim. Create a file called `~/.config/nvim/init.vim` and put this inside it to use the regular `.vimrc` in neovim:
+
+    set runtimepath^=~/.vim runtimepath+=~/.vim/after
+    let &packpath = &runtimepath
+    source ~/.vimrc
+
 ## Installation
 
 This is my personal .vimrc file that is a work in progress. It is intended for personal use only. These are notes to myself on how to install it.
