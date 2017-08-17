@@ -59,7 +59,7 @@ fu! ToggleCurline ()
     endif
 endfunction
 
-map <silent><leader>cl :call ToggleCurline()<CR>
+map <silent><leader>l :call ToggleCurline()<CR>
 
 " Highlight 80th column
 " set colorcolumn=80
