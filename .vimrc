@@ -2,7 +2,7 @@
 " py << EOF
 " import os
 " import sys
-" if 'VIRTUAL_ENV' in os.environ:
+"if 'VIRTUAL_ENV' in os.environ:
 "   project_base_dir = os.environ['VIRTUAL_ENV']
 "   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
 "   execfile(activate_this, dict(__file__=activate_this))
@@ -30,7 +30,7 @@ set nocompatible " Vim settings rather than Vi. Must appear first
 set history=999
 
 if has("gui_running")
-  set go-=T  " Remove toolbar
+    set go-=T  " Remove toolbar
 endif
 
 " Always display the status line.
@@ -49,6 +49,9 @@ set wildmode=list:full,full
 set cursorline
 " set cursorcolumn
 
+" Highlight 80th column
+" set colorcolumn=80
+
 " For more info on matching, including matchit.vim, see:
 " http://vim.wikia.com/wiki/Moving_to_matching_braces
 " Show matching brackets
@@ -62,21 +65,21 @@ set so=11
 
 " Colors and Fonts
 if has("gui_running")
-  " TODO: figure out why this dashed name isn't loading the theme.
-  " colorscheme colorsbox-material
-  colorscheme bclear
+    " TODO: figure out why this dashed name isn't loading the theme.
+    " colorscheme colorsbox-material
+    colorscheme bclear
 else
-  colorscheme desert
+    colorscheme desert
 endif
 
 set guifont=Inconsolata\ for\ Powerline\ 15
 
 set t_Co=256
 if &term =~ '256color'
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
-  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
 endif
 
 " Enable mouse support
@@ -102,8 +105,8 @@ nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 
 " Tab labels
 if has("gui_running")
-  set go-=e
-  set guitablabel=%M\ %t
+    set go-=e
+    set guitablabel=%M\ %t
 endif
 
 " Don't close buffers that aren't being displayed.
@@ -187,14 +190,14 @@ hi! link Visual Search
 " TODO: make sure that this feature works.
 " Delete trailing white space on save
 func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
 endfunc
 
 augroup whitespace
-  autocmd!
-  autocmd BufWrite *.hs :call DeleteTrailingWS()
+    autocmd!
+    autocmd BufWrite *.hs :call DeleteTrailingWS()
 augroup END
 
 """""""""""""""""""""""""""
@@ -213,9 +216,9 @@ augroup END
 """""""""""""""""""""""""""
 
 if has("vms")
-  set nobackup
+    set nobackup
 else
-  set backup
+    set backup
 endif
 
 " Store swap files in fixed location, not current directory.
@@ -337,7 +340,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'majutsushi/tagbar'
 " Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
-" Plug 'Shougo/unite.vim'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'scrooloose/nerdtree'
 
 Plug 'luochen1990/rainbow'
@@ -374,7 +378,7 @@ Plug 'posva/vim-vue'
 " Elm
 
 " Plug 'lambdatoast/elm.vim'
-" Plug 'ElmCast/elm-vim'
+Plug 'ElmCast/elm-vim'
 
 " Markdown
 " Plug 'tpope/vim-markdown'
@@ -400,6 +404,7 @@ Plug 'Valloric/YouCompleteMe'
 " Plug 'dhruvasagar/vim-table-mode'
 " Plug 'jceb/vim-orgmode'
 " Plug 'tpope/vim-speeddating'
+Plug 'bronson/vim-trailing-whitespace'
 call plug#end()
 
 """""""""""""""""""""""""""
@@ -417,7 +422,7 @@ let g:airline_theme='sol'
 
 " Use powerline fonts for airline
 if !exists('g:airline_symbols')
-  let g:airline_symbols={}
+    let g:airline_symbols={}
 endif
 
 let g:airline_symbols.space="\ua0"
@@ -458,3 +463,29 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkslategrey   ctermbg=232
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=234
+
+" Unite
+" See:
+" http://bling.github.io/blog/2013/06/02/unite-dot-vim-the-plugin-you-didnt-know-you-need/
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <C-p> :Unite file_rec/async<cr>
+nnoremap <space>/ :Unite grep:.<cr>
+" nnoremap <space>y :Unite history/yank<cr>
+nnoremap <space>s :Unite -quick-match buffer<cr>
+" nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+" nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+" nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+" nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+" nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+" nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+
+" " Custom mappings for the unite buffer
+" autocmd FileType unite call s:unite_settings()
+" function! s:unite_settings()
+"   " Play nice with supertab
+"   let b:SuperTabDisabled=1
+"   " Enable navigation with control-j and control-k in insert mode
+"   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+"   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+" endfunction
