@@ -47,7 +47,7 @@ set wildmode=list:full,full
 
 " Highlight line and column
 set cursorline
-" set cursorcolumn
+set cursorcolumn
 
 " Highlight 80th column
 " set colorcolumn=80
@@ -491,3 +491,6 @@ nnoremap <space>s :Unite -quick-match buffer<cr>
 "   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
 "   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 " endfunction
+
+" youcompleteme
+highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
