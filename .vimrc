@@ -59,7 +59,9 @@ fu! ToggleCurline ()
     endif
 endfunction
 
-map <silent><leader>l :call ToggleCurline()<CR>
+" map <silent><leader>c :call ToggleCurline()<CR>
+nnoremap <leader>c :call ToggleCurline()<CR>
+
 
 " Highlight 80th column
 " set colorcolumn=80
@@ -259,7 +261,7 @@ let maplocalleader = "\\"
 nnoremap <leader>f :w<CR>
 nnoremap <leader>noh :noh<CR>
 nnoremap <leader>b :bd<CR>
-nnoremap <leader>c :
+" nnoremap <leader>c :
 " nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 " nnoremap <leader>y "+y
@@ -275,9 +277,9 @@ nmap <leader>p "*p
 vmap <leader>p "*p
 
 " Window management
-nnoremap <leader>t :tabnew 
-nnoremap <leader>h :sp 
-nnoremap <leader>v :vsplit 
+nnoremap <leader>t :tabnew
+nnoremap <leader>h :sp
+nnoremap <leader>v :vsplit
 nnoremap <leader>w <C-w>
 
 "split navigations
