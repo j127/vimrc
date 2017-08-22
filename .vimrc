@@ -75,7 +75,8 @@ set matchtime=4
 
 " Scroll offset keeps the cursor closer to the middle of the editor.
 " so=7 will start scrolling 7 lines from the top or bottom.
-set so=2
+" This was removed, because it causes problems with the background color
+" set so=2
 
 " Colors and Fonts
 " Enable truecolors
@@ -86,6 +87,12 @@ if has("gui_running")
     colorscheme bclear
 else
     colorscheme desert
+endif
+
+if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    set t_ut=
 endif
 
 set guifont=Inconsolata\ for\ Powerline\ 15
