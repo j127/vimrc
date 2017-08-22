@@ -404,6 +404,34 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'bronson/vim-trailing-whitespace'
 call plug#end()
 
+" Colors and Fonts -- colorscheme should be loaded after Plug.
+" Enable truecolors
+set termguicolors
+if has("gui_running")
+    " TODO: figure out why this dashed name isn't loading the theme.
+    " colorscheme colorsbox-material
+    colorscheme bclear
+else
+    colorscheme twilight256
+endif
+
+if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    set t_ut=
+endif
+
+set guifont=Inconsolata\ for\ Powerline\ 15
+
+set t_Co=256
+if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
+endif
+
+
 """""""""""""""""""""""""""
 " Plugin Config
 """""""""""""""""""""""""""
@@ -490,31 +518,4 @@ nnoremap <space>s :Unite -quick-match buffer<cr>
 " youcompleteme
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
-
-" Colors and Fonts -- colorscheme should be loaded after Plug.
-" Enable truecolors
-set termguicolors
-if has("gui_running")
-    " TODO: figure out why this dashed name isn't loading the theme.
-    " colorscheme colorsbox-material
-    colorscheme bclear
-else
-    colorscheme twilight256
-endif
-
-if &term =~ '256color'
-    " disable Background Color Erase (BCE) so that color schemes
-    " render properly when inside 256-color tmux and GNU screen.
-    set t_ut=
-endif
-
-set guifont=Inconsolata\ for\ Powerline\ 15
-
-set t_Co=256
-if &term =~ '256color'
-    " disable Background Color Erase (BCE) so that color schemes
-    " render properly when inside 256-color tmux and GNU screen.
-    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-    set t_ut=
-endif
 
