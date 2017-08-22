@@ -45,22 +45,23 @@ set number
 set wildmenu
 set wildmode=list:full,full
 
+" Isn't toggling correctly
 " Highlight line and column
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 
-fu! ToggleCurline ()
-    if &cursorline && &cursorcolumn
-        set nocursorline
-        set nocursorcolumn
-    else
-        set cursorline
-        set cursorcolumn
-    endif
-endfunction
+" fu! ToggleCurline ()
+"     if &cursorline && &cursorcolumn
+"         set nocursorline
+"         set nocursorcolumn
+"     else
+"         set cursorline
+"         set cursorcolumn
+"     endif
+" endfunction
 
 " map <silent><leader>c :call ToggleCurline()<CR>
-nnoremap <leader>c :call ToggleCurline()<CR>
+" nnoremap <leader>c :call ToggleCurline()<CR>
 
 
 " Highlight 80th column
@@ -77,33 +78,6 @@ set matchtime=4
 " so=7 will start scrolling 7 lines from the top or bottom.
 " This was removed, because it causes problems with the background color
 " set so=2
-
-" Colors and Fonts
-" Enable truecolors
-set termguicolors
-if has("gui_running")
-    " TODO: figure out why this dashed name isn't loading the theme.
-    " colorscheme colorsbox-material
-    colorscheme bclear
-else
-    colorscheme desert
-endif
-
-if &term =~ '256color'
-    " disable Background Color Erase (BCE) so that color schemes
-    " render properly when inside 256-color tmux and GNU screen.
-    set t_ut=
-endif
-
-set guifont=Inconsolata\ for\ Powerline\ 15
-
-set t_Co=256
-if &term =~ '256color'
-    " disable Background Color Erase (BCE) so that color schemes
-    " render properly when inside 256-color tmux and GNU screen.
-    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-    set t_ut=
-endif
 
 " Enable mouse support
 set mouse=a
@@ -482,10 +456,10 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
 
 " Indent guides
-let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray21   ctermbg=232
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray17 ctermbg=234
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray21 ctermbg=232
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray26 ctermbg=234
 
 " Unite
 " See:
@@ -515,3 +489,32 @@ nnoremap <space>s :Unite -quick-match buffer<cr>
 
 " youcompleteme
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+
+
+" Colors and Fonts -- colorscheme should be loaded after Plug.
+" Enable truecolors
+set termguicolors
+if has("gui_running")
+    " TODO: figure out why this dashed name isn't loading the theme.
+    " colorscheme colorsbox-material
+    colorscheme bclear
+else
+    colorscheme twilight256
+endif
+
+if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    set t_ut=
+endif
+
+set guifont=Inconsolata\ for\ Powerline\ 15
+
+set t_Co=256
+if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
+endif
+
