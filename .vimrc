@@ -258,9 +258,9 @@ nmap <leader>p "*p
 vmap <leader>p "*p
 
 " Window management
-nnoremap <leader>t :tabnew
-nnoremap <leader>h :sp
-nnoremap <leader>v :vsplit
+nnoremap <leader>t :tabnew 
+nnoremap <leader>h :sp 
+nnoremap <leader>v :vsplit 
 nnoremap <leader>w <C-w>
 
 "split navigations
@@ -376,6 +376,8 @@ Plug 'posva/vim-vue'
 
 " Plug 'lambdatoast/elm.vim'
 Plug 'ElmCast/elm-vim'
+Plug 'w0rp/ale'
+Plug 'calebsmith/vim-lambdify'
 
 " Markdown
 " Plug 'tpope/vim-markdown'
@@ -517,5 +519,8 @@ nnoremap <space>s :Unite -quick-match buffer<cr>
 
 " youcompleteme
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
-
+" Elm integration
+let g:ycm_semantic_triggers = {
+     \ 'elm' : ['.'],
+     \}
 
