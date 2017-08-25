@@ -399,7 +399,7 @@ Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim'
 " Plug 'mhinz/vim-signify'
-" Plug 'junegunn/vim-easy-align' " visual mode then `ga`
+Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 " Plug 'dhruvasagar/vim-table-mode'
 " Plug 'jceb/vim-orgmode'
 " Plug 'tpope/vim-speeddating'
@@ -415,12 +415,6 @@ if has("gui_running")
     colorscheme bclear
 else
     colorscheme twilight256
-endif
-
-if &term =~ '256color'
-    " disable Background Color Erase (BCE) so that color schemes
-    " render properly when inside 256-color tmux and GNU screen.
-    set t_ut=
 endif
 
 set guifont=Inconsolata\ for\ Powerline\ 15
@@ -524,3 +518,9 @@ let g:ycm_semantic_triggers = {
      \ 'elm' : ['.'],
      \}
 
+" Easy Align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
