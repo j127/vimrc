@@ -395,9 +395,9 @@ Plug 'calebsmith/vim-lambdify'
 Plug 'Valloric/YouCompleteMe'
 " Plug 'scrooloose/syntastic'
 " Plug 'jmcomets/vim-pony'  " Django
-" Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 " Plug 'terryma/vim-multiple-cursors'
-" Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 " Plug 'mhinz/vim-signify'
 " Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 " Plug 'dhruvasagar/vim-table-mode'
