@@ -1,3 +1,5 @@
+" More ideas: https://dougblack.io/words/a-good-vimrc.html
+"
 " Python with virtualenv support
 " py << EOF
 " import os
@@ -86,7 +88,8 @@ set mouse=a
 set lazyredraw
 
 " Force redraw
-map <silent> <leader>r :redraw!<CR>
+" map <silent> <leader>r :redraw!<CR>
+nnoremap <leader>r :redraw!<CR>
 
 " Turn of error sounds
 set noerrorbells
@@ -131,8 +134,9 @@ set shiftwidth=4
 set tabstop=4
 set expandtab " Spaces instead of tabs
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
-" autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
-" autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType eruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType elixir setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 """""""""""""""""""""""""""
@@ -150,7 +154,8 @@ set nojoinspaces
 
 set ai  " Auto indent
 set si  " Smart indent
-set wrap  " Wrap lines
+set wrap  " Soft-wrap lines
+set textwidth=0 wrapmargin=0 " Don't automatically hard-wrap lines.
 
 " Don't use the following line with nvim, since it already uses utf8.
 set encoding=utf8
@@ -203,7 +208,7 @@ augroup END
 
 " Use indentation for folds
 " toggle: za, close all: zM, open all: zR
-" set foldmethod=indent
+set foldmethod=indent
 " set foldnestmax=5
 " set foldlevelstart=99
 " set foldcolumn=0
@@ -240,7 +245,7 @@ let g:mapleader = "\<Space>"
 let maplocalleader = "\\"
 
 nnoremap <leader>f :w<CR>
-nnoremap <leader>noh :noh<CR>
+nnoremap <leader>n :noh<CR>
 nnoremap <leader>b :bd<CR>
 " nnoremap <leader>c :
 " nnoremap <leader>p "+p
@@ -284,6 +289,12 @@ noremap <c-k> <c-w>k
 noremap <c-j> <c-w>j
 noremap <c-l> <c-w>l
 
+" Arrow keys resize splits
+nnoremap <Up>    :resize +2<CR>
+nnoremap <Down>  :resize -2<CR>
+nnoremap <Left>  :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
+
 "--------------------------
 " Directories
 "--------------------------
@@ -319,6 +330,9 @@ Plug 'epeli/slimux'
 " Plug 'benekastah/neomake'
 " Plug 'moll/vim-bbye'
 
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
+
 " <Leader>ig to turn on indent guides
 Plug 'nathanaelkane/vim-indent-guides'
 
@@ -327,6 +341,12 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tmhedberg/matchit'
 
 Plug 'vim-scripts/gitignore'
+
+" ctags
+" ctrl-click on something to go to definition, and ctrl-o to return
+" visually selecting the name and c-] should also jump to the definition.
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 
 " Git
 " Plug 'tpope/vim-fugitive'
@@ -377,7 +397,11 @@ Plug 'posva/vim-vue'
 " Plug 'lambdatoast/elm.vim'
 Plug 'ElmCast/elm-vim'
 Plug 'w0rp/ale'
-Plug 'calebsmith/vim-lambdify'
+" Too annoying for JS, but otherwise good
+" Plug 'calebsmith/vim-lambdify'
+
+" Testing
+Plug 'janko-m/vim-test'
 
 " Markdown
 " Plug 'tpope/vim-markdown'
@@ -401,9 +425,16 @@ Plug 'mattn/emmet-vim'
 " Plug 'mhinz/vim-signify'
 Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 " Plug 'dhruvasagar/vim-table-mode'
-" Plug 'jceb/vim-orgmode'
-" Plug 'tpope/vim-speeddating'
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
 Plug 'bronson/vim-trailing-whitespace'
+
+Plug 'editorconfig/editorconfig-vim'
+
+" Rails
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-bundler'
 call plug#end()
 
 " Colors and Fonts -- colorscheme should be loaded after Plug.
@@ -478,6 +509,7 @@ let g:rainbow_active = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " Indent guides
 " let g:indent_guides_enable_on_vim_startup = 1
@@ -524,3 +556,21 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" Emmet
+" Tab trigger
+" https://coderwall.com/p/_uhrxw/using-tab-key-as-abbreviation-expander-on-emmet-vim
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+" Taglist
+nmap <F8> :TagbarToggle<CR>
+
+" vim-test
+" https://github.com/janko-m/vim-test
+" This may need more configuration to work correctly.
+let test#strategy = "neovim"
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+" nmap <silent> <leader>a :TestSuite<CR>
+" nmap <silent> <leader>l :TestLast<CR>
+" nmap <silent> <leader>g :TestVisit<CR>
