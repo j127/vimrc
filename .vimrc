@@ -139,6 +139,8 @@ autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType elixir setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
+autocmd BufNewFile,BufRead *.js.es6 set syntax=javascript
+
 """""""""""""""""""""""""""
 " Text Formatting & Editing
 """""""""""""""""""""""""""
@@ -208,10 +210,11 @@ augroup END
 
 " Use indentation for folds
 " toggle: za, close all: zM, open all: zR
-set foldmethod=indent
+" fold (zf), open (zo), close (zc), delete (zd), etc.
+set foldmethod=manual
+set foldcolumn=1  " non-zero value turns on the fold column in the gutter
 " set foldnestmax=5
 " set foldlevelstart=99
-" set foldcolumn=0
 
 """""""""""""""""""""""""""
 " Backups
@@ -244,7 +247,7 @@ hi clear Conceal
 let g:mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-nnoremap <leader>f :w<CR>
+" nnoremap <leader>f :w<CR> " this is now used for Ranger
 nnoremap <leader>n :noh<CR>
 nnoremap <leader>b :bd<CR>
 " nnoremap <leader>c :
@@ -357,7 +360,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'majutsushi/tagbar'
 " Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
-Plug 'Shougo/unite.vim'
+" Plug 'Shougo/unite.vim'
+Plug 'Shougo/denite.nvim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'scrooloose/nerdtree'
 
@@ -382,12 +386,16 @@ Plug 'tpope/vim-surround'
 " Plug 'christoomey/vim-tmux-navigator'
 
 " Haskell
-" Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-" Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
-" Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
-" Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-" Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
-" Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
+Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
+Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
+
+" Ranger file manager
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 
 " Vue.js
 Plug 'posva/vim-vue'
@@ -425,7 +433,7 @@ Plug 'mattn/emmet-vim'
 " Plug 'mhinz/vim-signify'
 Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 " Plug 'dhruvasagar/vim-table-mode'
-Plug 'jceb/vim-orgmode'
+" Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'bronson/vim-trailing-whitespace'
 
@@ -435,6 +443,32 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-bundler'
+
+Plug 'mustache/vim-mustache-handlebars'
+
+" nand2tetris
+Plug 'sevko/vim-nand2tetris-syntax'
+
+" Ghost text -- edit Firefox text areas
+Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+
+"JavaScript
+
+" Typescript
+" ctrl-] and ctrl-t to go to definitions and back
+" ctrl-^ to find where the symbol is referenced
+" :TsuTypeDefinition - navigate to the location where the type of the symbol is defined
+" :TsuSearch {keyword} - list locations of keyword
+" :TsuGeterr
+" :TsuGeterrProject
+" :TsuQuickFix
+" :TsuReloadProject -- after changing tsconfig.json file, if ts files are open at the time.
+" :TsuRenameSymbol -- rename identifier under the cursor
+Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/vim-js-pretty-template'
+" Plug 'jason0x43/vim-js-indent' " for indenting features in JS/TS
+" More typescript plugins: https://github.com/Quramy/tsuquyomi#relevant-plugins
 call plug#end()
 
 " Colors and Fonts -- colorscheme should be loaded after Plug.
@@ -445,7 +479,8 @@ if has("gui_running")
     " colorscheme colorsbox-material
     colorscheme bclear
 else
-    colorscheme twilight256
+    " colorscheme twilight256
+    colorscheme colorsbox-material
 endif
 
 set guifont=Inconsolata\ for\ Powerline\ 15
@@ -520,12 +555,12 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray26 ctermbg=234
 " Unite
 " See:
 " http://bling.github.io/blog/2013/06/02/unite-dot-vim-the-plugin-you-didnt-know-you-need/
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <C-p> :Unite file_rec/async<cr>
-nnoremap <space>/ :Unite grep:.<cr>
+" let g:unite_source_history_yank_enable = 1
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" nnoremap <C-p> :Unite file_rec/async<cr>
+" nnoremap <space>/ :Unite grep:.<cr>
 " nnoremap <space>y :Unite history/yank<cr>
-nnoremap <space>s :Unite -quick-match buffer<cr>
+" nnoremap <space>s :Unite -quick-match buffer<cr>
 " nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
 " nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
 " nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
@@ -574,3 +609,10 @@ nmap <silent> <leader>T :TestFile<CR>
 " nmap <silent> <leader>a :TestSuite<CR>
 " nmap <silent> <leader>l :TestLast<CR>
 " nmap <silent> <leader>g :TestVisit<CR>
+
+" Denite
+nnoremap <C-p> :<C-u>Denite file_rec<CR>
+
+" tsuquyomi
+" Tooltoops
+autocmd FileType typescript nmap <buffer> <leader>z : <C-u>echo tsuquyomi#hint()<CR>
