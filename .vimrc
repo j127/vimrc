@@ -616,3 +616,12 @@ nnoremap <C-p> :<C-u>Denite file_rec<CR>
 " tsuquyomi
 " Tooltoops
 autocmd FileType typescript nmap <buffer> <leader>z : <C-u>echo tsuquyomi#hint()<CR>
+
+" From https://stackoverflow.com/a/3691124
+function! Browser ()
+    normal yy
+    new
+    execute ".!elinks -dump " . @"
+    set nomodified
+endfunction
+nmap owp :call Browser ()<CR>
