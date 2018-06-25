@@ -42,6 +42,7 @@ set laststatus=2
 set cmdheight=1
 
 set number
+syntax enable
 
 " Auto-completion for command mode
 set wildmenu
@@ -89,7 +90,7 @@ set lazyredraw
 
 " Force redraw
 " map <silent> <leader>r :redraw!<CR>
-nnoremap <leader>r :redraw!<CR>
+" nnoremap <leader>r :redraw!<CR>
 
 " Turn of error sounds
 set noerrorbells
@@ -97,7 +98,7 @@ set vb t_vb=
 
 
 " Open file prompt with current path
-nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+" nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 
 """""""""""""""""""""""""""
 " Buffers, Windows, Tabs
@@ -324,6 +325,7 @@ Plug 'mkarmona/colorsbox'
 " Plug 'keith/parsec.vim'
 " Plug 'cseelus/vim-colors-lucid'
 Plug 'flazz/vim-colorschemes'
+Plug 'jacoborus/tender.vim'
 
 " Support bundles
 Plug 'epeli/slimux'
@@ -469,6 +471,9 @@ Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/vim-js-pretty-template'
 " Plug 'jason0x43/vim-js-indent' " for indenting features in JS/TS
 " More typescript plugins: https://github.com/Quramy/tsuquyomi#relevant-plugins
+
+" This should always be last
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " Colors and Fonts -- colorscheme should be loaded after Plug.
@@ -477,10 +482,12 @@ set termguicolors
 if has("gui_running")
     " TODO: figure out why this dashed name isn't loading the theme.
     " colorscheme colorsbox-material
-    colorscheme bclear
+    " colorscheme bclear
+    colorscheme tender
 else
     " colorscheme twilight256
-    colorscheme colorsbox-material
+    " colorscheme colorsbox-material
+    colorscheme tender
 endif
 
 set guifont=Inconsolata\ for\ Powerline\ 15
@@ -505,7 +512,8 @@ endif
 set laststatus=2
 
 let g:airline_powerline_fonts=1
-let g:airline_theme='sol'
+" let g:airline_theme='sol'
+let g:airline_theme='tender'
 
 " Use powerline fonts for airline
 if !exists('g:airline_symbols')
