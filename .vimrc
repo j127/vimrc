@@ -48,6 +48,10 @@ syntax enable
 set wildmenu
 set wildmode=list:full,full
 
+" Ignore these
+set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*,__pycache__,node_modules,tags.*,.vscode,.idea
+
+
 " Isn't toggling correctly
 " Highlight line and column
 " set cursorline
@@ -549,10 +553,15 @@ vmap <C-c><C-b> :SlimuxREPLSendBuffer<CR>
 let g:rainbow_active = 1
 
 " Nerdtree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" I think the next two lines auto-opens it(?)
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+
+" Keep certain files out of nerdtree (see wildignore settings)
+let NERDTreeRespectWildIgnore=1
 
 " Indent guides
 " let g:indent_guides_enable_on_vim_startup = 1
