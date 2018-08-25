@@ -44,13 +44,41 @@ set cmdheight=1
 set number
 syntax enable
 
+" Remove toolbar in gvim
+set guioptions-=T
+
 " Auto-completion for command mode
 set wildmenu
 set wildmode=list:full,full
 
 " Ignore these
-set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*,__pycache__,node_modules,tags.*,.vscode,.idea
+set wildignore+=*.pyc
+set wildignore+=*.o
+set wildignore+=*~
+set wildignore+=*.so
+set wildignore+=*.obj
+set wildignore+=*.svn
+set wildignore+=*.swp
+set wildignore+=*.class
+set wildignore+=*.hg
+set wildignore+=*.DS_Store
+set wildignore+=*.min.*
+set wildignore+=__pycache__/*
+set wildignore+=*/node_modules/*
+set wildignore+=*/bower_components/*
+set wildignore+=tags.*
+set wildignore+=tags
+set wildignore+=.vscode/*
+set wildignore+=.idea/*
+set wildignore+=*/tmp/*
+set wildignore+=*/build/*
+set wildignore+=*/dist/*
+set wildignore+=*.zip
+set wildignore+=*.pdf
+set wildignore+=*.so
 
+" This should show non-printing characters but may not be working.
+set list lcs=tab:>-,trail:\.,extends:»,precedes:«,nbsp:%
 
 " Isn't toggling correctly
 " Highlight line and column
@@ -93,8 +121,8 @@ set mouse=a
 set lazyredraw
 
 " Force redraw
-" map <silent> <leader>r :redraw!<CR>
-" nnoremap <leader>r :redraw!<CR>
+map <silent> <leader>r :redraw!<CR>
+nnoremap <leader>r :redraw!<CR>
 
 " Turn of error sounds
 set noerrorbells
@@ -271,7 +299,8 @@ nmap <leader>p "*p
 vmap <leader>p "*p
 
 " Window management
-nnoremap <leader>t :tabnew 
+" t is now for showing TODO items
+" nnoremap <leader>t :tabnew 
 nnoremap <leader>h :sp 
 nnoremap <leader>v :vsplit 
 nnoremap <leader>w <C-w>
@@ -338,6 +367,9 @@ Plug 'epeli/slimux'
 " Plug 'ervandew/supertab'
 " Plug 'benekastah/neomake'
 " Plug 'moll/vim-bbye'
+
+" <leader>t to show TODOs
+Plug 'vim-scripts/TaskList.vim'
 
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
@@ -457,7 +489,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'sevko/vim-nand2tetris-syntax'
 
 " Ghost text -- edit Firefox text areas
-Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+" Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 
 "JavaScript
 
@@ -484,15 +516,22 @@ call plug#end()
 " Colors and Fonts -- colorscheme should be loaded after Plug.
 " Enable truecolors
 set termguicolors
+set background=dark
 if has("gui_running")
     " TODO: figure out why this dashed name isn't loading the theme.
     " colorscheme colorsbox-material
     " colorscheme bclear
     colorscheme tender
 else
+    " various themes that are good, depending on mood and lighting
     " colorscheme twilight256
     " colorscheme colorsbox-material
-    colorscheme tender
+    " colorscheme tender
+    " colorscheme desert
+    " colorscheme codeschool
+    colorscheme gruvbox
+    " colorscheme onedark
+    " colorscheme distinguished
 endif
 
 set guifont=Inconsolata\ for\ Powerline\ 15
@@ -629,7 +668,7 @@ nmap <silent> <leader>T :TestFile<CR>
 " nmap <silent> <leader>g :TestVisit<CR>
 
 " Denite
-nnoremap <C-p> :<C-u>Denite file_rec<CR>
+" nnoremap <C-p> :<C-u>Denite file_rec<CR>
 
 " tsuquyomi
 " Tooltoops
@@ -643,3 +682,67 @@ function! Browser ()
     set nomodified
 endfunction
 nmap owp :call Browser ()<CR>
+
+" ALE experiments from
+" https://github.com/sodiumjoe/dotfiles/blob/master/vimrc#L288 
+" let g:ale_sign_error = '⨉'
+" let g:ale_sign_warning = '⚠'
+" let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '']
+" let g:ale_lint_on_text_changed = 0
+" let g:ale_lint_on_save = 1
+" let g:ale_lint_on_enter = 1
+" " cycle through location list
+" nmap <silent> <leader>n <Plug>(ale_next_wrap)
+" nmap <silent> <leader>p <Plug>(ale_previous_wrap)
+
+" Denite ideas from https://github.com/sodiumjoe/dotfiles/blob/master/vimrc#L242 and elsewhere.
+" reset 50% winheight on window resize
+augroup deniteresize
+  autocmd!
+  autocmd VimResized,VimEnter * call denite#custom#option('default',
+        \'winheight', winheight(0) / 2)
+augroup end
+
+call denite#custom#option('default', {
+      \ 'prompt': '❯'
+      \ })
+
+call denite#custom#var('file_rec', 'command',
+      \ ['rg', '--files', '--glob', '!.git', ''])
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts',
+      \ ['--hidden', '--vimgrep', '--no-heading', '-S'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>',
+      \'noremap')
+call denite#custom#map('normal', '<Esc>', '<NOP>',
+      \'noremap')
+call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>',
+      \'noremap')
+call denite#custom#map('normal', '<C-v>', '<denite:do_action:vsplit>',
+      \'noremap')
+call denite#custom#map('insert', '<C-h>', '<denite:do_action:split>',
+      \'noremap')
+call denite#custom#map('normal', '<C-h>', '<denite:do_action:split>',
+      \'noremap')
+call denite#custom#map('normal', 'dw', '<denite:delete_word_after_caret>',
+      \'noremap')
+
+call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+
+nnoremap <C-p> :<C-u>Denite file_rec<CR>
+nnoremap <leader>s :<C-u>Denite buffer<CR>
+nnoremap <leader><leader>s :<C-u>DeniteBufferDir buffer<CR>
+nnoremap <leader>8 :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
+nnoremap <leader>/ :<C-u>Denite grep:. -mode=normal<CR>
+nnoremap <leader><leader>/ :<C-u>DeniteBufferDir grep:. -mode=normal<CR>
+nnoremap <leader>d :<C-u>DeniteBufferDir file_rec<CR>
+nnoremap <leader>r :<C-u>Denite -resume -cursor-pos=+1<CR>
+
+hi link deniteMatchedChar Special
