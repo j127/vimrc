@@ -731,9 +731,7 @@ call denite#custom#map('normal', '<C-h>', '<denite:do_action:split>',
 call denite#custom#map('normal', 'dw', '<denite:delete_word_after_caret>',
       \'noremap')
 
-call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
 call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
 
 nnoremap <C-p> :<C-u>Denite file_rec<CR>
@@ -743,6 +741,33 @@ nnoremap <leader>8 :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
 nnoremap <leader>/ :<C-u>Denite grep:. -mode=normal<CR>
 nnoremap <leader><leader>/ :<C-u>DeniteBufferDir grep:. -mode=normal<CR>
 nnoremap <leader>d :<C-u>DeniteBufferDir file_rec<CR>
-nnoremap <leader>r :<C-u>Denite -resume -cursor-pos=+1<CR>
+nnoremap <leader><leader>r :<C-u>Denite -resume -cursor-pos=+1<CR>
+nnoremap <leader>o :<C-u>Denite menu<CR>
 
 hi link deniteMatchedChar Special
+
+" Add custom menus
+let s:menus = {}
+
+let s:menus.config_files = {
+    \ 'description': 'Edit config files'
+    \ }
+let s:menus.config_files.file_candidates = [
+    \ ['.aliases', '~/.aliases'],
+    \ ['.zshenv', '~/.zshenv'],
+    \ ['.zshrc', '~/.zshrc'],
+    \ ['.vimrc', '~/.vimrc'],
+    \ ]
+
+" let s:menus.vim = {
+"     \ 'description': 'Edit Vim config files'
+"     \ }
+" let s:menus.vim.file_candidates = [
+"     \ ]
+
+" let s:menus.vim.command_candidates = [
+"     \ ['Split the window', 'vnew'],
+"     \ ['Open zsh menu', 'Denite menu:zsh'],
+"     \ ]
+
+call denite#custom#var('menu', 'menus', s:menus)
