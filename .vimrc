@@ -370,6 +370,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'luochen1990/rainbow'
 
@@ -432,7 +433,7 @@ Plug 'janko-m/vim-test'
 " Plug 'honza/vim-snippets'
 Plug 'Valloric/YouCompleteMe'
 " Plug 'scrooloose/syntastic'
-" Plug 'jmcomets/vim-pony'  " Django
+Plug 'jmcomets/vim-pony'  " Django
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim'
