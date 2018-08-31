@@ -398,9 +398,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'majutsushi/tagbar'
 " Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
-" Plug 'Shougo/unite.vim'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Shougo/deol.nvim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
@@ -508,6 +508,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/vim-js-pretty-template'
 " Plug 'jason0x43/vim-js-indent' " for indenting features in JS/TS
 " More typescript plugins: https://github.com/Quramy/tsuquyomi#relevant-plugins
+
+Plug 'mhinz/vim-startify'
 
 " This should always be last
 Plug 'ryanoasis/vim-devicons'
@@ -757,6 +759,23 @@ let s:menus.config_files.file_candidates = [
     \ ['.zshenv', '~/.zshenv'],
     \ ['.zshrc', '~/.zshrc'],
     \ ['.vimrc', '~/.vimrc'],
+    \ ['.i3conf', '~/.config/i3/config'],
+    \ ['.i3status.conf', '~/.i3status.conf'],
+    \ ['.ctags', '~/.ctags'],
+    \ ['global .gitconfig', '~/.gitconfig'],
+    \ ['global .gitignore', '~/.gitignore'],
+    \ ['.muttrc', '~/.muttrc'],
+    \ ['.npmrc', '~/.npmrc'],
+    \ ['.mongojsrc.js', '~/.mongojsrc.js'],
+    \ ['.psqlrc', '~/.psqlrc'],
+    \ ['.pgpass', '~/.pgpass'],
+    \ ['.pythonrc', '~/.pythonrc'],
+    \ ['.tmux.conf', '~/.tmux.conf'],
+    \ ['.tern-config', '~/.tern-config'],
+    \ ['.vuerc', '~/.vuerc'],
+    \ ['.xinitrc', '~/.xinitrc'],
+    \ ['.Xmodmap', '~/.Xmodmap'],
+    \ ['.taskbook.json', '~/.taskbook.json'],
     \ ]
 
 " let s:menus.vim = {
@@ -771,3 +790,41 @@ let s:menus.config_files.file_candidates = [
 "     \ ]
 
 call denite#custom#var('menu', 'menus', s:menus)
+
+" Startify
+" Replace custom quotes with some of the custom quotes and some new ones
+let g:startify_custom_header_quotes = [
+    \ ['saluton mondo'],
+    \ ['It is not dying that a man should fear, but a man should fear never having lived at all.'],
+    \ ['How one does anything is how one does everything.'],
+    \ ["If you don't finish then you're just busy, not productive."],
+    \ ['Simplicity does not precede complexity, but follows it.', '', '- Alan Perlis'],
+    \ ['Optimization hinders evolution.', '', '- Alan Perlis'],
+    \ ['It is better to have 100 functions operate on one data structure than 10 functions on 10 data structures.', '', '- Alan Perlis'],
+    \ ['There is nothing quite so useless as doing with great efficiency something that should not be done at all.', '', '- Peter Drucker'],
+    \ ["If you don't fail at least 90% of the time, you're not aiming high enough.", '', '- Alan Kay'],
+    \ ['I think a lot of new programmers like to use advanced data structures and advanced language features as a way of demonstrating their ability. I call it the lion-tamer syndrome. Such demonstrations are impressive, but unless they actually translate into real wins for the project, avoid them.', '', '- Glyn Williams'],
+    \ ['I would rather die of passion than of boredom.', '', '- Vincent Van Gogh'],
+    \ ["The computing scientist's main challenge is not to get confused by the complexities of his own making.", '', '- Edsger W. Dijkstra'],
+    \ ['A good programmer is someone who always looks both ways before crossing a one-way street.', '', '- Doug Linder'],
+    \ ['Always code as if the person who ends up maintaining your code is a violent psychopath who knows where you live.', '', '- John Woods'],
+    \ ['Unix was not designed to stop its users from doing stupid things, as that would also stop them from doing clever things.'],
+    \ ['Contrary to popular belief, Unix is user friendly. It just happens to be very selective about who it decides to make friends with.'],
+    \ ['Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.'],
+    \ ["If you don't make mistakes, you're not working on hard enough problems.", '', '- Frank Wilczek'],
+    \ ['Abstraction is not about vagueness, it is about being precise at a new semantic level.', '', '- Edsger W. Dijkstra'],
+    \ ['Almost every programming language is overrated by its practitioners.', '', '- Larry Wall'],
+    \ ['Think twice, code once.'],
+    \ ['The question of whether computers can think is like the question of whether submarines can swim.', '', '- Edsger W. Dijkstra'],
+    \ ['They did not know it was impossible, so they did it!', '', '- Mark Twain'],
+    \ ['To understand recursion, one must first understand recursion.', '', '- Stephen Hawking'],
+    \ ['Developing tolerance for imperfection is the key factor in turning chronic starters into consistent finishers.', '', '- Jon Acuff'],
+    \ ['Every great developer you know got there by solving problems they were unqualified to solve until they actually did it.', '', '- Patrick McKenzie'],
+    \ ["The average user doesn't give a damn what happens, as long as (1) it works and (2) it's fast.", '', '- Daniel J. Bernstein'],
+    \ ['Be curious. Read widely. Try new things. I think a lot of what people call intelligence boils down to curiosity.', '', '- Aaron Swartz'],
+    \ ['What one programmer can do in one month, two programmers can do in two months.', '', '- Frederick P. Brooks'],
+\ ]
+
+" Deol
+" Close it (doesn't seem to work, at least in Vim 8)
+tnoremap <ESC> <C-\><C-n>
