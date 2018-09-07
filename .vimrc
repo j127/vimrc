@@ -399,6 +399,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'majutsushi/tagbar'
 " Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
 Plug 'Shougo/denite.nvim'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Shougo/deol.nvim'
 Plug 'scrooloose/nerdtree'
@@ -765,6 +766,7 @@ let s:menus.config_files.file_candidates = [
     \ ['global .gitconfig', '~/.gitconfig'],
     \ ['global .gitignore', '~/.gitignore'],
     \ ['.muttrc', '~/.muttrc'],
+    \ ['.notmuch-config', '~/.notmuch-config'],
     \ ['.npmrc', '~/.npmrc'],
     \ ['.mongojsrc.js', '~/.mongojsrc.js'],
     \ ['.psqlrc', '~/.psqlrc'],
@@ -828,3 +830,6 @@ let g:startify_custom_header_quotes = [
 " Deol
 " Close it (doesn't seem to work, at least in Vim 8)
 tnoremap <ESC> <C-\><C-n>
+
+" whichkey
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
