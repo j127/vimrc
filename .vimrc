@@ -433,6 +433,10 @@ Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
 Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 
+" Purescript
+Plug 'frigoeu/psc-ide-vim'
+Plug 'purescript-contrib/purescript-vim'
+
 " Ranger file manager
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
@@ -766,6 +770,7 @@ let s:menus.config_files.file_candidates = [
     \ ['global .gitconfig', '~/.gitconfig'],
     \ ['global .gitignore', '~/.gitignore'],
     \ ['.muttrc', '~/.muttrc'],
+    \ ['mailcap', '~/.mutt/mailcap'],
     \ ['.notmuch-config', '~/.notmuch-config'],
     \ ['.npmrc', '~/.npmrc'],
     \ ['.mongojsrc.js', '~/.mongojsrc.js'],
@@ -825,6 +830,7 @@ let g:startify_custom_header_quotes = [
     \ ["The average user doesn't give a damn what happens, as long as (1) it works and (2) it's fast.", '', '- Daniel J. Bernstein'],
     \ ['Be curious. Read widely. Try new things. I think a lot of what people call intelligence boils down to curiosity.', '', '- Aaron Swartz'],
     \ ['What one programmer can do in one month, two programmers can do in two months.', '', '- Frederick P. Brooks'],
+    \ ['There’s no such thing as a schemaless system. There are systems where you write your schema down and ones where you don’t.', '', '- Rich Hickey'],
 \ ]
 
 " Deol
