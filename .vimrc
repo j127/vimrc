@@ -369,7 +369,7 @@ Plug 'epeli/slimux'
 " Plug 'moll/vim-bbye'
 
 " <leader>t to show TODOs
-Plug 'vim-scripts/TaskList.vim'
+" Plug 'vim-scripts/TaskList.vim'
 
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
