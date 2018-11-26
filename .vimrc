@@ -82,8 +82,8 @@ set list lcs=tab:>-,trail:\.,extends:»,precedes:«,nbsp:%
 
 " Isn't toggling correctly
 " Highlight line and column
-" set cursorline
-" set cursorcolumn
+set cursorline
+set cursorcolumn
 
 " fu! ToggleCurline ()
 "     if &cursorline && &cursorcolumn
@@ -100,7 +100,7 @@ set list lcs=tab:>-,trail:\.,extends:»,precedes:«,nbsp:%
 
 
 " Highlight 80th column
-" set colorcolumn=80
+set colorcolumn=80
 
 " For more info on matching, including matchit.vim, see:
 " http://vim.wikia.com/wiki/Moving_to_matching_braces
@@ -291,12 +291,12 @@ nnoremap <leader>s :so ~/.vimrc<CR>
 nnoremap <leader>g :gui<CR>
 
 " Copy and paste to os clipboard
-nmap <leader>y "*y
-vmap <leader>y "*y
-nmap <leader>d "*d
-vmap <leader>d "*d
-nmap <leader>p "*p
-vmap <leader>p "*p
+nmap <leader>y "+y
+vmap <leader>y "+y
+nmap <leader>d "+d
+vmap <leader>d "+d
+nmap <leader>p "+p
+vmap <leader>p "+p
 
 " Window management
 " t is now for showing TODO items
