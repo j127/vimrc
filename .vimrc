@@ -31,6 +31,10 @@
 set nocompatible " Vim settings rather than Vi. Must appear first
 set history=999
 
+" This is just to prevent an error with nerdtree-git-plugin in neovim
+" https://github.com/Xuyuanp/nerdtree-git-plugin
+set shell=sh
+
 if has("gui_running")
     set go-=T  " Remove toolbar
 endif
@@ -70,8 +74,8 @@ set wildignore+=tags.*
 set wildignore+=tags
 set wildignore+=.vscode/*
 set wildignore+=.idea/*
-set wildignore+=*/tmp/*
-set wildignore+=*/build/*
+" set wildignore+=*/tmp/*
+" set wildignore+=*/build/*
 set wildignore+=*/dist/*
 set wildignore+=*.zip
 set wildignore+=*.pdf
@@ -169,8 +173,9 @@ set expandtab " Spaces instead of tabs
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType eruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType elixir setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType go setlocal shiftwidth=8 tabstop=8 softtabstop=8 noexpandtab
+autocmd FileType vue syntax sync fromstart
 
 autocmd BufNewFile,BufRead *.js.es6 set syntax=javascript
 
@@ -455,6 +460,9 @@ Plug 'w0rp/ale'
 " Testing
 Plug 'janko-m/vim-test'
 
+" golang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 " Markdown
 " Plug 'tpope/vim-markdown'
 
@@ -536,7 +544,9 @@ else
     " colorscheme tender
     " colorscheme desert
     " colorscheme codeschool
+    " colorscheme badwolf
     colorscheme gruvbox
+    " colorscheme quantum
     " colorscheme onedark
     " colorscheme distinguished
 endif
@@ -831,6 +841,7 @@ let g:startify_custom_header_quotes = [
     \ ['Be curious. Read widely. Try new things. I think a lot of what people call intelligence boils down to curiosity.', '', '- Aaron Swartz'],
     \ ['What one programmer can do in one month, two programmers can do in two months.', '', '- Frederick P. Brooks'],
     \ ['There’s no such thing as a schemaless system. There are systems where you write your schema down and ones where you don’t.', '', '- Rich Hickey'],
+    \ ['[monads] are generated, so to speak, by continual fulgurations of the Divinity', '', '-  Gottfried Leibniz'],
 \ ]
 
 " Deol
@@ -839,3 +850,7 @@ tnoremap <ESC> <C-\><C-n>
 
 " whichkey
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+" golang
+" let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+" let g:go_metalinter_autosave = 1
