@@ -156,6 +156,13 @@ nnoremap <leader>bn :bn<cr>
 " close every window in current tabview but the current
 nnoremap <leader>bo <c-w>o
 
+" convert double quotes to single quotes on the current line or in a visual
+" selection
+nnoremap <leader>' :s/"/'/g<cr>:noh<cr>
+nnoremap <leader><leader>' :s/"/'/gc<cr>:noh<cr>
+vnoremap <leader>' :s/"/'/g<cr>:noh<cr>
+vnoremap <leader><leader>' :s/"/'/gc<cr>:noh<cr>
+
 """""""""""""""""""""""""""
 " Indentation
 """""""""""""""""""""""""""
@@ -541,11 +548,11 @@ else
     " various themes that are good, depending on mood and lighting
     " colorscheme twilight256
     " colorscheme colorsbox-material
-    " colorscheme tender
+    colorscheme tender
     " colorscheme desert
     " colorscheme codeschool
     " colorscheme badwolf
-    colorscheme gruvbox
+    " colorscheme gruvbox
     " colorscheme quantum
     " colorscheme onedark
     " colorscheme distinguished
