@@ -163,6 +163,8 @@ nnoremap <leader><leader>' :s/"/'/gc<cr>:noh<cr>
 vnoremap <leader>' :s/"/'/g<cr>:noh<cr>
 vnoremap <leader><leader>' :s/"/'/gc<cr>:noh<cr>
 
+nnoremap <leader><leader>v $v0
+
 """""""""""""""""""""""""""
 " Indentation
 """""""""""""""""""""""""""
@@ -288,6 +290,7 @@ hi clear Conceal
 " Keybindings
 """""""""""""""""""""""""""
 
+
 " See Plugin Settings for additional keybindings
 let g:mapleader = "\<Space>"
 let maplocalleader = "\\"
@@ -344,6 +347,19 @@ nnoremap <Down>  :resize -2<CR>
 nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
 
+nnoremap <tab> >>
+nnoremap <S-tab> <<
+vnoremap <tab> >
+vnoremap <S-tab> <
+
+" ctrl-backspace to delete w
+" I don't know why it isn't working in nvim
+"https://vim.fandom.com/wiki/Map_Ctrl-Backspace_to_delete_previous_word
+" inoremap <C-w> <C-\><C-o>dB
+" inoremap <C-BS> <C-\><C-o>db
+" This doesn't work either:
+" noremap! <C-BS> <C-w>
+" noremap! <C-h> <C-w>
 "--------------------------
 " Directories
 "--------------------------
@@ -548,11 +564,11 @@ else
     " various themes that are good, depending on mood and lighting
     " colorscheme twilight256
     " colorscheme colorsbox-material
-    colorscheme tender
+    " colorscheme tender
     " colorscheme desert
     " colorscheme codeschool
     " colorscheme badwolf
-    " colorscheme gruvbox
+    colorscheme gruvbox
     " colorscheme quantum
     " colorscheme onedark
     " colorscheme distinguished
