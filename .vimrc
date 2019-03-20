@@ -163,7 +163,12 @@ nnoremap <leader><leader>' :s/"/'/gc<cr>:noh<cr>
 vnoremap <leader>' :s/"/'/g<cr>:noh<cr>
 vnoremap <leader><leader>' :s/"/'/gc<cr>:noh<cr>
 
+" visually select line without the newline on the end
 nnoremap <leader><leader>v $v0
+
+" move to the char after the target char: replacing things like f>l
+"nnoremap <leader>f
+
 
 """""""""""""""""""""""""""
 " Indentation
@@ -877,3 +882,7 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 " golang
 " let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 " let g:go_metalinter_autosave = 1
+
+" Ranger
+let g:ranger_map_keys = 0
+map <leader>r :Ranger<CR>
