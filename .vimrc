@@ -504,8 +504,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Tab completion features. NOT NEEDED IF USING YOUCOMPLETEME.
 " Plug 'ervandew/supertab'
 " Plug 'honza/vim-snippets'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " Plug 'scrooloose/syntastic'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'jmcomets/vim-pony'  " Django
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 " Plug 'terryma/vim-multiple-cursors'
@@ -681,11 +682,11 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray26 ctermbg=234
 " endfunction
 
 " youcompleteme
-highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+" highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 " Elm integration
-let g:ycm_semantic_triggers = {
-     \ 'elm' : ['.'],
-     \}
+" let g:ycm_semantic_triggers = {
+"      \ 'elm' : ['.'],
+"      \}
 
 " Easy Align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
