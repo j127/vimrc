@@ -477,6 +477,9 @@ Plug 'rbgrouleff/bclose.vim'
 " Vue.js
 Plug 'posva/vim-vue'
 
+" Svelte
+Plug 'j127/vim-svelte'
+
 " Elm
 
 " Plug 'lambdatoast/elm.vim'
@@ -514,7 +517,7 @@ Plug 'mattn/emmet-vim'
 " Plug 'mhinz/vim-signify'
 Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 " Plug 'dhruvasagar/vim-table-mode'
-" Plug 'jceb/vim-orgmode'
+Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'bronson/vim-trailing-whitespace'
 
