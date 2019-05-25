@@ -76,7 +76,7 @@ set wildignore+=.vscode/*
 set wildignore+=.idea/*
 " set wildignore+=*/tmp/*
 " set wildignore+=*/build/*
-set wildignore+=*/dist/*
+" set wildignore+=*/dist/*
 set wildignore+=*.zip
 set wildignore+=*.pdf
 set wildignore+=*.so
@@ -352,6 +352,7 @@ nnoremap <Down>  :resize -2<CR>
 nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
 
+" Better indentation
 nnoremap <tab> >>
 nnoremap <S-tab> <<
 vnoremap <tab> >
@@ -459,16 +460,16 @@ Plug 'tpope/vim-surround'
 " Plug 'christoomey/vim-tmux-navigator'
 
 " Haskell
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
-Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
-Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
+" Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+" Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
+" Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
+" Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+" Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
+" Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 
 " Purescript
-Plug 'frigoeu/psc-ide-vim'
-Plug 'purescript-contrib/purescript-vim'
+" Plug 'frigoeu/psc-ide-vim'
+" Plug 'purescript-contrib/purescript-vim'
 
 " Ranger file manager
 Plug 'francoiscabrol/ranger.vim'
@@ -492,7 +493,7 @@ Plug 'w0rp/ale'
 Plug 'janko-m/vim-test'
 
 " golang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Markdown
 " Plug 'tpope/vim-markdown'
@@ -510,7 +511,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'scrooloose/syntastic'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'jmcomets/vim-pony'  " Django
+" Plug 'jmcomets/vim-pony'  " Django
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim'
@@ -555,6 +556,8 @@ Plug 'Quramy/vim-js-pretty-template'
 " More typescript plugins: https://github.com/Quramy/tsuquyomi#relevant-plugins
 
 Plug 'mhinz/vim-startify'
+
+Plug 'jparise/vim-graphql'
 
 " This should always be last
 Plug 'ryanoasis/vim-devicons'
@@ -701,6 +704,7 @@ nmap ga <Plug>(EasyAlign)
 " Emmet
 " Tab trigger
 " https://coderwall.com/p/_uhrxw/using-tab-key-as-abbreviation-expander-on-emmet-vim
+let g:user_emmet_expandabbr_key='<Tab>'
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Taglist
