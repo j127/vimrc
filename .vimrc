@@ -35,6 +35,9 @@ set history=999
 " https://github.com/Xuyuanp/nerdtree-git-plugin
 set shell=sh
 
+" Security, see: https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
+set nomodeline
+
 if has("gui_running")
     set go-=T  " Remove toolbar
 endif
@@ -558,6 +561,10 @@ Plug 'Quramy/vim-js-pretty-template'
 Plug 'mhinz/vim-startify'
 
 Plug 'jparise/vim-graphql'
+Plug 'mxw/vim-jsx'
+Plug 'prettier/vim-prettier', {
+    \ 'do': 'npm install',
+    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " This should always be last
 Plug 'ryanoasis/vim-devicons'
@@ -894,3 +901,8 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 " Ranger
 let g:ranger_map_keys = 0
 map <leader>r :Ranger<CR>
+
+" Prettier
+" `f` for "format"
+nmap <leader>f <Plug>(Prettier)
+let g:prettier#exec_cmd_async = 1
