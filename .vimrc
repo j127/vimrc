@@ -475,7 +475,7 @@ Plug 'tpope/vim-surround'
 " Plug 'purescript-contrib/purescript-vim'
 
 " Ranger file manager
-Plug 'francoiscabrol/ranger.vim'
+" Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
 " Vue.js
@@ -560,6 +560,7 @@ Plug 'Quramy/vim-js-pretty-template'
 
 Plug 'mhinz/vim-startify'
 
+Plug 'pangloss/vim-javascript' ", { 'for': ['javascript', 'json', 'vue'] }
 Plug 'jparise/vim-graphql'
 Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', {
@@ -899,10 +900,14 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 " let g:go_metalinter_autosave = 1
 
 " Ranger
-let g:ranger_map_keys = 0
-map <leader>r :Ranger<CR>
+" let g:ranger_map_keys = 0
+" map <leader>r :Ranger<CR>
 
 " Prettier
 " `f` for "format"
 nmap <leader>f <Plug>(Prettier)
 let g:prettier#exec_cmd_async = 1
+
+" javascript
+let g:javascript_plugin_jsdoc = 1
+set conceallevel=1
