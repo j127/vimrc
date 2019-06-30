@@ -128,8 +128,8 @@ set mouse=a
 set lazyredraw
 
 " Force redraw
-map <silent> <leader>r :redraw!<CR>
-nnoremap <leader>r :redraw!<CR>
+" map <silent> <leader>r :redraw!<CR>
+" nnoremap <leader>r :redraw!<CR>
 
 " Turn of error sounds
 set noerrorbells
@@ -153,11 +153,12 @@ endif
 set hidden
 
 " Previous buffer, next buffer
-nnoremap <leader>bp :bp<cr>
-nnoremap <leader>bn :bn<cr>
+" These were slowing down the <leader>b command
+" nnoremap <leader>bp :bp<cr>
+" nnoremap <leader>bn :bn<cr>
 
 " close every window in current tabview but the current
-nnoremap <leader>bo <c-w>o
+" nnoremap <leader>bo <c-w>o
 
 " convert double quotes to single quotes on the current line or in a visual
 " selection
@@ -171,7 +172,6 @@ nnoremap <leader><leader>v $v0
 
 " move to the char after the target char: replacing things like f>l
 "nnoremap <leader>f
-
 
 """""""""""""""""""""""""""
 " Indentation
@@ -436,6 +436,11 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'majutsushi/tagbar'
 " Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
 Plug 'Shougo/denite.nvim'
+Plug 'liuchengxu/vista.vim'
+
+" this installs fzf on the system as well
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Shougo/deol.nvim'
@@ -758,54 +763,100 @@ nmap owp :call Browser ()<CR>
 
 " Denite ideas from https://github.com/sodiumjoe/dotfiles/blob/master/vimrc#L242 and elsewhere.
 " reset 50% winheight on window resize
-augroup deniteresize
-  autocmd!
-  autocmd VimResized,VimEnter * call denite#custom#option('default',
-        \'winheight', winheight(0) / 2)
-augroup end
+" augroup deniteresize
+"   autocmd!
+"   autocmd VimResized,VimEnter * call denite#custom#option('default',
+"         \'winheight', winheight(0) / 2)
+" augroup end
 
-call denite#custom#option('default', {
-      \ 'prompt': '❯'
-      \ })
+" autocmd FileType denite call s:denite_my_settings()
+" function! s:denite_my_settings() abort
+"     nnoremap <silent><buffer><expr> <CR>
+"     \ denite#do_map('do_action')
+"     nnoremap <silent><buffer><expr> d
+"     \ denite#do_map('do_action', 'delete')
+"     nnoremap <silent><buffer><expr> p
+"     \ denite#do_map('do_action', 'preview')
+"     nnoremap <silent><buffer><expr> q
+"     \ denite#do_map('quit')
+"     nnoremap <silent><buffer><expr> i
+"     \ denite#do_map('open_filter_buffer')
+"     nnoremap <silent><buffer><expr> <Space>
+"     \ denite#do_map('toggle_select').'j'
+" endfunction
 
-call denite#custom#var('file_rec', 'command',
-      \ ['rg', '--files', '--glob', '!.git', ''])
+call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
 call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts',
-      \ ['--hidden', '--vimgrep', '--no-heading', '-S'])
+call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep', '--no-heading'])
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
-call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>',
-      \'noremap')
-call denite#custom#map('normal', '<Esc>', '<NOP>',
-      \'noremap')
-call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>',
-      \'noremap')
-call denite#custom#map('normal', '<C-v>', '<denite:do_action:vsplit>',
-      \'noremap')
-call denite#custom#map('insert', '<C-h>', '<denite:do_action:split>',
-      \'noremap')
-call denite#custom#map('normal', '<C-h>', '<denite:do_action:split>',
-      \'noremap')
-call denite#custom#map('normal', 'dw', '<denite:delete_word_after_caret>',
-      \'noremap')
+call denite#custom#option('_', 'statusline', v:false)
 
-call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+" These might need adjustment
+" call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>',
+"     \'noremap')
+" call denite#custom#map('normal', '<Esc>', '<NOP>',
+"     \'noremap')
+" call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>',
+"     \'noremap')
+" call denite#custom#map('normal', '<C-v>', '<denite:do_action:vsplit>',
+"     \'noremap')
+" call denite#custom#map('insert', '<C-h>', '<denite:do_action:split>',
+"     \'noremap')
+" call denite#custom#map('normal', '<C-h>', '<denite:do_action:split>',
+"     \'noremap')
+" call denite#custom#map('normal', 'dw', '<denite:delete_word_after_caret>',
+"     \'noremap')
 
-nnoremap <C-p> :<C-u>Denite file_rec<CR>
-nnoremap <leader>s :<C-u>Denite buffer<CR>
-nnoremap <leader><leader>s :<C-u>DeniteBufferDir buffer<CR>
-nnoremap <leader>8 :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
-nnoremap <leader>/ :<C-u>Denite grep:. -mode=normal<CR>
-nnoremap <leader><leader>/ :<C-u>DeniteBufferDir grep:. -mode=normal<CR>
-nnoremap <leader>d :<C-u>DeniteBufferDir file_rec<CR>
-nnoremap <leader><leader>r :<C-u>Denite -resume -cursor-pos=+1<CR>
+" call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
+" call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+
+" These are commands that run when denite's pane is open (preview, quit, etc.)
+function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+endfunction
+
+augroup DENITE
+    autocmd!
+    autocmd FileType denite call s:denite_my_settings()
+augroup end
+
+" search for files
+nnoremap <silent> <C-p> :Denite file/rec -auto-resize -smartcase -start-filter<CR>
+" search through buffers
+nnoremap <silent> <leader>s :Denite buffer -auto-resize<CR>
+" grep in project
+nnoremap <silent> <leader>/ :Denite grep -auto-resize<CR>
+" search registers
+nnoremap <silent> <leader>r :Denite register -auto-resize<CR>
+" find word under cursor
+nnoremap <silent> <leader>w :DeniteCursorWord grep<CR>
+
+call denite#custom#option('default', {
+    \ 'prompt': '❯'
+    \ })
+
+" settings from old version (commented out on 2019-06-29)
+" nnoremap <C-p> :<C-u>Denite file_rec<CR>
+" nnoremap <leader>s :<C-u>Denite buffer<CR>
+" nnoremap <leader><leader>s :<C-u>DeniteBufferDir buffer<CR>
+" " nnoremap <leader>8 :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
+" nnoremap <leader>8 :<C-u>DeniteCursorWord grep:.<CR>
+" " nnoremap <leader>/ :<C-u>Denite grep:. -mode=normal<CR>
+" nnoremap <leader>/ :<C-u>Denite grep:.<CR>
+" " nnoremap <leader><leader>/ :<C-u>DeniteBufferDir grep:. -mode=normal<CR>
+" nnoremap <leader><leader>/ :<C-u>DeniteBufferDir grep:.<CR>
+" nnoremap <leader>d :<C-u>DeniteBufferDir file_rec<CR>
+" nnoremap <leader><leader>r :<C-u>Denite -resume -cursor-pos=+1<CR>
 nnoremap <leader>o :<C-u>Denite menu<CR>
 
-hi link deniteMatchedChar Special
+" hi link deniteMatchedChar Special
 
 " Add custom menus
 let s:menus = {}
@@ -911,3 +962,26 @@ let g:prettier#exec_cmd_async = 1
 " javascript
 let g:javascript_plugin_jsdoc = 1
 set conceallevel=1
+
+" vista
+" See https://github.com/liuchengxu/vista.vim
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc 
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+" How each level is indented and what to prepend.
+" This could make the display more compact or more spacious.
+" e.g., more compact: ["▸ ", ""]
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+" Executive used when opening vista sidebar without specifying it.
+" See all the avaliable executives via `:echo g:vista#executives`.
+let g:vista_default_executive = 'ctags'
