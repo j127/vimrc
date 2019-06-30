@@ -793,12 +793,10 @@ call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#option('_', 'statusline', v:false)
+call denite#custom#option('default', {
+    \ 'prompt': '❯'
+    \ })
 
-" These might need adjustment
-" call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>',
-"     \'noremap')
-" call denite#custom#map('normal', '<Esc>', '<NOP>',
-"     \'noremap')
 " call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>',
 "     \'noremap')
 " call denite#custom#map('normal', '<C-v>', '<denite:do_action:vsplit>',
@@ -807,11 +805,6 @@ call denite#custom#option('_', 'statusline', v:false)
 "     \'noremap')
 " call denite#custom#map('normal', '<C-h>', '<denite:do_action:split>',
 "     \'noremap')
-" call denite#custom#map('normal', 'dw', '<denite:delete_word_after_caret>',
-"     \'noremap')
-
-" call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
-" call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
 
 " These are commands that run when denite's pane is open (preview, quit, etc.)
 function! s:denite_my_settings() abort
@@ -837,26 +830,8 @@ nnoremap <silent> <leader>/ :Denite grep -auto-resize<CR>
 nnoremap <silent> <leader>r :Denite register -auto-resize<CR>
 " find word under cursor
 nnoremap <silent> <leader>w :DeniteCursorWord grep<CR>
-
-call denite#custom#option('default', {
-    \ 'prompt': '❯'
-    \ })
-
-" settings from old version (commented out on 2019-06-29)
-" nnoremap <C-p> :<C-u>Denite file_rec<CR>
-" nnoremap <leader>s :<C-u>Denite buffer<CR>
-" nnoremap <leader><leader>s :<C-u>DeniteBufferDir buffer<CR>
-" " nnoremap <leader>8 :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
-" nnoremap <leader>8 :<C-u>DeniteCursorWord grep:.<CR>
-" " nnoremap <leader>/ :<C-u>Denite grep:. -mode=normal<CR>
-" nnoremap <leader>/ :<C-u>Denite grep:.<CR>
-" " nnoremap <leader><leader>/ :<C-u>DeniteBufferDir grep:. -mode=normal<CR>
-" nnoremap <leader><leader>/ :<C-u>DeniteBufferDir grep:.<CR>
-" nnoremap <leader>d :<C-u>DeniteBufferDir file_rec<CR>
-" nnoremap <leader><leader>r :<C-u>Denite -resume -cursor-pos=+1<CR>
+" Open custom menu
 nnoremap <leader>o :<C-u>Denite menu<CR>
-
-" hi link deniteMatchedChar Special
 
 " Add custom menus
 let s:menus = {}
