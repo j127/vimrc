@@ -45,7 +45,7 @@ endif
 " Always display the status line.
 set laststatus=2
 
-" Height of the command bar
+" Height of the command bar - change this to 2 if coc.nvim needs it.
 set cmdheight=1
 
 set number
@@ -69,7 +69,7 @@ set wildignore+=*.swp
 set wildignore+=*.class
 set wildignore+=*.hg
 set wildignore+=*.DS_Store
-set wildignore+=*.min.*
+" set wildignore+=*.min.*
 set wildignore+=__pycache__/*
 set wildignore+=*/node_modules/*
 set wildignore+=*/bower_components/*
@@ -106,8 +106,9 @@ set cursorcolumn
 " nnoremap <leader>c :call ToggleCurline()<CR>
 
 
-" Highlight 80th column
-set colorcolumn=80
+" Highlight desired line limit column (80 chars or whatever)
+" set colorcolumn=80,100
+set colorcolumn=97
 
 " For more info on matching, including matchit.vim, see:
 " http://vim.wikia.com/wiki/Moving_to_matching_braces
@@ -275,11 +276,13 @@ set foldcolumn=1  " non-zero value turns on the fold column in the gutter
 " Backups
 """""""""""""""""""""""""""
 
-if has("vms")
-    set nobackup
-else
-    set backup
-endif
+set backupcopy=yes
+
+" if has("vms")
+"     set nobackup
+" else
+"     set backup
+" endif
 
 " Store swap files in fixed location, not current directory.
 " From http://stackoverflow.com/questions/4331776/change-vim-swap-backup-undo-file-name
@@ -297,7 +300,12 @@ hi clear Conceal
 """""""""""""""""""""""""""
 " Keybindings
 """""""""""""""""""""""""""
-
+" Move lines
+" See https://vim.fandom.com/wiki/Moving_lines_up_or_down
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+vnoremap <leader>j :m '>+1<CR>gv=gv
+vnoremap <leader>k :m '<-2<CR>gv=gv
 
 " See Plugin Settings for additional keybindings
 let g:mapleader = "\<Space>"
@@ -360,6 +368,9 @@ nnoremap <tab> >>
 nnoremap <S-tab> <<
 vnoremap <tab> >
 vnoremap <S-tab> <
+
+" visually select to end of line
+nnoremap <leader>$ v$h
 
 " ctrl-backspace to delete w
 " I don't know why it isn't working in nvim
@@ -438,6 +449,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Shougo/denite.nvim'
 Plug 'liuchengxu/vista.vim'
 
+" Required by denite
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+
 " this installs fzf on the system as well
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
@@ -476,8 +491,18 @@ Plug 'tpope/vim-surround'
 " Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 
 " Purescript
-" Plug 'frigoeu/psc-ide-vim'
-" Plug 'purescript-contrib/purescript-vim'
+Plug 'frigoeu/psc-ide-vim'
+Plug 'purescript-contrib/purescript-vim'
+
+" BEGIN Reason
+Plug 'reasonml-editor/vim-reason-plus'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" END Reason
 
 " Ranger file manager
 " Plug 'francoiscabrol/ranger.vim'
@@ -521,11 +546,12 @@ Plug 'janko-m/vim-test'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " Plug 'jmcomets/vim-pony'  " Django
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim'
 " Plug 'mhinz/vim-signify'
 Plug 'junegunn/vim-easy-align' " visual mode then `ga`
-" Plug 'dhruvasagar/vim-table-mode'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'bronson/vim-trailing-whitespace'
@@ -590,10 +616,11 @@ else
     " colorscheme twilight256
     " colorscheme colorsbox-material
     " colorscheme tender
-    " colorscheme desert
+    colorscheme desertink
     " colorscheme codeschool
     " colorscheme badwolf
-    colorscheme gruvbox
+    " colorscheme gruvbox
+    " colorscheme louver
     " colorscheme quantum
     " colorscheme onedark
     " colorscheme distinguished
@@ -941,7 +968,7 @@ set conceallevel=1
 " vista
 " See https://github.com/liuchengxu/vista.vim
 function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
+    return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
 set statusline+=%{NearestMethodOrFunction()}
@@ -960,3 +987,132 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " Executive used when opening vista sidebar without specifying it.
 " See all the avaliable executives via `:echo g:vista#executives`.
 let g:vista_default_executive = 'ctags'
+
+" devicons
+" let g:webdevicons_conceal_nerdtree_brackets = 1
+
+let g:table_mode_corner='|'
+
+" Reason
+let g:LanguageClient_serverCommands = {
+    \ 'reason': ['~/reason/rls-linux/reason-language-server'],
+    \ }
+    " \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    " \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    " \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    " \ 'python': ['/usr/local/bin/pyls'],
+    " \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" for coc.nvim
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+" NOTE: this interferes with emmet, so I disabled it.
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+" NOTE: this doesn't work, possibly because of my leader key?
+" inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>m  <Plug>(coc-format-selected)
+nmap <leader>m  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" mix format on save
+let g:mix_format_on_save = 1
+" nmap <leader><leader>f <Plug>(MixFormat)
