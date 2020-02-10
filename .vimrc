@@ -70,13 +70,14 @@ set wildignore+=*.class
 set wildignore+=*.hg
 set wildignore+=*.DS_Store
 " set wildignore+=*.min.*
-set wildignore+=__pycache__/*
+" set wildignore+=__pycache__/*
+set wildignore+=__pycache__
 set wildignore+=*/node_modules/*
 set wildignore+=*/bower_components/*
 set wildignore+=tags.*
 set wildignore+=tags
-set wildignore+=.vscode/*
-set wildignore+=.idea/*
+" set wildignore+=.vscode/*
+" set wildignore+=.idea/*
 " set wildignore+=*/tmp/*
 " set wildignore+=*/build/*
 " set wildignore+=*/dist/*
@@ -552,7 +553,7 @@ Plug 'mattn/emmet-vim'
 " Plug 'mhinz/vim-signify'
 Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'jceb/vim-orgmode'
+" Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'bronson/vim-trailing-whitespace'
 
@@ -1116,3 +1117,11 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " mix format on save
 let g:mix_format_on_save = 1
 " nmap <leader><leader>f <Plug>(MixFormat)
+
+
+" Set syntax highlighting for Dockerfile.dev files
+augroup docker_ft
+    au!
+    autocmd BufNewFile,BufRead Dockerfile.dev set syntax=dockerfile
+augroup END
+
