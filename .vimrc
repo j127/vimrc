@@ -45,7 +45,6 @@ endif
 " Always display the status line.
 set laststatus=2
 
-" Height of the command bar - change this to 2 if coc.nvim needs it.
 set cmdheight=1
 
 set number
@@ -332,9 +331,9 @@ vmap <leader>p "+p
 
 " Window management
 " t is now for showing TODO items
-" nnoremap <leader>t :tabnew 
-nnoremap <leader>h :sp 
-nnoremap <leader>v :vsplit 
+" nnoremap <leader>t :tabnew
+nnoremap <leader>h :sp
+nnoremap <leader>v :vsplit
 nnoremap <leader>w <C-w>
 
 "split navigations
@@ -403,7 +402,7 @@ call plug#begin('~/.vim/bundle')
 
 " Themes
 " Plug 'j127/desertimp.vim'
-Plug 'mkarmona/colorsbox'
+" Plug 'mkarmona/colorsbox'
 " Plug 'keith/parsec.vim'
 " Plug 'cseelus/vim-colors-lucid'
 Plug 'flazz/vim-colorschemes'
@@ -435,7 +434,7 @@ Plug 'vim-scripts/gitignore'
 " ctags
 " ctrl-click on something to go to definition, and ctrl-o to return
 " visually selecting the name and c-] should also jump to the definition.
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 
 " Git
@@ -445,7 +444,6 @@ Plug 'majutsushi/tagbar'
 " Bars, panels, and files
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'majutsushi/tagbar'
 " Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
 Plug 'Shougo/denite.nvim'
 Plug 'liuchengxu/vista.vim'
@@ -492,16 +490,16 @@ Plug 'tpope/vim-surround'
 " Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 
 " Purescript
-Plug 'frigoeu/psc-ide-vim'
-Plug 'purescript-contrib/purescript-vim'
+" Plug 'frigoeu/psc-ide-vim'
+" Plug 'purescript-contrib/purescript-vim'
 
 " BEGIN Reason
-Plug 'reasonml-editor/vim-reason-plus'
+" Plug 'reasonml-editor/vim-reason-plus'
 
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+            \ 'branch': 'next',
+            \ 'do': 'bash install.sh',
+            \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " END Reason
 
@@ -518,13 +516,13 @@ Plug 'j127/vim-svelte'
 " Elm
 
 " Plug 'lambdatoast/elm.vim'
-Plug 'ElmCast/elm-vim'
+" Plug 'ElmCast/elm-vim'
 Plug 'w0rp/ale'
 " Too annoying for JS, but otherwise good
 " Plug 'calebsmith/vim-lambdify'
 
 " Testing
-Plug 'janko-m/vim-test'
+" Plug 'janko-m/vim-test'
 
 " golang
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -544,14 +542,14 @@ Plug 'janko-m/vim-test'
 " Plug 'honza/vim-snippets'
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'scrooloose/syntastic'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " Plug 'jmcomets/vim-pony'  " Django
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim'
 " Plug 'mhinz/vim-signify'
-Plug 'junegunn/vim-easy-align' " visual mode then `ga`
+" Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 Plug 'dhruvasagar/vim-table-mode'
 " Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
@@ -560,14 +558,14 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'editorconfig/editorconfig-vim'
 
 " Rails
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-bundler'
+" Plug 'tpope/vim-rails'
+" Plug 'tpope/vim-dispatch'
+" Plug 'tpope/vim-bundler'
 
-Plug 'mustache/vim-mustache-handlebars'
+" Plug 'mustache/vim-mustache-handlebars'
 
 " nand2tetris
-Plug 'sevko/vim-nand2tetris-syntax'
+" Plug 'sevko/vim-nand2tetris-syntax'
 
 " Ghost text -- edit Firefox text areas
 " Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
@@ -596,8 +594,8 @@ Plug 'pangloss/vim-javascript' ", { 'for': ['javascript', 'json', 'vue'] }
 Plug 'jparise/vim-graphql'
 Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', {
-    \ 'do': 'npm install',
-    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+            \ 'do': 'npm install',
+            \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " This should always be last
 Plug 'ryanoasis/vim-devicons'
@@ -611,7 +609,7 @@ if has("gui_running")
     " TODO: figure out why this dashed name isn't loading the theme.
     " colorscheme colorsbox-material
     " colorscheme bclear
-    colorscheme tender
+    colorscheme gruvbox
 else
     " various themes that are good, depending on mood and lighting
     " colorscheme twilight256
@@ -778,7 +776,7 @@ endfunction
 nmap owp :call Browser ()<CR>
 
 " ALE experiments from
-" https://github.com/sodiumjoe/dotfiles/blob/master/vimrc#L288 
+" https://github.com/sodiumjoe/dotfiles/blob/master/vimrc#L288
 " let g:ale_sign_error = '⨉'
 " let g:ale_sign_warning = '⚠'
 " let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '']
@@ -822,8 +820,8 @@ call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#option('_', 'statusline', v:false)
 call denite#custom#option('default', {
-    \ 'prompt': '❯'
-    \ })
+            \ 'prompt': '❯'
+            \ })
 
 " call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>',
 "     \'noremap')
@@ -865,33 +863,33 @@ nnoremap <leader>o :<C-u>Denite menu<CR>
 let s:menus = {}
 
 let s:menus.config_files = {
-    \ 'description': 'Edit config files'
-    \ }
+            \ 'description': 'Edit config files'
+            \ }
 let s:menus.config_files.file_candidates = [
-    \ ['.aliases', '~/.aliases'],
-    \ ['.zshenv', '~/.zshenv'],
-    \ ['.zshrc', '~/.zshrc'],
-    \ ['.vimrc', '~/.vimrc'],
-    \ ['.i3conf', '~/.config/i3/config'],
-    \ ['.i3status.conf', '~/.i3status.conf'],
-    \ ['.ctags', '~/.ctags'],
-    \ ['global .gitconfig', '~/.gitconfig'],
-    \ ['global .gitignore', '~/.gitignore'],
-    \ ['.muttrc', '~/.muttrc'],
-    \ ['mailcap', '~/.mutt/mailcap'],
-    \ ['.notmuch-config', '~/.notmuch-config'],
-    \ ['.npmrc', '~/.npmrc'],
-    \ ['.mongojsrc.js', '~/.mongojsrc.js'],
-    \ ['.psqlrc', '~/.psqlrc'],
-    \ ['.pgpass', '~/.pgpass'],
-    \ ['.pythonrc', '~/.pythonrc'],
-    \ ['.tmux.conf', '~/.tmux.conf'],
-    \ ['.tern-config', '~/.tern-config'],
-    \ ['.vuerc', '~/.vuerc'],
-    \ ['.xinitrc', '~/.xinitrc'],
-    \ ['.Xmodmap', '~/.Xmodmap'],
-    \ ['.taskbook.json', '~/.taskbook.json'],
-    \ ]
+            \ ['.aliases', '~/.aliases'],
+            \ ['.zshenv', '~/.zshenv'],
+            \ ['.zshrc', '~/.zshrc'],
+            \ ['.vimrc', '~/.vimrc'],
+            \ ['.i3conf', '~/.config/i3/config'],
+            \ ['.i3status.conf', '~/.i3status.conf'],
+            \ ['.ctags', '~/.ctags'],
+            \ ['global .gitconfig', '~/.gitconfig'],
+            \ ['global .gitignore', '~/.gitignore'],
+            \ ['.muttrc', '~/.muttrc'],
+            \ ['mailcap', '~/.mutt/mailcap'],
+            \ ['.notmuch-config', '~/.notmuch-config'],
+            \ ['.npmrc', '~/.npmrc'],
+            \ ['.mongojsrc.js', '~/.mongojsrc.js'],
+            \ ['.psqlrc', '~/.psqlrc'],
+            \ ['.pgpass', '~/.pgpass'],
+            \ ['.pythonrc', '~/.pythonrc'],
+            \ ['.tmux.conf', '~/.tmux.conf'],
+            \ ['.tern-config', '~/.tern-config'],
+            \ ['.vuerc', '~/.vuerc'],
+            \ ['.xinitrc', '~/.xinitrc'],
+            \ ['.Xmodmap', '~/.Xmodmap'],
+            \ ['.taskbook.json', '~/.taskbook.json'],
+            \ ]
 
 " let s:menus.vim = {
 "     \ 'description': 'Edit Vim config files'
@@ -909,38 +907,38 @@ call denite#custom#var('menu', 'menus', s:menus)
 " Startify
 " Replace custom quotes with some of the custom quotes and some new ones
 let g:startify_custom_header_quotes = [
-    \ ['saluton mondo'],
-    \ ['It is not dying that a man should fear, but a man should fear never having lived at all.'],
-    \ ['How one does anything is how one does everything.'],
-    \ ["If you don't finish then you're just busy, not productive."],
-    \ ['Simplicity does not precede complexity, but follows it.', '', '- Alan Perlis'],
-    \ ['Optimization hinders evolution.', '', '- Alan Perlis'],
-    \ ['It is better to have 100 functions operate on one data structure than 10 functions on 10 data structures.', '', '- Alan Perlis'],
-    \ ['There is nothing quite so useless as doing with great efficiency something that should not be done at all.', '', '- Peter Drucker'],
-    \ ["If you don't fail at least 90% of the time, you're not aiming high enough.", '', '- Alan Kay'],
-    \ ['I think a lot of new programmers like to use advanced data structures and advanced language features as a way of demonstrating their ability. I call it the lion-tamer syndrome. Such demonstrations are impressive, but unless they actually translate into real wins for the project, avoid them.', '', '- Glyn Williams'],
-    \ ['I would rather die of passion than of boredom.', '', '- Vincent Van Gogh'],
-    \ ["The computing scientist's main challenge is not to get confused by the complexities of his own making.", '', '- Edsger W. Dijkstra'],
-    \ ['A good programmer is someone who always looks both ways before crossing a one-way street.', '', '- Doug Linder'],
-    \ ['Always code as if the person who ends up maintaining your code is a violent psychopath who knows where you live.', '', '- John Woods'],
-    \ ['Unix was not designed to stop its users from doing stupid things, as that would also stop them from doing clever things.'],
-    \ ['Contrary to popular belief, Unix is user friendly. It just happens to be very selective about who it decides to make friends with.'],
-    \ ['Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.'],
-    \ ["If you don't make mistakes, you're not working on hard enough problems.", '', '- Frank Wilczek'],
-    \ ['Abstraction is not about vagueness, it is about being precise at a new semantic level.', '', '- Edsger W. Dijkstra'],
-    \ ['Almost every programming language is overrated by its practitioners.', '', '- Larry Wall'],
-    \ ['Think twice, code once.'],
-    \ ['The question of whether computers can think is like the question of whether submarines can swim.', '', '- Edsger W. Dijkstra'],
-    \ ['They did not know it was impossible, so they did it!', '', '- Mark Twain'],
-    \ ['To understand recursion, one must first understand recursion.', '', '- Stephen Hawking'],
-    \ ['Developing tolerance for imperfection is the key factor in turning chronic starters into consistent finishers.', '', '- Jon Acuff'],
-    \ ['Every great developer you know got there by solving problems they were unqualified to solve until they actually did it.', '', '- Patrick McKenzie'],
-    \ ["The average user doesn't give a damn what happens, as long as (1) it works and (2) it's fast.", '', '- Daniel J. Bernstein'],
-    \ ['Be curious. Read widely. Try new things. I think a lot of what people call intelligence boils down to curiosity.', '', '- Aaron Swartz'],
-    \ ['What one programmer can do in one month, two programmers can do in two months.', '', '- Frederick P. Brooks'],
-    \ ['There’s no such thing as a schemaless system. There are systems where you write your schema down and ones where you don’t.', '', '- Rich Hickey'],
-    \ ['[monads] are generated, so to speak, by continual fulgurations of the Divinity', '', '-  Gottfried Leibniz'],
-\ ]
+            \ ['saluton mondo'],
+            \ ['It is not dying that a man should fear, but a man should fear never having lived at all.'],
+            \ ['How one does anything is how one does everything.'],
+            \ ["If you don't finish then you're just busy, not productive."],
+            \ ['Simplicity does not precede complexity, but follows it.', '', '- Alan Perlis'],
+            \ ['Optimization hinders evolution.', '', '- Alan Perlis'],
+            \ ['It is better to have 100 functions operate on one data structure than 10 functions on 10 data structures.', '', '- Alan Perlis'],
+            \ ['There is nothing quite so useless as doing with great efficiency something that should not be done at all.', '', '- Peter Drucker'],
+            \ ["If you don't fail at least 90% of the time, you're not aiming high enough.", '', '- Alan Kay'],
+            \ ['I think a lot of new programmers like to use advanced data structures and advanced language features as a way of demonstrating their ability. I call it the lion-tamer syndrome. Such demonstrations are impressive, but unless they actually translate into real wins for the project, avoid them.', '', '- Glyn Williams'],
+            \ ['I would rather die of passion than of boredom.', '', '- Vincent Van Gogh'],
+            \ ["The computing scientist's main challenge is not to get confused by the complexities of his own making.", '', '- Edsger W. Dijkstra'],
+            \ ['A good programmer is someone who always looks both ways before crossing a one-way street.', '', '- Doug Linder'],
+            \ ['Always code as if the person who ends up maintaining your code is a violent psychopath who knows where you live.', '', '- John Woods'],
+            \ ['Unix was not designed to stop its users from doing stupid things, as that would also stop them from doing clever things.'],
+            \ ['Contrary to popular belief, Unix is user friendly. It just happens to be very selective about who it decides to make friends with.'],
+            \ ['Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.'],
+            \ ["If you don't make mistakes, you're not working on hard enough problems.", '', '- Frank Wilczek'],
+            \ ['Abstraction is not about vagueness, it is about being precise at a new semantic level.', '', '- Edsger W. Dijkstra'],
+            \ ['Almost every programming language is overrated by its practitioners.', '', '- Larry Wall'],
+            \ ['Think twice, code once.'],
+            \ ['The question of whether computers can think is like the question of whether submarines can swim.', '', '- Edsger W. Dijkstra'],
+            \ ['They did not know it was impossible, so they did it!', '', '- Mark Twain'],
+            \ ['To understand recursion, one must first understand recursion.', '', '- Stephen Hawking'],
+            \ ['Developing tolerance for imperfection is the key factor in turning chronic starters into consistent finishers.', '', '- Jon Acuff'],
+            \ ['Every great developer you know got there by solving problems they were unqualified to solve until they actually did it.', '', '- Patrick McKenzie'],
+            \ ["The average user doesn't give a damn what happens, as long as (1) it works and (2) it's fast.", '', '- Daniel J. Bernstein'],
+            \ ['Be curious. Read widely. Try new things. I think a lot of what people call intelligence boils down to curiosity.', '', '- Aaron Swartz'],
+            \ ['What one programmer can do in one month, two programmers can do in two months.', '', '- Frederick P. Brooks'],
+            \ ['There’s no such thing as a schemaless system. There are systems where you write your schema down and ones where you don’t.', '', '- Rich Hickey'],
+            \ ['[monads] are generated, so to speak, by continual fulgurations of the Divinity', '', '-  Gottfried Leibniz'],
+            \ ]
 
 " Deol
 " Close it (doesn't seem to work, at least in Vim 8)
@@ -977,7 +975,7 @@ set statusline+=%{NearestMethodOrFunction()}
 " By default vista.vim never run if you don't call it explicitly.
 "
 " If you want to show the nearest function in your statusline automatically,
-" you can add the following line to your vimrc 
+" you can add the following line to your vimrc
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 " How each level is indented and what to prepend.
@@ -996,13 +994,13 @@ let g:table_mode_corner='|'
 
 " Reason
 let g:LanguageClient_serverCommands = {
-    \ 'reason': ['~/reason/rls-linux/reason-language-server'],
-    \ }
-    " \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    " \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    " \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    " \ 'python': ['/usr/local/bin/pyls'],
-    " \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+            \ 'reason': ['~/reason/rls-linux/reason-language-server'],
+            \ }
+" \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+" \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+" \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+" \ 'python': ['/usr/local/bin/pyls'],
+" \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
@@ -1020,108 +1018,17 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-" NOTE: this interferes with emmet, so I disabled it.
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
 function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
-" NOTE: this doesn't work, possibly because of my leader key?
-" inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-xmap <leader>m  <Plug>(coc-format-selected)
-nmap <leader>m  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Create mappings for function text object, requires document symbols feature of languageserver.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
-
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 " mix format on save
 let g:mix_format_on_save = 1
 " nmap <leader><leader>f <Plug>(MixFormat)
-
 
 " Set syntax highlighting for Dockerfile.dev files
 augroup docker_ft
     au!
     autocmd BufNewFile,BufRead Dockerfile.dev set syntax=dockerfile
 augroup END
-
