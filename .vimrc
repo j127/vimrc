@@ -271,16 +271,10 @@ set tm=1000
 call plug#begin('~/.vim/bundle')
 " Themes
 " Plug 'j127/desertimp.vim'
-" Plug 'mkarmona/colorsbox'
-" Plug 'keith/parsec.vim'
-" Plug 'cseelus/vim-colors-lucid'
 Plug 'flazz/vim-colorschemes'
 Plug 'jacoborus/tender.vim'
 
-" Plug 'epeli/slimux'
-"
-" <leader>t to show TODOs
-" Plug 'vim-scripts/TaskList.vim'
+Plug 'epeli/slimux'
 
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
@@ -300,49 +294,25 @@ Plug 'tmhedberg/matchit'
 " Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 
-" Git
-" Plug 'tpope/vim-fugitive'
-" Plug 'int3/vim-extradite'
-
 " Bars, panels, and files
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'tpope/vim-vinegar' " use `-`, `.`, `cg`, `lcd`, `~`
-" Plug 'Shougo/denite.nvim'
-" Plug 'liuchengxu/vista.vim'
-
-" Required by denite
-" Plug 'roxma/nvim-yarp'
-" Plug 'roxma/vim-hug-neovim-rpc'
 
 " this installs fzf on the system as well
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-" Plug 'Shougo/deol.nvim'
 Plug 'scrooloose/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " 
 Plug 'luochen1990/rainbow'
 
-" For vimdeck
-" https://github.com/tybenz/vimdeck
-" Plug 'vim-scripts/SyntaxRange'
-" Plug 'vim-scripts/ingo-library'
-
 " Text manipulation
-" Plug 'vim-scripts/Align'
 Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-commentary'  " `gcc`, `gcu`
-" Plug 'jiangmiao/auto-pairs'
-" Plug 'godlygeek/tabular'
-" Plug 'michaeljsmith/vim-indent-object'
+Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
-
-" Allow pane movement to jump out of vim into tmux
-" Plug 'christoomey/vim-tmux-navigator'
 
 " Haskell
 " Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -356,67 +326,24 @@ Plug 'tpope/vim-surround'
 " Plug 'frigoeu/psc-ide-vim'
 " Plug 'purescript-contrib/purescript-vim'
 
-" BEGIN Reason
-" Plug 'reasonml-editor/vim-reason-plus'
-
-" Plug 'autozimu/LanguageClient-neovim', {
-"             \ 'branch': 'next',
-"             \ 'do': 'bash install.sh',
-"             \ }
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" END Reason
-
-" Ranger file manager
-" Plug 'francoiscabrol/ranger.vim'
-" Plug 'rbgrouleff/bclose.vim'
-
 " Vue.js
 " Plug 'posva/vim-vue'
 
 " Svelte
 " Plug 'j127/vim-svelte'
 
-" Elm
-
-" Plug 'lambdatoast/elm.vim'
-" Plug 'ElmCast/elm-vim'
-" Plug 'w0rp/ale'
-" Too annoying for JS, but otherwise good
-" Plug 'calebsmith/vim-lambdify'
-
-" Testing
-" Plug 'janko-m/vim-test'
-
 " golang
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Markdown
-" Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown'
 
-" Docker
-" Plug 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
-
-" Adding back some old ones, July 26, 2016
-" Plug 'Shougo/neocomplete.vim'
-" Plug 'SirVer/ultisnips'
-
-" Tab completion features. NOT NEEDED IF USING YOUCOMPLETEME.
-" Plug 'ervandew/supertab'
-" Plug 'honza/vim-snippets'
-" Plug 'Valloric/YouCompleteMe'
-" Plug 'scrooloose/syntastic'
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-" Plug 'jmcomets/vim-pony'  " Django
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
-" Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim'
-" Plug 'mhinz/vim-signify'
 " Plug 'junegunn/vim-easy-align' " visual mode then `ga`
 Plug 'dhruvasagar/vim-table-mode'
-" Plug 'jceb/vim-orgmode'
-" Plug 'tpope/vim-speeddating'
-" Plug 'bronson/vim-trailing-whitespace'
+Plug 'bronson/vim-trailing-whitespace'
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -530,21 +457,17 @@ set undodir=~/.vim/undo
 " Slimux
 "--------------------------
 " Slimux
-" map <C-c><C-s> :SlimuxREPLConfigure<CR>
-" nmap <C-c><C-s> :SlimuxREPLConfigure<CR>
-" map <C-c><C-c> :SlimuxREPLSendLine<CR>
-" vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
-" map <C-c><C-b> :SlimuxREPLSendBuffer<CR>
-" vmap <C-c><C-b> :SlimuxREPLSendBuffer<CR>
+map <C-c><C-s> :SlimuxREPLConfigure<CR>
+nmap <C-c><C-s> :SlimuxREPLConfigure<CR>
+map <C-c><C-c> :SlimuxREPLSendLine<CR>
+vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
+map <C-c><C-b> :SlimuxREPLSendBuffer<CR>
+vmap <C-c><C-b> :SlimuxREPLSendBuffer<CR>
 
 " Activate rainbow
 let g:rainbow_active = 1
 
 " Nerdtree
-" I think the next two lines auto-opens it(?)
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-"
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
@@ -552,16 +475,9 @@ let NERDTreeShowHidden=1
 let NERDTreeRespectWildIgnore=1
 
 " Indent guides
-" let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray21 ctermbg=232
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray26 ctermbg=234
-
-" Emmet
-" Tab trigger
-" https://coderwall.com/p/_uhrxw/using-tab-key-as-abbreviation-expander-on-emmet-vim
-" let g:user_emmet_expandabbr_key='<Tab>'
-" imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Taglist
 nmap <leader>t :TagbarToggle<CR>
@@ -578,135 +494,6 @@ nmap <leader>t :TagbarToggle<CR>
 "     set nomodified
 " endfunction
 " nmap owp :call Browser ()<CR>
-
-" ALE experiments from
-" https://github.com/sodiumjoe/dotfiles/blob/master/vimrc#L288
-" let g:ale_sign_error = '⨉'
-" let g:ale_sign_warning = '⚠'
-" let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '']
-" let g:ale_lint_on_text_changed = 0
-" let g:ale_lint_on_save = 1
-" let g:ale_lint_on_enter = 1
-" " cycle through location list
-" nmap <silent> <leader>n <Plug>(ale_next_wrap)
-" nmap <silent> <leader>p <Plug>(ale_previous_wrap)
-
-" Denite ideas from https://github.com/sodiumjoe/dotfiles/blob/master/vimrc#L242 and elsewhere.
-" reset 50% winheight on window resize
-" augroup deniteresize
-"   autocmd!
-"   autocmd VimResized,VimEnter * call denite#custom#option('default',
-"         \'winheight', winheight(0) / 2)
-" augroup end
-
-" autocmd FileType denite call s:denite_my_settings()
-" function! s:denite_my_settings() abort
-"     nnoremap <silent><buffer><expr> <CR>
-"     \ denite#do_map('do_action')
-"     nnoremap <silent><buffer><expr> d
-"     \ denite#do_map('do_action', 'delete')
-"     nnoremap <silent><buffer><expr> p
-"     \ denite#do_map('do_action', 'preview')
-"     nnoremap <silent><buffer><expr> q
-"     \ denite#do_map('quit')
-"     nnoremap <silent><buffer><expr> i
-"     \ denite#do_map('open_filter_buffer')
-"     nnoremap <silent><buffer><expr> <Space>
-"     \ denite#do_map('toggle_select').'j'
-" endfunction
-
-" call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
-" call denite#custom#var('grep', 'command', ['rg'])
-" call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep', '--no-heading'])
-" call denite#custom#var('grep', 'recursive_opts', [])
-" call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-" call denite#custom#var('grep', 'separator', ['--'])
-" call denite#custom#var('grep', 'final_opts', [])
-" call denite#custom#option('_', 'statusline', v:false)
-" call denite#custom#option('default', {
-"             \ 'prompt': '❯'
-"             \ })
-
-" call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>',
-"     \'noremap')
-" call denite#custom#map('normal', '<C-v>', '<denite:do_action:vsplit>',
-"     \'noremap')
-" call denite#custom#map('insert', '<C-h>', '<denite:do_action:split>',
-"     \'noremap')
-" call denite#custom#map('normal', '<C-h>', '<denite:do_action:split>',
-"     \'noremap')
-
-" These are commands that run when denite's pane is open (preview, quit, etc.)
-" function! s:denite_my_settings() abort
-"     nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-"     nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-"     nnoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
-"     nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-"     nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-" endfunction
-
-" augroup DENITE
-"     autocmd!
-"     autocmd FileType denite call s:denite_my_settings()
-" augroup end
-
-" search for files
-" nnoremap <silent> <C-p> :Denite file/rec -auto-resize -smartcase -start-filter<CR>
-" search through buffers
-" nnoremap <silent> <leader>s :Denite buffer -auto-resize<CR>
-" grep in project
-" nnoremap <silent> <leader>/ :Denite grep -auto-resize<CR>
-" search registers
-" nnoremap <silent> <leader>r :Denite register -auto-resize<CR>
-" find word under cursor
-" nnoremap <silent> <leader>w :DeniteCursorWord grep<CR>
-" Open custom menu
-" nnoremap <leader>o :<C-u>Denite menu<CR>
-
-" Add custom menus
-" let s:menus = {}
-
-" let s:menus.config_files = {
-"             \ 'description': 'Edit config files'
-"             \ }
-" let s:menus.config_files.file_candidates = [
-"             \ ['.aliases', '~/.aliases'],
-"             \ ['.zshenv', '~/.zshenv'],
-"             \ ['.zshrc', '~/.zshrc'],
-"             \ ['.vimrc', '~/.vimrc'],
-"             \ ['.i3conf', '~/.config/i3/config'],
-"             \ ['.i3status.conf', '~/.i3status.conf'],
-"             \ ['.ctags', '~/.ctags'],
-"             \ ['global .gitconfig', '~/.gitconfig'],
-"             \ ['global .gitignore', '~/.gitignore'],
-"             \ ['.muttrc', '~/.muttrc'],
-"             \ ['mailcap', '~/.mutt/mailcap'],
-"             \ ['.notmuch-config', '~/.notmuch-config'],
-"             \ ['.npmrc', '~/.npmrc'],
-"             \ ['.mongojsrc.js', '~/.mongojsrc.js'],
-"             \ ['.psqlrc', '~/.psqlrc'],
-"             \ ['.pgpass', '~/.pgpass'],
-"             \ ['.pythonrc', '~/.pythonrc'],
-"             \ ['.tmux.conf', '~/.tmux.conf'],
-"             \ ['.tern-config', '~/.tern-config'],
-"             \ ['.vuerc', '~/.vuerc'],
-"             \ ['.xinitrc', '~/.xinitrc'],
-"             \ ['.Xmodmap', '~/.Xmodmap'],
-"             \ ['.taskbook.json', '~/.taskbook.json'],
-"             \ ]
-
-" let s:menus.vim = {
-"     \ 'description': 'Edit Vim config files'
-"     \ }
-" let s:menus.vim.file_candidates = [
-"     \ ]
-
-" let s:menus.vim.command_candidates = [
-"     \ ['Split the window', 'vnew'],
-"     \ ['Open zsh menu', 'Denite menu:zsh'],
-"     \ ]
-
-" call denite#custom#var('menu', 'menus', s:menus)
 
 " Startify
 " Replace custom quotes with some of the custom quotes and some new ones
@@ -744,20 +531,12 @@ let g:startify_custom_header_quotes = [
             \ ['[monads] are generated, so to speak, by continual fulgurations of the Divinity', '', '-  Gottfried Leibniz'],
             \ ]
 
-" Deol
-" Close it (doesn't seem to work, at least in Vim 8)
-" tnoremap <ESC> <C-\><C-n>
-
 " whichkey
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " golang
 " let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 " let g:go_metalinter_autosave = 1
-
-" Ranger
-" let g:ranger_map_keys = 0
-" map <leader>r :Ranger<CR>
 
 " Prettier
 " `f` for "format"
@@ -768,64 +547,14 @@ let g:prettier#exec_cmd_async = 1
 let g:javascript_plugin_jsdoc = 1
 set conceallevel=1
 
-" vista
-" See https://github.com/liuchengxu/vista.vim
-" function! NearestMethodOrFunction() abort
-"     return get(b:, 'vista_nearest_method_or_function', '')
-" endfunction
-
-" set statusline+=%{NearestMethodOrFunction()}
-
-" By default vista.vim never run if you don't call it explicitly.
-"
-" If you want to show the nearest function in your statusline automatically,
-" you can add the following line to your vimrc
-" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-
-" How each level is indented and what to prepend.
-" This could make the display more compact or more spacious.
-" e.g., more compact: ["▸ ", ""]
-" let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-
-" Executive used when opening vista sidebar without specifying it.
-" See all the avaliable executives via `:echo g:vista#executives`.
-" let g:vista_default_executive = 'ctags'
-
 " devicons
-" let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
 
 let g:table_mode_corner='|'
-
-" Reason
-" let g:LanguageClient_serverCommands = {
-"             \ 'reason': ['~/reason/rls-linux/reason-language-server'],
-            " \ }
-" \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-" \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-" \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-" \ 'python': ['/usr/local/bin/pyls'],
-" \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-
-" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " for coc.nvim
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-" set shortmess+=c
-
-" always show signcolumns
-" set signcolumn=yes
-
-" function! s:check_back_space() abort
-"     let col = col('.') - 1
-"     return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
 
 " mix format on save
 let g:mix_format_on_save = 1
