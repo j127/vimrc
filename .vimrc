@@ -193,7 +193,7 @@ let maplocalleader = "\\"
 nnoremap <leader>n :noh<CR>
 " nnoremap <leader>b :bd<CR>
 " nnoremap <leader>c :
-" nnoremap <leader>p "+p
+nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 " nnoremap <leader>y "+y
 " nnoremap <leader>s :so ~/.vimrc<CR>
@@ -233,12 +233,6 @@ nnoremap <Up>    :resize +2<CR>
 nnoremap <Down>  :resize -2<CR>
 nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
-
-" Better indentation
-nnoremap <tab> >>
-nnoremap <S-tab> <<
-vnoremap <tab> >
-vnoremap <S-tab> <
 
 " visually select to end of line
 nnoremap <leader>$ v$h
@@ -287,7 +281,7 @@ Plug 'tmhedberg/matchit'
 " ctags
 " ctrl-click on something to go to definition, and ctrl-o to return
 " visually selecting the name and c-] should also jump to the definition.
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 
 " Bars, panels, and files
@@ -714,4 +708,16 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <space><space>p  :<C-u>CocListResume<CR>
+
+" Gutentags
+set statusline+=%{gutentags#statusline()}
+let g:gutentags_cache_dir = "~/tags"
+
+" Better indentation. This was being overridden by coc, so I put it last
+" to override whatever coc is doing.
+nnoremap <tab> >>
+nnoremap <S-tab> <<
+vnoremap <tab> >
+vnoremap <S-tab> <
+
