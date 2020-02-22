@@ -532,11 +532,6 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 " let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 " let g:go_metalinter_autosave = 1
 
-" Prettier
-" `f` for "format"
-nmap <leader>f <Plug>(Prettier)
-let g:prettier#exec_cmd_async = 1
-
 " javascript
 let g:javascript_plugin_jsdoc = 1
 set conceallevel=1
@@ -720,4 +715,10 @@ nnoremap <tab> >>
 nnoremap <S-tab> <<
 vnoremap <tab> >
 vnoremap <S-tab> <
+
+" Prettier
+" `f` for "format"
+" This overrides coc's current binding (which isn't working yet anyway)
+nmap <leader>f <Plug>(Prettier)
+let g:prettier#exec_cmd_async = 1
 
