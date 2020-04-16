@@ -35,6 +35,7 @@ set wildignore+=*.swp
 set wildignore+=*.class
 set wildignore+=*.hg
 set wildignore+=*.DS_Store
+set wildignore+=.git/*
 " set wildignore+=*.min.*
 " set wildignore+=__pycache__/*
 set wildignore+=__pycache__
@@ -323,6 +324,7 @@ Plug 'tpope/vim-surround'
 
 " Svelte
 " Plug 'j127/vim-svelte'
+Plug 'evanleck/vim-svelte'
 
 " golang
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -340,6 +342,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'rhysd/vim-clang-format'
 
 " Rails
 " Plug 'tpope/vim-rails'
