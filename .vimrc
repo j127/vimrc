@@ -29,7 +29,7 @@ set wildignore+=*.pyc
 set wildignore+=*.o
 set wildignore+=*~
 set wildignore+=*.so
-set wildignore+=*.obj
+" set wildignore+=*.obj
 set wildignore+=*.svn
 set wildignore+=*.swp
 set wildignore+=*.class
@@ -58,6 +58,8 @@ set list lcs=tab:>-,trail:\.,extends:»,precedes:«,nbsp:%
 " Highlight line and column
 set cursorline
 set cursorcolumn
+" Fixed highlight (and mark `l) on current line (:match to clear)
+nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
 
 " Highlight desired line limit column (80 chars or whatever)
 " set colorcolumn=80,100
@@ -392,14 +394,14 @@ set background=dark
 if has("gui_running")
     colorscheme gruvbox
 else
+    " colorscheme gruvbox
+    colorscheme desertink
+    " colorscheme tender
+    " colorscheme colorsbox-material
     " various themes that are good, depending on mood and lighting
     " colorscheme twilight256
-    " colorscheme colorsbox-material
-    " colorscheme tender
-    colorscheme desertink
     " colorscheme codeschool
     " colorscheme badwolf
-    " colorscheme gruvbox
     " colorscheme louver
     " colorscheme quantum
     " colorscheme onedark
@@ -725,3 +727,8 @@ vnoremap <S-tab> <
 nmap <leader>f <Plug>(Prettier)
 let g:prettier#exec_cmd_async = 1
 
+" clang-format: llvm, google, chromium, or mozilla
+let g:clang_format#code_style = 'google'
+" let g:clang_format#style_options = {
+"     \ 
+" }
