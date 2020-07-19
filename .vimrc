@@ -108,6 +108,7 @@ autocmd FileType elixir setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType go setlocal shiftwidth=8 tabstop=8 softtabstop=8 noexpandtab
 autocmd FileType vue syntax sync fromstart
 autocmd BufNewFile,BufRead *.js.es6 set syntax=javascript
+autocmd FileType typescript setlocal commentstring=//\ %s
 
 " Use par for better `gq` formatting
 " See http://vimcasts.org/episodes/formatting-text-with-par/
