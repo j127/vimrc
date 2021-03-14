@@ -26,6 +26,7 @@ set wildmode=list:full,full
 
 " Ignore these
 set wildignore+=*.pyc
+set wildignore+=*.precomp/*
 set wildignore+=*.o
 set wildignore+=*~
 set wildignore+=*.so
@@ -36,10 +37,16 @@ set wildignore+=*.class
 set wildignore+=*.hg
 set wildignore+=*.DS_Store
 set wildignore+=.git/*
+set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
 " set wildignore+=*.min.*
 " set wildignore+=__pycache__/*
 set wildignore+=__pycache__
+set wildignore=.cache
+set wildignore=.mypy_cache
+" set wildignore=.venv/*
+" set wildignore=.vim
 set wildignore+=*/node_modules/*
+set wildignore+=*/package-lock.json
 set wildignore+=*/bower_components/*
 set wildignore+=tags.*
 set wildignore+=tags
@@ -48,6 +55,7 @@ set wildignore+=tags
 " set wildignore+=*/tmp/*
 " set wildignore+=*/build/*
 " set wildignore+=*/dist/*
+set wildignore+=*/TMP/*
 set wildignore+=*.zip
 set wildignore+=*.pdf
 set wildignore+=*.so
@@ -108,6 +116,13 @@ autocmd FileType elixir setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType go setlocal shiftwidth=8 tabstop=8 softtabstop=8 noexpandtab
 autocmd FileType vue syntax sync fromstart
 autocmd BufNewFile,BufRead *.js.es6 set syntax=javascript
+autocmd FileType typescript setlocal commentstring=//\ %s
+
+" auto-format python
+" https://stackoverflow.com/a/15289686/1365699
+" if has("autocmd")
+"     autocmd BufWritePost *.py !autopep8 -i expand("%")
+" endif
 
 " Use par for better `gq` formatting
 " See http://vimcasts.org/episodes/formatting-text-with-par/
@@ -295,12 +310,16 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
 
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" 
+
 Plug 'luochen1990/rainbow'
+
+" See: https://dev.to/tavanarad/vim-as-a-flutter-ide-4p16
+Plug 'dart-lang/dart-vim-plugin'
 
 " Text manipulation
 Plug 'simnalamburt/vim-mundo'
@@ -310,16 +329,25 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 
 " Haskell
-" Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 " Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
 " Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 " Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-" Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
+Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
 " Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
+Plug 'meck/vim-brittany', { 'for': 'haskell' }
+Plug 'autozimu/LanguageClient-neovim', {
+            \ 'branch': 'next',
+            \ 'do': 'bash install.sh'
+            \ }
 
 " Purescript
 " Plug 'frigoeu/psc-ide-vim'
-" Plug 'purescript-contrib/purescript-vim'
+Plug 'purescript-contrib/purescript-vim'
+
+Plug 'Chiel92/vim-autoformat'
+" au BufWrite * :Autoformat
+au BufWrite *.py :Autoformat
 
 " Vue.js
 " Plug 'posva/vim-vue'
@@ -351,7 +379,7 @@ Plug 'rhysd/vim-clang-format'
 " Plug 'tpope/vim-dispatch'
 " Plug 'tpope/vim-bundler'
 
-" Plug 'mustache/vim-mustache-handlebars'
+Plug 'mustache/vim-mustache-handlebars'
 
 " nand2tetris
 " Plug 'sevko/vim-nand2tetris-syntax'
@@ -369,12 +397,19 @@ Plug 'rhysd/vim-clang-format'
 " :TsuReloadProject -- after changing tsconfig.json file, if ts files are open at the time.
 " :TsuRenameSymbol -- rename identifier under the cursor
 " Plug 'Quramy/tsuquyomi'
-" Plug 'leafgarland/typescript-vim'
+" see https://medium.com/swlh/ultimate-vim-typescript-setup-35b5ac5c8c4e
+Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
 " Plug 'Quramy/vim-js-pretty-template'
 " Plug 'jason0x43/vim-js-indent' " for indenting features in JS/TS
 " More typescript plugins: https://github.com/Quramy/tsuquyomi#relevant-plugins
 
 Plug 'mhinz/vim-startify'
+
+Plug 'Raku/vim-raku'
+
+" This allows comments in jsonc files (like `:CocConfig`)
+Plug 'kevinoid/vim-jsonc'
 
 Plug 'pangloss/vim-javascript' ", { 'for': ['javascript', 'json', 'vue'] }
 Plug 'jparise/vim-graphql'
@@ -384,7 +419,7 @@ Plug 'prettier/vim-prettier', {
             \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " This should always be last
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " Colors and Fonts -- colorscheme should be loaded after Plug.
@@ -539,10 +574,10 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " javascript
 let g:javascript_plugin_jsdoc = 1
-set conceallevel=1
+" set conceallevel=1 " don't use this or it turns JSON quotes into blocks
 
 " devicons
-let g:webdevicons_conceal_nerdtree_brackets = 1
+" let g:webdevicons_conceal_nerdtree_brackets = 1
 
 let g:table_mode_corner='|'
 
@@ -597,20 +632,23 @@ nnoremap <leader>w :Windows<cr>
 nnoremap <leader>m :Marks<cr>
 nnoremap <leader>h :History<cr>
 
+" registers: delay window by n milliseconds
+let g:peekaboo_delay = 500
+
 " coc
 set shortmess+=c
 set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
@@ -636,11 +674,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 
 " Highlight symbol under cursor on CursorHold
@@ -650,15 +688,15 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
@@ -710,6 +748,9 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space><space>p  :<C-u>CocListResume<CR>
 
+" see https://jamesnewton.com/blog/setting-up-coc-nvim-for-ruby-development
+let g:coc_global_extensions = ['coc-solargraph']
+
 " Gutentags
 set statusline+=%{gutentags#statusline()}
 let g:gutentags_cache_dir = "~/tags"
@@ -730,5 +771,10 @@ let g:prettier#exec_cmd_async = 1
 " clang-format: llvm, google, chromium, or mozilla
 let g:clang_format#code_style = 'google'
 " let g:clang_format#style_options = {
-"     \ 
+"     \
 " }
+
+let g:raku_unicode_abbrevs = 1
+
+" for this plugin https://github.com/Chiel92/vim-autoformat
+let g:python3_host_prog='/usr/bin/python3'
