@@ -348,6 +348,10 @@ Plug 'purescript-contrib/purescript-vim'
 Plug 'Chiel92/vim-autoformat'
 " au BufWrite * :Autoformat
 au BufWrite *.py :Autoformat
+au BufWrite *.ts :Prettier
+au BufWrite *.tsx :Prettier
+au BufWrite *.js :Prettier
+au BufWrite *.md :Prettier
 
 " Vue.js
 " Plug 'posva/vim-vue'
@@ -417,6 +421,9 @@ Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', {
             \ 'do': 'npm install',
             \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+" An idea from Dale
+" let g:prettier#exec_cmd_path = "~/path/to/cli/prettier"
 
 " This should always be last
 " Plug 'ryanoasis/vim-devicons'
