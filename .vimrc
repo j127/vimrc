@@ -61,7 +61,8 @@ set wildignore+=*.pdf
 set wildignore+=*.so
 
 " This shows non-printing characters
-set list lcs=tab:>-,trail:\.,extends:»,precedes:«,nbsp:%
+" set list lcs=tab:>-,trail:\.,extends:»,precedes:«,nbsp:%,eol:¬
+set list lcs=tab:𒋖\ ,trail:\.,extends:»,precedes:«,nbsp:%
 
 " Highlight line and column
 set cursorline
@@ -294,6 +295,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 " brackets.
 Plug 'tmhedberg/matchit'
 
+" Python
+Plug 'psf/black'
+
 " Plug 'vim-scripts/gitignore'
 
 " ctags
@@ -328,6 +332,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 
+Plug 'tpope/vim-dadbod'
+
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 " Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
@@ -352,6 +358,7 @@ au BufWrite *.ts :Prettier
 au BufWrite *.tsx :Prettier
 au BufWrite *.js :Prettier
 au BufWrite *.md :Prettier
+au BufWrite *.rs :RustFmt
 
 " Vue.js
 " Plug 'posva/vim-vue'
@@ -361,7 +368,7 @@ au BufWrite *.md :Prettier
 Plug 'evanleck/vim-svelte'
 
 " golang
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Markdown
 Plug 'tpope/vim-markdown'
@@ -386,7 +393,7 @@ Plug 'rhysd/vim-clang-format'
 Plug 'mustache/vim-mustache-handlebars'
 
 " nand2tetris
-" Plug 'sevko/vim-nand2tetris-syntax'
+Plug 'sevko/vim-nand2tetris-syntax'
 
 "JavaScript
 
