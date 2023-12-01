@@ -288,6 +288,8 @@ Plug 'epeli/slimux'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 
+Plug 'jalvesaq/Nvim-R'
+
 " <Leader>ig to turn on indent guides
 Plug 'nathanaelkane/vim-indent-guides'
 
@@ -371,7 +373,10 @@ Plug 'evanleck/vim-svelte'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Markdown
-Plug 'tpope/vim-markdown'
+" Plug 'tpope/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
@@ -768,6 +773,7 @@ let g:coc_global_extensions = ['coc-solargraph']
 " Gutentags
 set statusline+=%{gutentags#statusline()}
 let g:gutentags_cache_dir = "~/tags"
+" let g:gutentags_trace = 1
 
 " Better indentation. This was being overridden by coc, so I put it last
 " to override whatever coc is doing.
@@ -792,3 +798,12 @@ let g:raku_unicode_abbrevs = 1
 
 " for this plugin https://github.com/Chiel92/vim-autoformat
 let g:python3_host_prog='/usr/bin/python3'
+
+" https://github.com/preservim/vim-markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_json_frontmatter = 1
+let g:vim_markdown_new_list_item_indent = 0
