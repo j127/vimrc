@@ -119,6 +119,9 @@ autocmd FileType vue syntax sync fromstart
 autocmd BufNewFile,BufRead *.js.es6 set syntax=javascript
 autocmd FileType typescript setlocal commentstring=//\ %s
 
+" In Git commit messages, copy modified files to a list.
+nnoremap <leader><leader>m :g/^#	modified:/t1<cr>:2,+s/^#	/- /<cr>:norm ggO<cr>
+
 " auto-format python
 " https://stackoverflow.com/a/15289686/1365699
 " if has("autocmd")
@@ -177,7 +180,6 @@ augroup whitespace
     autocmd BufWrite *.hs :call DeleteTrailingWS()
 augroup END
 
-" Use indentation for folds
 " toggle: za, close all: zM, open all: zR
 " fold (zf), open (zo), close (zc), delete (zd), etc.
 set foldmethod=manual
@@ -284,6 +286,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'jacoborus/tender.vim'
 
 Plug 'epeli/slimux'
+
 
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
@@ -551,37 +554,18 @@ nmap <leader>t :TagbarToggle<CR>
 " Startify
 " Replace custom quotes with some of the custom quotes and some new ones
 let g:startify_custom_header_quotes = [
-            \ ['saluton mondo'],
             \ ['It is not dying that a man should fear, but a man should fear never having lived at all.'],
             \ ['How one does anything is how one does everything.'],
             \ ["If you don't finish then you're just busy, not productive."],
-            \ ['Simplicity does not precede complexity, but follows it.', '', '- Alan Perlis'],
-            \ ['Optimization hinders evolution.', '', '- Alan Perlis'],
-            \ ['It is better to have 100 functions operate on one data structure than 10 functions on 10 data structures.', '', '- Alan Perlis'],
-            \ ['There is nothing quite so useless as doing with great efficiency something that should not be done at all.', '', '- Peter Drucker'],
             \ ["If you don't fail at least 90% of the time, you're not aiming high enough.", '', '- Alan Kay'],
-            \ ['I think a lot of new programmers like to use advanced data structures and advanced language features as a way of demonstrating their ability. I call it the lion-tamer syndrome. Such demonstrations are impressive, but unless they actually translate into real wins for the project, avoid them.', '', '- Glyn Williams'],
             \ ['I would rather die of passion than of boredom.', '', '- Vincent Van Gogh'],
-            \ ["The computing scientist's main challenge is not to get confused by the complexities of his own making.", '', '- Edsger W. Dijkstra'],
-            \ ['A good programmer is someone who always looks both ways before crossing a one-way street.', '', '- Doug Linder'],
             \ ['Always code as if the person who ends up maintaining your code is a violent psychopath who knows where you live.', '', '- John Woods'],
-            \ ['Unix was not designed to stop its users from doing stupid things, as that would also stop them from doing clever things.'],
-            \ ['Contrary to popular belief, Unix is user friendly. It just happens to be very selective about who it decides to make friends with.'],
-            \ ['Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.'],
-            \ ["If you don't make mistakes, you're not working on hard enough problems.", '', '- Frank Wilczek'],
-            \ ['Abstraction is not about vagueness, it is about being precise at a new semantic level.', '', '- Edsger W. Dijkstra'],
             \ ['Almost every programming language is overrated by its practitioners.', '', '- Larry Wall'],
             \ ['Think twice, code once.'],
-            \ ['The question of whether computers can think is like the question of whether submarines can swim.', '', '- Edsger W. Dijkstra'],
             \ ['They did not know it was impossible, so they did it!', '', '- Mark Twain'],
-            \ ['To understand recursion, one must first understand recursion.', '', '- Stephen Hawking'],
             \ ['Developing tolerance for imperfection is the key factor in turning chronic starters into consistent finishers.', '', '- Jon Acuff'],
             \ ['Every great developer you know got there by solving problems they were unqualified to solve until they actually did it.', '', '- Patrick McKenzie'],
-            \ ["The average user doesn't give a damn what happens, as long as (1) it works and (2) it's fast.", '', '- Daniel J. Bernstein'],
             \ ['Be curious. Read widely. Try new things. I think a lot of what people call intelligence boils down to curiosity.', '', '- Aaron Swartz'],
-            \ ['What one programmer can do in one month, two programmers can do in two months.', '', '- Frederick P. Brooks'],
-            \ ['There’s no such thing as a schemaless system. There are systems where you write your schema down and ones where you don’t.', '', '- Rich Hickey'],
-            \ ['[monads] are generated, so to speak, by continual fulgurations of the Divinity', '', '-  Gottfried Leibniz'],
             \ ]
 
 " whichkey
@@ -761,16 +745,16 @@ nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space><space>p  :<C-u>CocListResume<CR>
 
 " see https://jamesnewton.com/blog/setting-up-coc-nvim-for-ruby-development
 let g:coc_global_extensions = ['coc-solargraph']
-
 " Gutentags
+
 set statusline+=%{gutentags#statusline()}
 let g:gutentags_cache_dir = "~/tags"
 " let g:gutentags_trace = 1
