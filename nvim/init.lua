@@ -8,7 +8,7 @@ require("plugins")
 require("keybindings")
 
 
--- I set this up based on this playlist:
+-- I set this up after watching this playlist:
 -- https://www.youtube.com/watch?v=ff0GYrK3nT0&list=PLx2ksyallYzW4WNYHD9xOFrPRYGlntAft&index=5
 -- I need to finish watching videos 5-8.
 
