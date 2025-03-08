@@ -1,14 +1,16 @@
 -- Telescope
 local builtin = require("telescope.builtin")
+local telescope = require("telescope")
+
 -- I set up two "find" commands. One includes hidden files and the other doesn't.
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
 vim.keymap.set("n", "<leader>ffh", function()
-    require("telescope.builtin").find_files({
+    builtin.find_files({
         hidden = true, -- Show dotfiles
         no_ignore = true, -- Don’t ignore files from .gitignore
     })
 end, { desc = "Find Files (incl. hidden)" })
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
+vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Live Grep" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "List Buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help" })
 
@@ -25,7 +27,7 @@ vim.keymap.set("n", "<leader>ws", builtin.lsp_workspace_symbols, { desc = "Works
 vim.keymap.set("n", "<leader>nt", ":Telescope file_browser<CR>", { desc = "File Browser" })
 -- `ntc` for NerdTree current-dir
 vim.keymap.set("n", "<leader>ntc", function()
-    require("telescope").extensions.file_browser.file_browser({ path = vim.fn.expand("%:p:h") })
+    telescope.extensions.file_browser.file_browser({ path = vim.fn.expand("%:p:h") })
 end, { desc = "File Explorer (Current Buffer's Directory)" })
 
 -- open a project
